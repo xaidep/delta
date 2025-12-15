@@ -24,6 +24,22 @@ public class PlayerController : MonoBehaviour
     {
         rectTransform = GetComponent<RectTransform>();
         
+        // 当たり判定がない場合は追加 (UIモード用にサイズ調整)
+        if (GetComponent<Collider2D>() == null)
+        {
+            BoxCollider2D col = gameObject.AddComponent<BoxCollider2D>();
+            col.isTrigger = true;
+            if (rectTransform != null) col.size = new Vector2(50f, 50f);
+        }
+
+        // Trigger判定にはRigidbodyが必要
+        if (GetComponent<Rigidbody2D>() == null)
+        {
+            var rb = gameObject.AddComponent<Rigidbody2D>();
+            rb.bodyType = RigidbodyType2D.Kinematic; // 物理挙動はさせない
+            rb.gravityScale = 0f;
+        }
+        
         // 画像コンポーネントを取得しておく
         if (rectTransform != null)
             uiImage = GetComponent<Image>();
@@ -32,7 +48,10 @@ public class PlayerController : MonoBehaviour
 
         lastPosition = transform.position;
 
+        lastPosition = transform.position;
+
         CreateShadow(); // 影を作成
+        UpdateStats();  // 初期状態の反映（ファンネルを隠すなど）
     }
 
 
@@ -47,16 +66,23 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 currentPos = transform.position;
 
+        // 画面外に出ないようにマウス座標を制限 (Clamp)
+        float padding = 30f; // 画面端からの余白
+        Vector3 clampedMousePos = Input.mousePosition;
+        
+        clampedMousePos.x = Mathf.Clamp(clampedMousePos.x, padding, Screen.width - padding);
+        clampedMousePos.y = Mathf.Clamp(clampedMousePos.y, padding, Screen.height - padding);
+
         // UIモード (Canvas内) かどうかで処理を分ける
         if (rectTransform != null)
         {
             // --- UIモード (Canvas Overlay) ---
-            transform.position = Input.mousePosition;
+            transform.position = clampedMousePos;
         }
         else
         {
             // --- 2D Sprite モード (World Space) ---
-            Vector3 mousePos = Input.mousePosition;
+            Vector3 mousePos = clampedMousePos;
             mousePos.z = 10f; 
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
             worldPos.z = 0f;
@@ -67,31 +93,31 @@ public class PlayerController : MonoBehaviour
 
         // --- 移動方向による画像の切り替え ---
         float deltaX = currentPos.x - lastPosition.x;
+        float deltaY = currentPos.y - lastPosition.y; // Y方向の移動量
         
-        // 感度調整（World座標系だと小さくなるので、少し小さめに設定）
-        // UIモード（ピクセル単位）ならこれでも十分反応します
+        // 感度調整
         float threshold = 0.01f; 
+
+        // 前進（上移動）している時だけエフェクトを表示
+        bool isMovingForward = deltaY > threshold;
+        ControlEngineEffects(isMovingForward);
 
         if (deltaX < -threshold)
         {
             // 左移動
             ChangeSprite(imageLeft);
-            stationaryTimer = 0f; // 動いているのでタイマーリセット
+            stationaryTimer = 0f;
         }
         else if (deltaX > threshold)
         {
             // 右移動
             ChangeSprite(imageRight);
-            stationaryTimer = 0f; // 動いているのでタイマーリセット
+            stationaryTimer = 0f;
         }
         else
         {
             // ほぼ静止している場合
-            // すぐに正面に戻すとパタパタしてしまうため、
-            // 「しばらく止まっていたら」正面に戻すようにする
             stationaryTimer += Time.deltaTime;
-            
-            // 0.1秒以上止まっていたら正面に戻す
             if (stationaryTimer > 0.1f)
             {
                 ChangeSprite(imageCenter);
@@ -99,6 +125,23 @@ public class PlayerController : MonoBehaviour
         }
 
         lastPosition = currentPos;
+    }
+
+    // エンジンエフェクトの表示切り替え
+    void ControlEngineEffects(bool isActive)
+    {
+        if (engineEffects == null) return;
+        foreach (var effect in engineEffects)
+        {
+            if (effect != null)
+            {
+                // もし既に同じ状態なら何もしない（負荷軽減）
+                if (effect.activeSelf != isActive)
+                {
+                    effect.SetActive(isActive);
+                }
+            }
+        }
     }
 
     // 静止判定用のタイマー
@@ -148,33 +191,217 @@ public class PlayerController : MonoBehaviour
     private Image shadowImage;
     private SpriteRenderer shadowRenderer;
 
+    // --- パワーアップ設定 ---
+    [Header("Power Up Settings")]
+    public int powerLevel = 0; // 0〜3 (計4段階)
+    public GameObject[] funnels; // ファンネル（Inspectorで割り当て）
+    
+    [Header("Engine Effects")]
+    public GameObject[] engineEffects; // プレイヤーとファンネルのSpeedEffectを登録
+    public GameObject muzzleFlashPrefab; // 発射時の火花エフェクト
+    public Vector3 muzzleFlashOffset = new Vector3(0, 30, 0); // 火花の位置調整（自機）
+    public Vector3 funnelMuzzleFlashOffset = new Vector3(0, 30, 0); // 火花の位置調整（ファンネル）
+
     void Shoot()
     {
         if (bulletPrefab == null) return;
 
-        // 左の翼から発射
-        CreateBullet(-bulletOffset);
-        // 右の翼から発射
-        CreateBullet(bulletOffset);
+        // レベルに応じた発射パターン
+        // Lv0: 1発 (中央)
+        // Lv1: 2発 (左右)
+        // Lv2: 4発 (左右 + ファンネル2)
+        // Lv3: 7発 (左右 + ファンネル4 + 中央)
+
+        // 基本の左右発射 (Lv1以上)
+        if (powerLevel >= 1)
+        {
+            CreateBullet(-bulletOffset);
+            CreateBullet(bulletOffset);
+        }
+
+        // 中央発射 (Lv0 または Lv3)
+        if (powerLevel == 0 || powerLevel >= 3)
+        {
+             CreateBullet(0f);
+        }
+
+        // ファンネル発射 (Lv2以上)
+        if (powerLevel >= 2 && funnels != null)
+        {
+            // ファンネルのリストから、有効なものだけ発射
+            // Lv2なら2つ、Lv3なら全部(4つ)と想定
+            int activeCount = (powerLevel == 2) ? 2 : 4;
+            
+            for (int i = 0; i < funnels.Length && i < activeCount; i++)
+            {
+                if (funnels[i] != null && funnels[i].activeSelf)
+                {
+                    // ファンネル用のオフセットを使う
+                    CreateBulletFromPosition(funnels[i].transform.position, funnelMuzzleFlashOffset);
+                }
+            }
+        }
+    }
+    
+    public void LevelUp()
+    {
+        // レベルアップ効果としてフラッシュを入れる
+        StartCoroutine(FlashWhite());
+
+        if (powerLevel < 3)
+        {
+            powerLevel++;
+            UpdateStats();
+            Debug.Log($"Level Up! Current Level: {powerLevel}");
+        }
     }
 
+    // --- ダメージ処理 ---
+    [Header("Damage Settings")]
+    public GameObject explosionPrefab; // プレイヤーの爆発エフェクト
+
+    // 敵または敵の弾に当たった時
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        CheckDamage(collision.gameObject);
+    }
+    
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        // Debug.Log($"Player hit: {other.name}"); // デバッグ用
+        CheckDamage(other.gameObject);
+    }
+
+    void CheckDamage(GameObject other)
+    {
+        // うっかりTagが設定されていないプロジェクトでエラーになるのを防ぐため、
+        // スクリプトの有無だけで判定するように変更
+        if (other.GetComponent<EnemyController>() != null)
+        {
+            ApplyDamage();
+            // 敵も倒す（相打ち）
+            Destroy(other);
+        }
+    }
+
+    void ApplyDamage()
+    {
+        StartCoroutine(FlashWhite()); // 画面フラッシュ
+
+        if (powerLevel > 0)
+        {
+            powerLevel--;
+            UpdateStats();
+            Debug.Log($"Damage! Level Down to: {powerLevel}");
+        }
+        else
+        {
+            Debug.Log("Player Destroyed!");
+            Die();
+        }
+    }
+    
+    // 画面を白く光らせるコルーチン（UIモード用）
+    System.Collections.IEnumerator FlashWhite()
+    {
+        if (rectTransform == null) yield break;
+
+        // フラッシュ用の一時的なImageを作成
+        GameObject flashObj = new GameObject("DamageFlash");
+        flashObj.transform.SetParent(transform.parent, false);
+        flashObj.transform.SetAsLastSibling(); // 最前面に表示
+
+        Image img = flashObj.AddComponent<Image>();
+        img.color = new Color(1f, 1f, 1f, 0.8f); // 真っ白、不透明度80%
+        img.raycastTarget = false; // クリックを邪魔しないように
+
+        // 全画面に広げる
+        RectTransform rt = flashObj.GetComponent<RectTransform>();
+        rt.anchorMin = Vector2.zero;
+        rt.anchorMax = Vector2.one;
+        rt.offsetMin = Vector2.zero;
+        rt.offsetMax = Vector2.zero;
+
+        // フェードアウト
+        float duration = 0.2f; // 0.2秒で消える
+        float t = 0f;
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            float alpha = Mathf.Lerp(0.8f, 0f, t / duration);
+            img.color = new Color(1f, 1f, 1f, alpha);
+            yield return null;
+        }
+
+        Destroy(flashObj);
+    }
+
+    void Die()
+    {
+        if (explosionPrefab != null)
+        {
+            GameObject exp = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            if (rectTransform != null)
+            {
+                exp.transform.SetParent(transform.parent);
+                exp.transform.localScale = Vector3.one * 2f;
+            }
+        }
+        
+        Destroy(gameObject);
+    }
+
+    void UpdateStats()
+    {
+        // レベルに合わせてファンネルを表示など
+        if (funnels == null) return;
+        
+        int activeCount = 0;
+        if (powerLevel == 2) activeCount = 2;
+        else if (powerLevel >= 3) activeCount = 4;
+
+        for (int i = 0; i < funnels.Length; i++)
+        {
+            if (funnels[i] != null)
+                funnels[i].SetActive(i < activeCount);
+        }
+    }
+
+    // 自分の位置からオフセットで生成
     void CreateBullet(float offsetX)
     {
-        // 発射位置を計算（今の位置 + X方向のズレ）
         Vector3 spawnPos = transform.position;
         spawnPos.x += offsetX;
+        // プレイヤー用のオフセットを使う
+        CreateBulletFromPosition(spawnPos, muzzleFlashOffset);
+    }
+    
+    // 指定されたワールド座標から生成（ファンネル用など）
+    void CreateBulletFromPosition(Vector3 position, Vector3 flashOffset)
+    {
+        GameObject bullet = Instantiate(bulletPrefab, position, Quaternion.identity);
 
-        // 弾を生成
-        GameObject bullet = Instantiate(bulletPrefab, spawnPos, Quaternion.identity);
+        // マズルフラッシュ生成
+        if (muzzleFlashPrefab != null)
+        {
+            // Debug.Log("Spawning MuzzleFlash"); // デバッグ用
+            // 位置調整 (Offset) を加える
+            Vector3 flashPos = position + flashOffset;
+            
+            GameObject flash = Instantiate(muzzleFlashPrefab, flashPos, Quaternion.identity);
+            if (rectTransform != null)
+            {
+                // プレイヤーの動きに追従させるため、親をPlayer(自分自身)にする
+                flash.transform.SetParent(transform);
+                flash.transform.localScale = Vector3.one; 
+                flash.transform.SetAsLastSibling(); 
+            }
+        }
 
-        // UIモードの場合、親要素（Canvasなど）を正しく設定しないと表示されない場合がある
         if (rectTransform != null)
         {
-            // プレイヤーと同じ親（例: Canvas）の子にする
             bullet.transform.SetParent(transform.parent);
-            // スケールがおかしくなることがあるので1にリセット
             bullet.transform.localScale = Vector3.one;
-            // プレイヤーより手前に表示されるように順序調整（任意）
             bullet.transform.SetAsLastSibling();
         }
     }
