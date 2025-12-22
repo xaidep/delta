@@ -7,7 +7,9 @@ public class BackgroundScroller : MonoBehaviour
     public float scrollSpeed = 0.5f;
 
     // --- テクスチャアニメーション設定 ---
+    // --- テクスチャアニメーション設定 ---
     [Header("Animation Settings")]
+    public bool enableAnimation = false; // アニメーションするかどうか
     public Texture[] animationTextures; // アニメーションさせる画像リスト
     public float animationInterval = 0.5f; // 切り替え間隔（秒）
 
@@ -35,24 +37,55 @@ public class BackgroundScroller : MonoBehaviour
         }
     }
 
+    private float stageDuration = 0f;
+    private bool useDuration = false;
+    private float currentTime = 0f;
+
+    public void SetDuration(float duration)
+    {
+        stageDuration = duration;
+        useDuration = true;
+        currentTime = 0f;
+    }
+
     void Update()
     {
-        // --- 1. スクロール処理 ---
-        float y = Mathf.Repeat(Time.time * scrollSpeed, 1);
-        
-        if (rawImage != null)
+        if (rawImage == null) return;
+
+        Rect currentRect = rawImage.uvRect;
+        float y = 0f;
+
+        if (useDuration && stageDuration > 0)
         {
-            Rect currentRect = rawImage.uvRect;
-            // スクロール位置だけ更新し、タイリング幅(w, h)は維持する
-            currentRect.y = y * currentRect.height; // タイリング数に合わせてスクロール速度も見た目上調整する場合
-            // スクロール方向を逆にしました（上に向かって進む＝背景が下に流れる）
-            currentRect.y = y; 
+            currentTime += Time.deltaTime;
+            float progress = Mathf.Clamp01(currentTime / stageDuration);
             
-            rawImage.uvRect = currentRect;
+            // 画像の端（1.0）を超えて参照すると引き伸びてしまうため、
+            // 表示されている高さ分（currentRect.height）だけ手前で止める
+            if (currentRect.height >= 0.99f)
+            {
+                Debug.LogWarning("BackgroundScroller: UV Rect Height is close to 1. Scrolling will not be visible! Set H to 0.2 approx.");
+            }
+
+            float maxY = Mathf.Max(0, 1.0f - currentRect.height);
+            
+            // 0 から maxY まで進む
+            y = Mathf.Lerp(0f, maxY, progress);
+            
+            // Debug.Log($"BG Scroll: Time={currentTime}, Progress={progress}, Y={y}, MaxY={maxY}");
+        }
+        else
+        {
+            // 通常のループスクロール
+            y = Mathf.Repeat(Time.time * scrollSpeed, 1);
         }
 
+        // スクロール位置の適用
+        currentRect.y = y; 
+        rawImage.uvRect = currentRect;
+
         // --- 2. アニメーション処理 ---
-        if (animationTextures != null && animationTextures.Length > 0)
+        if (enableAnimation && animationTextures != null && animationTextures.Length > 0)
         {
             animationTimer += Time.deltaTime;
             if (animationTimer >= animationInterval)

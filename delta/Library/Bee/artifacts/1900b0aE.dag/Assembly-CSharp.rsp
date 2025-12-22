@@ -116,7 +116,6 @@
 -define:ENABLE_UNITY_COLLECTIONS_CHECKS
 -define:ENABLE_BURST_AOT
 -define:UNITY_TEAM_LICENSE
--define:UNITY_PRO_LICENSE
 -define:ENABLE_CUSTOM_RENDER_TEXTURE
 -define:ENABLE_DIRECTOR
 -define:ENABLE_LOCALIZATION
@@ -370,8 +369,6 @@
 -r:"C:/Program Files/Unity/Hub/Editor/6000.0.57f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Xml.XPath.XDocument.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/6000.0.57f1/Editor/Data/NetStandard/Extensions/2.0.0/System.Runtime.InteropServices.WindowsRuntime.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/6000.0.57f1/Editor/Data/NetStandard/ref/2.1.0/netstandard.dll"
--r:"C:/Program Files/Unity/Hub/Editor/6000.0.57f1/Editor/Data/PlaybackEngines/AndroidPlayer/Unity.Android.Gradle.dll"
--r:"C:/Program Files/Unity/Hub/Editor/6000.0.57f1/Editor/Data/PlaybackEngines/AndroidPlayer/Unity.Android.Types.dll"
 -r:"Library/PackageCache/com.unity.collections@56bff8827a7e/Unity.Collections.LowLevel.ILSupport/Unity.Collections.LowLevel.ILSupport.dll"
 -r:"Library/PackageCache/com.unity.ext.nunit@031a54704bff/net40/unity-custom/nunit.framework.dll"
 -r:"Library/PackageCache/com.unity.nuget.mono-cecil@d6f9955a5d5f/Mono.Cecil.dll"
@@ -396,6 +393,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.2D.Tilemap.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.2D.Tilemap.Extras.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.2D.Tilemap.Extras.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Bindings.OpenImageIO.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Burst.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Burst.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Collections.Editor.ref.dll"
@@ -409,6 +407,9 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Multiplayer.Center.Common.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Multiplayer.Center.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.PlasticSCM.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Recorder.Base.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Recorder.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Recorder.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Rendering.LightTransport.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Rendering.LightTransport.Runtime.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.RenderPipeline.Universal.ShaderLibrary.ref.dll"
@@ -454,7 +455,43 @@
 "Assets/Scripts/ItemSpawner.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/PowerUpItem.cs"
+"Assets/Scripts/ScoreManager.cs"
 "Assets/Scripts/SimpleAnimator.cs"
+"Assets/Scripts/StageManager.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark02.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark03.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark04.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/CameraController.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/ChatController.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/DropdownSample.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/EnvMapAnimator.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/ObjectSpin.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/ShaderPropAnimator.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/SimpleScript.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/SkewTextExample.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/TeleType.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/TextConsoleSimulator.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/TextMeshProFloatingText.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/TextMeshSpawner.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/TMPro_InstructionOverlay.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_DigitValidator.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_ExampleScript_01.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_FrameRateCounter.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_PhoneNumberValidator.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextEventCheck.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextEventHandler.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextInfoDebugTool.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextSelector_A.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextSelector_B.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_UiFrameRateCounter.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/VertexColorCycler.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/VertexJitter.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/VertexShakeA.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/VertexShakeB.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/VertexZoom.cs"
+"Assets/TextMesh Pro/Examples & Extras/Scripts/WarpTextExample.cs"
 -langversion:9.0
 /deterministic
 /optimize+

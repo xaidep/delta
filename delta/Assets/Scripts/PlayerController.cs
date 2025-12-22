@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro; // TextMeshProを使うために追加
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,8 +21,22 @@ public class PlayerController : MonoBehaviour
     // 移動量を計算するための前回の位置
     private Vector3 lastPosition;
 
+    private Camera mainCamera;
+
     void Start()
     {
+        // カメラの取得（タグ設定忘れ対策）
+        mainCamera = Camera.main;
+        if (mainCamera == null)
+        {
+#if UNITY_2023_1_OR_NEWER
+            mainCamera = Object.FindFirstObjectByType<Camera>();
+#else
+            mainCamera = Object.FindObjectOfType<Camera>();
+#endif
+            if (mainCamera == null) Debug.LogError("PlayerController: No Camera found in scene!");
+        }
+
         rectTransform = GetComponent<RectTransform>();
         
         // 当たり判定がない場合は追加 (UIモード用にサイズ調整)
@@ -45,8 +60,6 @@ public class PlayerController : MonoBehaviour
             uiImage = GetComponent<Image>();
         else
             spriteRenderer = GetComponent<SpriteRenderer>();
-
-        lastPosition = transform.position;
 
         lastPosition = transform.position;
 
@@ -82,11 +95,14 @@ public class PlayerController : MonoBehaviour
         else
         {
             // --- 2D Sprite モード (World Space) ---
-            Vector3 mousePos = clampedMousePos;
-            mousePos.z = 10f; 
-            Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
-            worldPos.z = 0f;
-            transform.position = worldPos;
+            if (mainCamera != null)
+            {
+                Vector3 mousePos = clampedMousePos;
+                mousePos.z = 10f; 
+                Vector3 worldPos = mainCamera.ScreenToWorldPoint(mousePos);
+                worldPos.z = 0f;
+                transform.position = worldPos;
+            }
         }
         
         currentPos = transform.position; // 移動後の位置
@@ -195,7 +211,8 @@ public class PlayerController : MonoBehaviour
     [Header("Power Up Settings")]
     public int powerLevel = 0; // 0〜3 (計4段階)
     public GameObject[] funnels; // ファンネル（Inspectorで割り当て）
-    
+    public GameObject powerUpUIPrefab; // パワーアップ時の演出プレハブ
+
     [Header("Engine Effects")]
     public GameObject[] engineEffects; // プレイヤーとファンネルのSpeedEffectを登録
     public GameObject muzzleFlashPrefab; // 発射時の火花エフェクト
@@ -242,17 +259,62 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    
+
     public void LevelUp()
     {
-        // レベルアップ効果としてフラッシュを入れる
-        StartCoroutine(FlashWhite());
+        // レベルアップ効果のフラッシュは削除 (ユーザー要望)
+        // StartCoroutine(FlashWhite());
 
         if (powerLevel < 3)
         {
             powerLevel++;
             UpdateStats();
             Debug.Log($"Level Up! Current Level: {powerLevel}");
+            
+            // パワーアップ演出 (UI) を表示 (コルーチンで停止処理を含む)
+            StartCoroutine(ShowPowerUpSequence());
+        }
+    }
+
+    System.Collections.IEnumerator ShowPowerUpSequence()
+    {
+        if (powerUpUIPrefab != null && rectTransform != null)
+        {
+            // Canvas内に生成
+            GameObject uiObj = Instantiate(powerUpUIPrefab, transform.parent);
+            
+            // 画面中央に配置
+            RectTransform rt = uiObj.GetComponent<RectTransform>();
+            if (rt != null) rt.anchoredPosition = Vector2.zero;
+            else uiObj.transform.localPosition = Vector3.zero;
+            
+            // テキスト更新
+            TextMeshProUGUI tmp = uiObj.GetComponentInChildren<TextMeshProUGUI>();
+            if (tmp != null)
+            {
+                tmp.text = (powerLevel + 1).ToString("D2");
+            }
+
+            // --- ゲーム停止処理 ---
+            
+            // 1. 時間を止める
+            Time.timeScale = 0f;
+
+            // 2. 演出のアニメーションが止まらないように設定変更 (すべてのアニメーターに適用)
+            Animator[] anims = uiObj.GetComponentsInChildren<Animator>();
+            foreach (Animator anim in anims)
+            {
+                anim.updateMode = AnimatorUpdateMode.UnscaledTime;
+            }
+
+            // 3. リアルタイムで0.5秒待つ (さらに短縮)
+            yield return new WaitForSecondsRealtime(0.5f);
+
+            // 4. 演出を削除
+            Destroy(uiObj);
+
+            // 5. 時間を動かす
+            Time.timeScale = 1f;
         }
     }
 

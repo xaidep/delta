@@ -38,13 +38,11 @@ public class ItemSpawner : MonoBehaviour
         if (defeatedCount >= killsToSpawn)
         {
             // プレイヤーのレベルを確認
-            // Unity 2023以降でFindObjectOfTypeは警告が出るため、FindFirstObjectByTypeを使用
-            PlayerController player = FindFirstObjectByType<PlayerController>();
-            if (player == null) 
-            {
-                // 古いバージョンのUnityの場合のフォールバック (もしコンパイルエラーになるならこちらを使ってください)
-                 player = FindObjectOfType<PlayerController>();
-            }
+#if UNITY_2023_1_OR_NEWER
+            PlayerController player = Object.FindFirstObjectByType<PlayerController>();
+#else
+            PlayerController player = Object.FindObjectOfType<PlayerController>();
+#endif
 
             if (player != null && player.powerLevel >= 3)
             {

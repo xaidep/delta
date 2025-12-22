@@ -1,20 +1,33 @@
 using UnityEngine;
+using UnityEngine.UI; // UIのImageを操作するために必要
 
 public class EnemyController : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float speed = 5f;
+    public bool enableRotation = true; // 回転を無効化できるようにする
     public float rotateSpeed = 360f; // 1秒あたりの回転角度
 
-    [Header("Explosion Settings")]
+    [Header("Animation Settings")]
+    public Sprite[] animationFrames; // 連番画像
+    public float framesPerSecond = 10f; // アニメーション速度
+
     [Header("Explosion Settings")]
     public GameObject explosionPrefab;
 
     private bool isInitialized = false;
     private float t = 0f; // ベジェ曲線用のパラメータ (0.0 ～ 1.0)
+    private Image targetImage; // アニメーションさせる対象
+    private float animationTimer = 0f;
+    private int currentFrameIndex = 0;
 
     // ベジェ曲線のための制御点
     private Vector3 p0, p1, p2;
+
+    void Awake()
+    {
+        targetImage = GetComponent<Image>();
+    }
 
     public void Initialize(Vector3 start, Vector3 control, Vector3 end)
     {
@@ -31,8 +44,23 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        // 回転アメーション（常に回転）
-        transform.Rotate(0, 0, rotateSpeed * Time.deltaTime);
+        // 回転アニメーション（有効な場合のみ）
+        if (enableRotation)
+        {
+            transform.Rotate(0, 0, rotateSpeed * Time.deltaTime);
+        }
+
+        // 連番画像アニメーション処理
+        if (animationFrames != null && animationFrames.Length > 0 && targetImage != null)
+        {
+            animationTimer += Time.deltaTime;
+            if (animationTimer >= 1f / framesPerSecond)
+            {
+                animationTimer = 0f;
+                currentFrameIndex = (currentFrameIndex + 1) % animationFrames.Length;
+                targetImage.sprite = animationFrames[currentFrameIndex];
+            }
+        }
 
         if (!isInitialized) return;
 
@@ -93,8 +121,17 @@ public class EnemyController : MonoBehaviour
         HandleHit(collision.gameObject);
     }
 
+    [Header("Score Settings")]
+    public string enemyID = "Enemy1"; // CSVに書いたIDと合わせる
+
     void Die()
     {
+        // スコア加算
+        if (ScoreManager.instance != null)
+        {
+            ScoreManager.instance.AddScore(enemyID);
+        }
+
         // 撃破カウントを加算
         if (ItemSpawner.instance != null)
         {
@@ -102,7 +139,7 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-             Debug.LogWarning("ItemSpawner instance not found! Did you create the Empty Object and attach the script?");
+            Debug.LogWarning("ItemSpawner instance not found! Did you create the Empty Object and attach the script?");
         }
 
         if (explosionPrefab != null)

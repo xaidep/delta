@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI; // UI名前空間を追加
 
 public class PowerUpItem : MonoBehaviour
 {
@@ -10,6 +11,12 @@ public class PowerUpItem : MonoBehaviour
     public float pulseSpeed = 5f;
     public float pulseScaleRange = 0.2f; // 元のサイズ ± この値
     private Vector3 originalScale;
+
+    [Header("Glow Settings")]
+    public Color glowColor = new Color(1f, 1f, 0f, 0.5f); // デフォルトは黄色半透明
+    public float glowPulseSpeed = 10f;
+    public float glowScaleRatio = 1.2f; // 親より一回り大きく
+    private Image glowImage; // SpriteRendererからImageに変更
 
     void Start()
     {
@@ -38,6 +45,8 @@ public class PowerUpItem : MonoBehaviour
         
         // 5秒で自動消滅（画面外に出なくても消える保険）
         Destroy(gameObject, 5f);
+
+        SetupGlow();
     }
 
     void Update()
@@ -48,6 +57,16 @@ public class PowerUpItem : MonoBehaviour
         // 拡大縮小アニメーション (PingPong)
         float scale = 1f + Mathf.Sin(Time.time * pulseSpeed) * pulseScaleRange;
         transform.localScale = originalScale * scale;
+
+        // グローアニメーション
+        if (glowImage != null)
+        {
+            // アルファ値を点滅
+            float alpha = 0.3f + Mathf.PingPong(Time.time * glowPulseSpeed, 0.5f); 
+            Color c = glowColor;
+            c.a = alpha;
+            glowImage.color = c;
+        }
     }
 
     // プレイヤーが「Trigger」を持っている場合
@@ -90,5 +109,55 @@ public class PowerUpItem : MonoBehaviour
     public void Initialize(Vector3 moveDirection)
     {
         direction = moveDirection.normalized;
+    }
+
+    void SetupGlow()
+    {
+        // Imageコンポーネントを取得（uGUI対応）
+        Image mainImage = GetComponent<Image>();
+        if (mainImage != null)
+        {
+            // グロー効果用の子オブジェクト作成
+            GameObject glowObj = new GameObject("GlowEffect");
+            glowObj.transform.SetParent(transform);
+            glowObj.transform.localPosition = Vector3.zero;
+            glowObj.transform.localScale = Vector3.one * glowScaleRatio;
+
+            // Image設定
+            glowImage = glowObj.AddComponent<Image>();
+            glowImage.sprite = mainImage.sprite;
+            glowImage.color = glowColor;
+            glowImage.raycastTarget = false; // レイキャストはブロックしない
+
+            // RectTransformの設定（全画面に広がらないようにサイズ合わせ）
+            RectTransform glowRect = glowImage.rectTransform;
+            RectTransform mainRect = mainImage.rectTransform;
+            glowRect.sizeDelta = mainRect.sizeDelta;
+            
+            // 注意: uGUIの親子関係上、子は親の上に描画されるため、
+            // グローがアイテムの手前に表示されます。
+            // 半透明なので「輝いている」演出としては機能します。
+        }
+        else
+        {
+            // Fallback: もしImageがなくてSpriteRendererだった場合（念のため残す）
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                 GameObject glowObj = new GameObject("GlowEffect");
+                glowObj.transform.SetParent(transform);
+                glowObj.transform.localPosition = Vector3.zero;
+                glowObj.transform.localScale = Vector3.one * glowScaleRatio;
+
+                var srGlow = glowObj.AddComponent<SpriteRenderer>();
+                srGlow.sprite = sr.sprite;
+                srGlow.color = glowColor;
+                srGlow.sortingLayerID = sr.sortingLayerID;
+                srGlow.sortingOrder = sr.sortingOrder - 1;
+                
+                // glowImageフィールドの型がImageなので、共通化するためにここではキャストできないが、
+                // 今回はImage優先で実装。SpriteRendererの場合は点滅しない（要修正だが、画像からImage確定なので簡易対応）
+            }
+        }
     }
 }
