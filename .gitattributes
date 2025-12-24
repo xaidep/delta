@@ -1,3 +1,10 @@
 *.so filter=lfs diff=lfs merge=lfs -text
 *.dylib filter=lfs diff=lfs merge=lfs -text
 *.dll filter=lfs diff=lfs merge=lfs -text
+delta/Library/PackageCache/com.unity.2d.animation@81ad133dbdf1/Editor/SkinningModule/Lib/x64/BoundedBiharmonicWeightsModule.so filter=lfs diff=lfs merge=lfs -text
+delta/Library/PackageCache/com.unity.burst@f7a407abf4d5/.Runtime/libburst-llvm-10.dylib filter=lfs diff=lfs merge=lfs -text
+delta/Library/PackageCache/com.unity.burst@f7a407abf4d5/.Runtime/libburst-llvm-19.dylib filter=lfs diff=lfs merge=lfs -text
+delta/Library/PackageCache/com.unity.burst@f7a407abf4d5/.Runtime/libburst-llvm-19.so filter=lfs diff=lfs merge=lfs -text
+delta/Library/PackageCache/com.unity.burst@f7a407abf4d5/.Runtime/libMonoDebuggerHandling.dylib filter=lfs diff=lfs merge=lfs -text
+delta/Library/PackageCache/com.unity.burst@f7a407abf4d5/.Runtime/libMonoDebuggerHandling.so filter=lfs diff=lfs merge=lfs -text
+delta/Library/PackageCache/com.unity.collab-proxy@3351acaba9c9/Lib/Editor/liblz4Plastic.dylib filter=lfs diff=lfs merge=lfs -text
