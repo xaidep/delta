@@ -1,0 +1,1300 @@
+fileFormatVersion: 2
+guid: 76287ee6cb8489e4b925cc01874a3cd3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2515927949606216077
+    second: Rainbowcircle_S_0
+  - first:
+      213: -5991400759382029220
+    second: Rainbowcircle_S_1
+  - first:
+      213: -624811384891235924
+    second: Rainbowcircle_S_2
+  - first:
+      213: -7113542340189813617
+    second: Rainbowcircle_S_3
+  - first:
+      213: -2710749525661675562
+    second: Rainbowcircle_S_4
+  - first:
+      213: 23479266925791156
+    second: Rainbowcircle_S_5
+  - first:
+      213: 5496916856402998896
+    second: Rainbowcircle_S_6
+  - first:
+      213: 1487787084508764700
+    second: Rainbowcircle_S_7
+  - first:
+      213: 5726353301513177498
+    second: Rainbowcircle_S_8
+  - first:
+      213: 7029518654549578143
+    second: Rainbowcircle_S_9
+  - first:
+      213: 7808791346830008214
+    second: Rainbowcircle_S_10
+  - first:
+      213: -2195600137128988571
+    second: Rainbowcircle_S_11
+  - first:
+      213: 4912297072125095201
+    second: Rainbowcircle_S_12
+  - first:
+      213: -7128858821321885871
+    second: Rainbowcircle_S_13
+  - first:
+      213: 1571767542521538935
+    second: Rainbowcircle_S_14
+  - first:
+      213: 3574254291233306497
+    second: Rainbowcircle_S_15
+  - first:
+      213: 8664802479632421481
+    second: Rainbowcircle_S_16
+  - first:
+      213: 5232573925618164149
+    second: Rainbowcircle_S_17
+  - first:
+      213: 2299679854195972428
+    second: Rainbowcircle_S_18
+  - first:
+      213: 937679733581149221
+    second: Rainbowcircle_S_19
+  - first:
+      213: 5956826829143861255
+    second: Rainbowcircle_S_20
+  - first:
+      213: 4879759312784343910
+    second: Rainbowcircle_S_21
+  - first:
+      213: -6325777583558421050
+    second: Rainbowcircle_S_22
+  - first:
+      213: -299428887848912931
+    second: Rainbowcircle_S_23
+  - first:
+      213: 1056655093079776441
+    second: Rainbowcircle_S_24
+  - first:
+      213: 6528094640292384828
+    second: Rainbowcircle_S_25
+  - first:
+      213: -10457375222748797
+    second: Rainbowcircle_S_26
+  - first:
+      213: 1410335394920365899
+    second: Rainbowcircle_S_27
+  - first:
+      213: -8797518971345803470
+    second: Rainbowcircle_S_28
+  - first:
+      213: 8794553085692527149
+    second: Rainbowcircle_S_29
+  - first:
+      213: 3262660161985714554
+    second: Rainbowcircle_S_30
+  - first:
+      213: 6190460856133196673
+    second: Rainbowcircle_S_31
+  - first:
+      213: -3576760108330718181
+    second: Rainbowcircle_S_32
+  - first:
+      213: -5075492189808546386
+    second: Rainbowcircle_S_33
+  - first:
+      213: 4035759176160209101
+    second: Rainbowcircle_S_34
+  - first:
+      213: 5332795416728814289
+    second: Rainbowcircle_S_35
+  - first:
+      213: -7126388775081975084
+    second: Rainbowcircle_S_36
+  - first:
+      213: -7789076543546684155
+    second: Rainbowcircle_S_37
+  - first:
+      213: -3026494579622603809
+    second: Rainbowcircle_S_38
+  - first:
+      213: -7464393373967143608
+    second: Rainbowcircle_S_39
+  - first:
+      213: -8027249388136192181
+    second: Rainbowcircle_S_40
+  - first:
+      213: -761265433276635416
+    second: Rainbowcircle_S_41
+  - first:
+      213: -2797989079898468450
+    second: Rainbowcircle_S_42
+  - first:
+      213: 1671934399192922903
+    second: Rainbowcircle_S_43
+  - first:
+      213: 2384065392956166349
+    second: Rainbowcircle_S_44
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Rainbowcircle_S_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 769
+        width: 250
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8161c4e32f5ae220800000000000000
+      internalID: 2515927949606216077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_1
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 769
+        width: 250
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5c470ec0c44adca0800000000000000
+      internalID: -5991400759382029220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_2
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 770
+        width: 254
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca120f71b593457f0800000000000000
+      internalID: -624811384891235924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_3
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 769
+        width: 252
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8409464eee974d90800000000000000
+      internalID: -7113542340189813617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_4
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 513
+        width: 254
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6df80e72bab716ad0800000000000000
+      internalID: -2710749525661675562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_5
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 513
+        width: 252
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b7c2b4d44a635000800000000000000
+      internalID: 23479266925791156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_6
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 514
+        width: 254
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 076f1c9c1c8f84c40800000000000000
+      internalID: 5496916856402998896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_7
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 513
+        width: 252
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1a1f81887ea5a410800000000000000
+      internalID: 1487787084508764700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_8
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 447
+        width: 87
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a99041bfcf7187f40800000000000000
+      internalID: 5726353301513177498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_9
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 455
+        width: 42
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f91d86ae8fddd8160800000000000000
+      internalID: 7029518654549578143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_10
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 444
+        width: 35
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69f52f07b566e5c60800000000000000
+      internalID: 7808791346830008214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_11
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 387
+        width: 61
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 560b0adde49a781e0800000000000000
+      internalID: -2195600137128988571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_12
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 435
+        width: 64
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12d253f192cfb2440800000000000000
+      internalID: 4912297072125095201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_13
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 465
+        width: 56
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 157f23d1ca4311d90800000000000000
+      internalID: -7128858821321885871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_14
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 454
+        width: 52
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7792c79904a00d510800000000000000
+      internalID: 1571767542521538935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_15
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 425
+        width: 29
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18770e5375d4a9130800000000000000
+      internalID: 3574254291233306497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_16
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 410
+        width: 65
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9621a6772ff8f3870800000000000000
+      internalID: 8664802479632421481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_17
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 470
+        width: 69
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b121711346dd9840800000000000000
+      internalID: 5232573925618164149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_18
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 463
+        width: 61
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c491976a4aa1aef10800000000000000
+      internalID: 2299679854195972428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_19
+      rect:
+        serializedVersion: 2
+        x: 699
+        y: 423
+        width: 41
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 524ff29efbe430d00800000000000000
+      internalID: 937679733581149221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_20
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 258
+        width: 254
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 708e2a3c076eaa250800000000000000
+      internalID: 5956826829143861255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_21
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 377
+        width: 68
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6634aebad3368b340800000000000000
+      internalID: 4879759312784343910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_22
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 348
+        width: 56
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c51fdb9dc25638a0800000000000000
+      internalID: -6325777583558421050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_23
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 385
+        width: 52
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd77640530738dbf0800000000000000
+      internalID: -299428887848912931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_24
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 322
+        width: 37
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bc9021753ef9ae00800000000000000
+      internalID: 1056655093079776441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_25
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 374
+        width: 39
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3052ceec73789a50800000000000000
+      internalID: 6528094640292384828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_26
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 343
+        width: 37
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 389a0989219dadff0800000000000000
+      internalID: -10457375222748797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_27
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 358
+        width: 36
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4f7364c194829310800000000000000
+      internalID: 1410335394920365899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_28
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 295
+        width: 61
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2376c285b1fe8e580800000000000000
+      internalID: -8797518971345803470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_29
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 314
+        width: 54
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d22c4079f678c0a70800000000000000
+      internalID: 8794553085692527149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_30
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 281
+        width: 31
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a791af9812c474d20800000000000000
+      internalID: 3262660161985714554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_31
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 332
+        width: 53
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18b97c5a95fe8e550800000000000000
+      internalID: 6190460856133196673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_32
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 279
+        width: 45
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1ce828c1abcc5ec0800000000000000
+      internalID: -3576760108330718181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_33
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 305
+        width: 59
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ead21369eba3099b0800000000000000
+      internalID: -5075492189808546386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_34
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 271
+        width: 36
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc86d0e9695e10830800000000000000
+      internalID: 4035759176160209101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_35
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 257
+        width: 44
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d2c3f95d25e10a40800000000000000
+      internalID: 5332795416728814289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_36
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 261
+        width: 86
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d268e19a2bf91d90800000000000000
+      internalID: -7126388775081975084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_37
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 257
+        width: 53
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50d8295e624a7e390800000000000000
+      internalID: -7789076543546684155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_38
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 263
+        width: 55
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd313f2073bbff5d0800000000000000
+      internalID: -3026494579622603809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_39
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 291
+        width: 65
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84da8e046c5296890800000000000000
+      internalID: -7464393373967143608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_40
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 257
+        width: 61
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b47aba0363b799090800000000000000
+      internalID: -8027249388136192181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_41
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 272
+        width: 78
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e623cd2f117f65f0800000000000000
+      internalID: -761265433276635416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_42
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1
+        width: 252
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9fca3791cb8b29d0800000000000000
+      internalID: -2797989079898468450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_43
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 2
+        width: 254
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71b76af4a77e33710800000000000000
+      internalID: 1671934399192922903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rainbowcircle_S_44
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 1
+        width: 254
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc05474f7d6e51120800000000000000
+      internalID: 2384065392956166349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Rainbowcircle_S_0: 2515927949606216077
+      Rainbowcircle_S_1: -5991400759382029220
+      Rainbowcircle_S_10: 7808791346830008214
+      Rainbowcircle_S_11: -2195600137128988571
+      Rainbowcircle_S_12: 4912297072125095201
+      Rainbowcircle_S_13: -7128858821321885871
+      Rainbowcircle_S_14: 1571767542521538935
+      Rainbowcircle_S_15: 3574254291233306497
+      Rainbowcircle_S_16: 8664802479632421481
+      Rainbowcircle_S_17: 5232573925618164149
+      Rainbowcircle_S_18: 2299679854195972428
+      Rainbowcircle_S_19: 937679733581149221
+      Rainbowcircle_S_2: -624811384891235924
+      Rainbowcircle_S_20: 5956826829143861255
+      Rainbowcircle_S_21: 4879759312784343910
+      Rainbowcircle_S_22: -6325777583558421050
+      Rainbowcircle_S_23: -299428887848912931
+      Rainbowcircle_S_24: 1056655093079776441
+      Rainbowcircle_S_25: 6528094640292384828
+      Rainbowcircle_S_26: -10457375222748797
+      Rainbowcircle_S_27: 1410335394920365899
+      Rainbowcircle_S_28: -8797518971345803470
+      Rainbowcircle_S_29: 8794553085692527149
+      Rainbowcircle_S_3: -7113542340189813617
+      Rainbowcircle_S_30: 3262660161985714554
+      Rainbowcircle_S_31: 6190460856133196673
+      Rainbowcircle_S_32: -3576760108330718181
+      Rainbowcircle_S_33: -5075492189808546386
+      Rainbowcircle_S_34: 4035759176160209101
+      Rainbowcircle_S_35: 5332795416728814289
+      Rainbowcircle_S_36: -7126388775081975084
+      Rainbowcircle_S_37: -7789076543546684155
+      Rainbowcircle_S_38: -3026494579622603809
+      Rainbowcircle_S_39: -7464393373967143608
+      Rainbowcircle_S_4: -2710749525661675562
+      Rainbowcircle_S_40: -8027249388136192181
+      Rainbowcircle_S_41: -761265433276635416
+      Rainbowcircle_S_42: -2797989079898468450
+      Rainbowcircle_S_43: 1671934399192922903
+      Rainbowcircle_S_44: 2384065392956166349
+      Rainbowcircle_S_5: 23479266925791156
+      Rainbowcircle_S_6: 5496916856402998896
+      Rainbowcircle_S_7: 1487787084508764700
+      Rainbowcircle_S_8: 5726353301513177498
+      Rainbowcircle_S_9: 7029518654549578143
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,494 @@
+fileFormatVersion: 2
+guid: 4df63ffea319e39408635637c1045bc4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4789035071581158353
+    second: Gacha_card_efe2_0
+  - first:
+      213: -3868400649778860640
+    second: Gacha_card_efe2_1
+  - first:
+      213: -9010894225106122657
+    second: Gacha_card_efe2_2
+  - first:
+      213: 67830482045314479
+    second: Gacha_card_efe2_3
+  - first:
+      213: -806730357770765790
+    second: Gacha_card_efe2_4
+  - first:
+      213: 630178151729881105
+    second: Gacha_card_efe2_5
+  - first:
+      213: -6183688750096972301
+    second: Gacha_card_efe2_6
+  - first:
+      213: 3400464153238130196
+    second: Gacha_card_efe2_7
+  - first:
+      213: 2270450625175641904
+    second: Gacha_card_efe2_8
+  - first:
+      213: -8545279822111770292
+    second: Gacha_card_efe2_9
+  - first:
+      213: -1774698605676655191
+    second: Gacha_card_efe2_10
+  - first:
+      213: 986529541151266305
+    second: Gacha_card_efe2_11
+  - first:
+      213: -3702158341088306542
+    second: Gacha_card_efe2_12
+  - first:
+      213: -3246629118920257347
+    second: Gacha_card_efe2_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Gacha_card_efe2_0
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 302
+        width: 129
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f24848dc9fde98db0800000000000000
+      internalID: -4789035071581158353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gacha_card_efe2_1
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 349
+        width: 45
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ad6a0dca1ea05ac0800000000000000
+      internalID: -3868400649778860640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gacha_card_efe2_2
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 292
+        width: 188
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f584eeba17fd2f280800000000000000
+      internalID: -9010894225106122657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gacha_card_efe2_3
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 267
+        width: 113
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa5214bc67bf0f000800000000000000
+      internalID: 67830482045314479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gacha_card_efe2_4
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 249
+        width: 86
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22abc8b830bedc4f0800000000000000
+      internalID: -806730357770765790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gacha_card_efe2_5
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 266
+        width: 117
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 110621fa0b7deb800800000000000000
+      internalID: 630178151729881105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gacha_card_efe2_6
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 194
+        width: 155
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f504e828df1f2aa0800000000000000
+      internalID: -6183688750096972301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gacha_card_efe2_7
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 163
+        width: 113
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41e45358120e03f20800000000000000
+      internalID: 3400464153238130196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gacha_card_efe2_8
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 211
+        width: 116
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03f58a170d2428f10800000000000000
+      internalID: 2270450625175641904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gacha_card_efe2_9
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 122
+        width: 97
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c49f6b0d641196980800000000000000
+      internalID: -8545279822111770292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gacha_card_efe2_10
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 67
+        width: 78
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ad034955010f57e0800000000000000
+      internalID: -1774698605676655191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gacha_card_efe2_11
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 19
+        width: 52
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10610cc046bd0bd00800000000000000
+      internalID: 986529541151266305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gacha_card_efe2_12
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 30
+        width: 67
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29a9e298a9a4f9cc0800000000000000
+      internalID: -3702158341088306542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gacha_card_efe2_13
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 71
+        width: 106
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db091598408a1f2d0800000000000000
+      internalID: -3246629118920257347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Gacha_card_efe2_0: -4789035071581158353
+      Gacha_card_efe2_1: -3868400649778860640
+      Gacha_card_efe2_10: -1774698605676655191
+      Gacha_card_efe2_11: 986529541151266305
+      Gacha_card_efe2_12: -3702158341088306542
+      Gacha_card_efe2_13: -3246629118920257347
+      Gacha_card_efe2_2: -9010894225106122657
+      Gacha_card_efe2_3: 67830482045314479
+      Gacha_card_efe2_4: -806730357770765790
+      Gacha_card_efe2_5: 630178151729881105
+      Gacha_card_efe2_6: -6183688750096972301
+      Gacha_card_efe2_7: 3400464153238130196
+      Gacha_card_efe2_8: 2270450625175641904
+      Gacha_card_efe2_9: -8545279822111770292
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

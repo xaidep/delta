@@ -1,0 +1,806 @@
+fileFormatVersion: 2
+guid: 532bfba3d616d68429cb855bb672cdf6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3135304113656029605
+    second: RainbowNoise_S_0
+  - first:
+      213: 4531966632464904329
+    second: RainbowNoise_S_1
+  - first:
+      213: 936827076635158261
+    second: RainbowNoise_S_2
+  - first:
+      213: -1589247939053865056
+    second: RainbowNoise_S_3
+  - first:
+      213: 5260048890875400716
+    second: RainbowNoise_S_4
+  - first:
+      213: 6296983721488502993
+    second: RainbowNoise_S_5
+  - first:
+      213: 1166980321009620804
+    second: RainbowNoise_S_6
+  - first:
+      213: 1511457805476942519
+    second: RainbowNoise_S_7
+  - first:
+      213: 7185588077991592090
+    second: RainbowNoise_S_8
+  - first:
+      213: 8839057417537220552
+    second: RainbowNoise_S_9
+  - first:
+      213: 1262440107013859387
+    second: RainbowNoise_S_10
+  - first:
+      213: 2599353722359991719
+    second: RainbowNoise_S_11
+  - first:
+      213: 7083710256560785689
+    second: RainbowNoise_S_12
+  - first:
+      213: -3340902384479260363
+    second: RainbowNoise_S_13
+  - first:
+      213: 7572390340925498180
+    second: RainbowNoise_S_14
+  - first:
+      213: -8490297550597753515
+    second: RainbowNoise_S_15
+  - first:
+      213: 1340553761112237930
+    second: RainbowNoise_S_16
+  - first:
+      213: -4215287995815486184
+    second: RainbowNoise_S_17
+  - first:
+      213: 2778211267992956044
+    second: RainbowNoise_S_18
+  - first:
+      213: 4272949979230059498
+    second: RainbowNoise_S_19
+  - first:
+      213: 8251647258396758490
+    second: RainbowNoise_S_20
+  - first:
+      213: -4938893665671051802
+    second: RainbowNoise_S_21
+  - first:
+      213: 3864818333680702786
+    second: RainbowNoise_S_22
+  - first:
+      213: 3385720596169581275
+    second: RainbowNoise_S_23
+  - first:
+      213: 153894575040636242
+    second: RainbowNoise_S_24
+  - first:
+      213: -1995117376950419936
+    second: RainbowNoise_S_25
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: RainbowNoise_S_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 389
+        width: 128
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5e16ba25892d74d0800000000000000
+      internalID: -3135304113656029605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RainbowNoise_S_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 386
+        width: 128
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9807efd04a7c4ee30800000000000000
+      internalID: 4531966632464904329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RainbowNoise_S_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f66ece3347400d00800000000000000
+      internalID: 936827076635158261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RainbowNoise_S_3
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 384
+        width: 118
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a73cac6b6bd1f9e0800000000000000
+      internalID: -1589247939053865056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RainbowNoise_S_4
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 256
+        width: 126
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c02d0d9e8927ff840800000000000000
+      internalID: 5260048890875400716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RainbowNoise_S_5
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 256
+        width: 124
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d05db3f451636750800000000000000
+      internalID: 6296983721488502993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RainbowNoise_S_6
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 257
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44756a54b62f13010800000000000000
+      internalID: 1166980321009620804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RainbowNoise_S_7
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 256
+        width: 126
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b2d174bdd6c9f410800000000000000
+      internalID: 1511457805476942519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RainbowNoise_S_8
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 128
+        width: 120
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9088fa394658b360800000000000000
+      internalID: 7185588077991592090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RainbowNoise_S_9
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 128
+        width: 124
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cf6691d3e3aaaa70800000000000000
+      internalID: 8839057417537220552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RainbowNoise_S_10
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 128
+        width: 122
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3864c0b696158110800000000000000
+      internalID: 1262440107013859387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RainbowNoise_S_11
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 129
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ad4bd24072c21420800000000000000
+      internalID: 2599353722359991719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RainbowNoise_S_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 55
+        width: 44
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 919c81e72f46e4260800000000000000
+      internalID: 7083710256560785689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RainbowNoise_S_13
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 0
+        width: 126
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 531bbdf6bfab2a1d0800000000000000
+      internalID: -3340902384479260363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RainbowNoise_S_14
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 102
+        width: 41
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 443a67315e8861960800000000000000
+      internalID: 7572390340925498180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RainbowNoise_S_15
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 88
+        width: 35
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 555704b7c576c2a80800000000000000
+      internalID: -8490297550597753515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RainbowNoise_S_16
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 97
+        width: 67
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a67a86d0b8a9a9210800000000000000
+      internalID: 1340553761112237930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RainbowNoise_S_17
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 90
+        width: 35
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81d137fb6e94085c0800000000000000
+      internalID: -4215287995815486184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RainbowNoise_S_18
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 95
+        width: 60
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8c25bbbd603e8620800000000000000
+      internalID: 2778211267992956044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RainbowNoise_S_19
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 59
+        width: 25
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aeb3507fd519c4b30800000000000000
+      internalID: 4272949979230059498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RainbowNoise_S_20
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 42
+        width: 32
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad19090667db38270800000000000000
+      internalID: 8251647258396758490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RainbowNoise_S_21
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 63
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e50042e066857bb0800000000000000
+      internalID: -4938893665671051802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RainbowNoise_S_22
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 3
+        width: 58
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 245947c3cc792a530800000000000000
+      internalID: 3864818333680702786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RainbowNoise_S_23
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 0
+        width: 70
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd26963a1fe7cfe20800000000000000
+      internalID: 3385720596169581275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RainbowNoise_S_24
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 6
+        width: 43
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2552826fc4eb22200800000000000000
+      internalID: 153894575040636242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RainbowNoise_S_25
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 0
+        width: 70
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02e39a5f05bef44e0800000000000000
+      internalID: -1995117376950419936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      RainbowNoise_S_0: -3135304113656029605
+      RainbowNoise_S_1: 4531966632464904329
+      RainbowNoise_S_10: 1262440107013859387
+      RainbowNoise_S_11: 2599353722359991719
+      RainbowNoise_S_12: 7083710256560785689
+      RainbowNoise_S_13: -3340902384479260363
+      RainbowNoise_S_14: 7572390340925498180
+      RainbowNoise_S_15: -8490297550597753515
+      RainbowNoise_S_16: 1340553761112237930
+      RainbowNoise_S_17: -4215287995815486184
+      RainbowNoise_S_18: 2778211267992956044
+      RainbowNoise_S_19: 4272949979230059498
+      RainbowNoise_S_2: 936827076635158261
+      RainbowNoise_S_20: 8251647258396758490
+      RainbowNoise_S_21: -4938893665671051802
+      RainbowNoise_S_22: 3864818333680702786
+      RainbowNoise_S_23: 3385720596169581275
+      RainbowNoise_S_24: 153894575040636242
+      RainbowNoise_S_25: -1995117376950419936
+      RainbowNoise_S_3: -1589247939053865056
+      RainbowNoise_S_4: 5260048890875400716
+      RainbowNoise_S_5: 6296983721488502993
+      RainbowNoise_S_6: 1166980321009620804
+      RainbowNoise_S_7: 1511457805476942519
+      RainbowNoise_S_8: 7185588077991592090
+      RainbowNoise_S_9: 8839057417537220552
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
