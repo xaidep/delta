@@ -144,4 +144,9 @@ MonoBehaviour:
   - {fileID: -2728710618111993377, guid: ad9cfe97641e57f489adfff9feb3d1ed, type: 3}
   framesPerSecond: 10
   explosionPrefab: {fileID: 5939684090872286257, guid: 42fffb0747186ee4eb61f0384c779153, type: 3}
+  enemyBulletPrefab: {fileID: 1421933388556222136, guid: 3059003e60886e9479ff242bcc632deb, type: 3}
+  minBullets: 1
+  maxBullets: 4
+  startShootDelay: 0.5
+  intervalBetweenShots: 0.2
   enemyID: Enemy2

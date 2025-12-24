@@ -136,5 +136,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 300
+  enableRotation: 1
   rotateSpeed: 360
+  animationFrames: []
+  framesPerSecond: 10
   explosionPrefab: {fileID: 5939684090872286257, guid: 42fffb0747186ee4eb61f0384c779153, type: 3}
+  enemyBulletPrefab: {fileID: 1421933388556222136, guid: 3059003e60886e9479ff242bcc632deb, type: 3}
+  minBullets: 1
+  maxBullets: 4
+  startShootDelay: 0.5
+  intervalBetweenShots: 0.2
+  enemyID: Enemy1
