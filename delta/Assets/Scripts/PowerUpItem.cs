@@ -1,21 +1,22 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI; // UI名前空間を追加
 
 public class PowerUpItem : MonoBehaviour
 {
     [Header("Movement Settings")]
-    public float speed = 300f; // UIモードを想定して少し大きめ
-    public Vector3 direction = Vector3.down; // 基本は下方向だが、生成時に書き換える
+    [FormerlySerializedAs("speed")] public float 移動速度 = 300f; // UIモードを想定して少し大きめ
+    [FormerlySerializedAs("direction")] public Vector3 移動方向 = Vector3.down; // 基本は下方向だが、生成時に書き換える
 
     [Header("Animation Settings")]
-    public float pulseSpeed = 5f;
-    public float pulseScaleRange = 0.2f; // 元のサイズ ± この値
+    [FormerlySerializedAs("pulseSpeed")] public float 点滅速度 = 5f;
+    [FormerlySerializedAs("pulseScaleRange")] public float 点滅サイズ範囲 = 0.2f; // 元のサイズ ± この値
     private Vector3 originalScale;
 
     [Header("Glow Settings")]
-    public Color glowColor = new Color(1f, 1f, 0f, 0.5f); // デフォルトは黄色半透明
-    public float glowPulseSpeed = 10f;
-    public float glowScaleRatio = 1.2f; // 親より一回り大きく
+    [FormerlySerializedAs("glowColor")] public Color 発光色 = new Color(1f, 1f, 0f, 0.5f); // デフォルトは黄色半透明
+    [FormerlySerializedAs("glowPulseSpeed")] public float 発光点滅速度 = 10f;
+    [FormerlySerializedAs("glowScaleRatio")] public float 発光サイズ倍率 = 1.2f; // 親より一回り大きく
     private Image glowImage; // SpriteRendererからImageに変更
 
     void Start()
@@ -52,18 +53,18 @@ public class PowerUpItem : MonoBehaviour
     void Update()
     {
         // 移動
-        transform.Translate(direction * speed * Time.deltaTime);
+        transform.Translate(移動方向 * 移動速度 * Time.deltaTime);
 
         // 拡大縮小アニメーション (PingPong)
-        float scale = 1f + Mathf.Sin(Time.time * pulseSpeed) * pulseScaleRange;
+        float scale = 1f + Mathf.Sin(Time.time * 点滅速度) * 点滅サイズ範囲;
         transform.localScale = originalScale * scale;
 
         // グローアニメーション
         if (glowImage != null)
         {
             // アルファ値を点滅
-            float alpha = 0.3f + Mathf.PingPong(Time.time * glowPulseSpeed, 0.5f); 
-            Color c = glowColor;
+            float alpha = 0.3f + Mathf.PingPong(Time.time * 発光点滅速度, 0.5f); 
+            Color c = 発光色;
             c.a = alpha;
             glowImage.color = c;
         }
@@ -108,7 +109,7 @@ public class PowerUpItem : MonoBehaviour
     // 生成時に呼び出して方向を決める
     public void Initialize(Vector3 moveDirection)
     {
-        direction = moveDirection.normalized;
+        移動方向 = moveDirection.normalized;
     }
 
     void SetupGlow()
@@ -121,12 +122,12 @@ public class PowerUpItem : MonoBehaviour
             GameObject glowObj = new GameObject("GlowEffect");
             glowObj.transform.SetParent(transform);
             glowObj.transform.localPosition = Vector3.zero;
-            glowObj.transform.localScale = Vector3.one * glowScaleRatio;
+            glowObj.transform.localScale = Vector3.one * 発光サイズ倍率;
 
             // Image設定
             glowImage = glowObj.AddComponent<Image>();
             glowImage.sprite = mainImage.sprite;
-            glowImage.color = glowColor;
+            glowImage.color = 発光色;
             glowImage.raycastTarget = false; // レイキャストはブロックしない
 
             // RectTransformの設定（全画面に広がらないようにサイズ合わせ）
@@ -147,11 +148,11 @@ public class PowerUpItem : MonoBehaviour
                  GameObject glowObj = new GameObject("GlowEffect");
                 glowObj.transform.SetParent(transform);
                 glowObj.transform.localPosition = Vector3.zero;
-                glowObj.transform.localScale = Vector3.one * glowScaleRatio;
+                glowObj.transform.localScale = Vector3.one * 発光サイズ倍率;
 
                 var srGlow = glowObj.AddComponent<SpriteRenderer>();
                 srGlow.sprite = sr.sprite;
-                srGlow.color = glowColor;
+                srGlow.color = 発光色;
                 srGlow.sortingLayerID = sr.sortingLayerID;
                 srGlow.sortingOrder = sr.sortingOrder - 1;
                 

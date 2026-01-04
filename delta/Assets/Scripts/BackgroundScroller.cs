@@ -5,6 +5,7 @@ public class BackgroundScroller : MonoBehaviour
 {
     // スクロール速度（Y軸）
     public float scrollSpeed = 0.5f;
+    public float speedMultiplier = 2.0f;
 
     // --- テクスチャアニメーション設定 ---
     // --- テクスチャアニメーション設定 ---
@@ -70,14 +71,15 @@ public class BackgroundScroller : MonoBehaviour
             float maxY = Mathf.Max(0, 1.0f - currentRect.height);
             
             // 0 から maxY まで進む
-            y = Mathf.Lerp(0f, maxY, progress);
+            // 倍率をかけて、その時間内に何倍の距離を進むか（結果的にループする）
+            y = Mathf.Repeat(Mathf.Lerp(0f, maxY, progress) * speedMultiplier, 1.0f);
             
             // Debug.Log($"BG Scroll: Time={currentTime}, Progress={progress}, Y={y}, MaxY={maxY}");
         }
         else
         {
             // 通常のループスクロール
-            y = Mathf.Repeat(Time.time * scrollSpeed, 1);
+            y = Mathf.Repeat(Time.time * scrollSpeed * speedMultiplier, 1);
         }
 
         // スクロール位置の適用

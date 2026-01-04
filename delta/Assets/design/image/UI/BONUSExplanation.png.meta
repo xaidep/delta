@@ -1,0 +1,767 @@
+fileFormatVersion: 2
+guid: 91ef76132959430498125da6b66225e3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4771195754952502174
+    second: BONUSExplanation_0
+  - first:
+      213: -3277514703558841336
+    second: BONUSExplanation_1
+  - first:
+      213: 2321036738686986897
+    second: BONUSExplanation_2
+  - first:
+      213: -377996019383404122
+    second: BONUSExplanation_3
+  - first:
+      213: 6304515621933115380
+    second: BONUSExplanation_4
+  - first:
+      213: -1666657863848577636
+    second: BONUSExplanation_5
+  - first:
+      213: 1004072216502055460
+    second: BONUSExplanation_6
+  - first:
+      213: -7045459539221702388
+    second: BONUSExplanation_7
+  - first:
+      213: -8170478278128676647
+    second: BONUSExplanation_8
+  - first:
+      213: 6258751440173680062
+    second: BONUSExplanation_9
+  - first:
+      213: -894791779899304610
+    second: BONUSExplanation_10
+  - first:
+      213: 6681140453754133474
+    second: BONUSExplanation_11
+  - first:
+      213: 7070941053526838750
+    second: BONUSExplanation_12
+  - first:
+      213: 6544275194821682626
+    second: BONUSExplanation_13
+  - first:
+      213: 1559366721930956810
+    second: BONUSExplanation_14
+  - first:
+      213: -7808476147766838581
+    second: BONUSExplanation_15
+  - first:
+      213: -4312651933348923533
+    second: BONUSExplanation_16
+  - first:
+      213: -5048430582607140944
+    second: BONUSExplanation_17
+  - first:
+      213: -2488237864473958598
+    second: BONUSExplanation_18
+  - first:
+      213: -313380427469146046
+    second: BONUSExplanation_19
+  - first:
+      213: -7742852900097413480
+    second: BONUSExplanation_20
+  - first:
+      213: 3626148891850304123
+    second: BONUSExplanation_21
+  - first:
+      213: 1015967538030231480
+    second: BONUSExplanation_22
+  - first:
+      213: 7340926214145634667
+    second: BONUSExplanation_23
+  - first:
+      213: 646439814652342554
+    second: BONUSExplanation_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BONUSExplanation_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 105
+        width: 121
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9babcf9241b63240800000000000000
+      internalID: 4771195754952502174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BONUSExplanation_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 97
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80c614cfdbde382d0800000000000000
+      internalID: -3277514703558841336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BONUSExplanation_2
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 97
+        width: 16
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19aa110dd9af53020800000000000000
+      internalID: 2321036738686986897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BONUSExplanation_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 78
+        width: 40
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a9f3228f9611caf0800000000000000
+      internalID: -377996019383404122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BONUSExplanation_4
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 78
+        width: 49
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f7693e2e832e7750800000000000000
+      internalID: 6304515621933115380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BONUSExplanation_5
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 78
+        width: 49
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c95b13fc087ded8e0800000000000000
+      internalID: -1666657863848577636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BONUSExplanation_6
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 78
+        width: 46
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 422b1717c5e2fed00800000000000000
+      internalID: 1004072216502055460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BONUSExplanation_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 55
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c099d45a0ef793e90800000000000000
+      internalID: -7045459539221702388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BONUSExplanation_8
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 55
+        width: 42
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d0581b8b41ac9e80800000000000000
+      internalID: -8170478278128676647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BONUSExplanation_9
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 55
+        width: 15
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb54409464d8bd650800000000000000
+      internalID: 6258751440173680062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BONUSExplanation_10
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 55
+        width: 21
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e559923fd9f0593f0800000000000000
+      internalID: -894791779899304610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BONUSExplanation_11
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 61
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ebd18038dd28bc50800000000000000
+      internalID: 6681140453754133474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BONUSExplanation_12
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 44
+        width: 19
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edd813bbc67012260800000000000000
+      internalID: 7070941053526838750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BONUSExplanation_13
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 44
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c52fbbdd9fe1da50800000000000000
+      internalID: 6544275194821682626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BONUSExplanation_14
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 44
+        width: 26
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a00924f85cbf3a510800000000000000
+      internalID: 1559366721930956810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BONUSExplanation_15
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 44
+        width: 31
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bca3f3f8058b2a390800000000000000
+      internalID: -7808476147766838581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BONUSExplanation_16
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 29
+        width: 109
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 377f5d08ae16624c0800000000000000
+      internalID: -4312651933348923533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BONUSExplanation_17
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 18
+        width: 40
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b7ab72022f50f9b0800000000000000
+      internalID: -5048430582607140944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BONUSExplanation_18
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 18
+        width: 19
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a376a5378d0087dd0800000000000000
+      internalID: -2488237864473958598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BONUSExplanation_19
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 18
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 248342d5926a6abf0800000000000000
+      internalID: -313380427469146046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BONUSExplanation_20
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 18
+        width: 26
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89e279d8f4cdb8490800000000000000
+      internalID: -7742852900097413480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BONUSExplanation_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7ae969743ba25230800000000000000
+      internalID: 3626148891850304123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BONUSExplanation_22
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 7
+        width: 26
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bfbe9fc711791e00800000000000000
+      internalID: 1015967538030231480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BONUSExplanation_23
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 7
+        width: 23
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b61f0847f7530e560800000000000000
+      internalID: 7340926214145634667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BONUSExplanation_24
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 0
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a11b501269d98f800800000000000000
+      internalID: 646439814652342554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      BONUSExplanation_0: 4771195754952502174
+      BONUSExplanation_1: -3277514703558841336
+      BONUSExplanation_10: -894791779899304610
+      BONUSExplanation_11: 6681140453754133474
+      BONUSExplanation_12: 7070941053526838750
+      BONUSExplanation_13: 6544275194821682626
+      BONUSExplanation_14: 1559366721930956810
+      BONUSExplanation_15: -7808476147766838581
+      BONUSExplanation_16: -4312651933348923533
+      BONUSExplanation_17: -5048430582607140944
+      BONUSExplanation_18: -2488237864473958598
+      BONUSExplanation_19: -313380427469146046
+      BONUSExplanation_2: 2321036738686986897
+      BONUSExplanation_20: -7742852900097413480
+      BONUSExplanation_21: 3626148891850304123
+      BONUSExplanation_22: 1015967538030231480
+      BONUSExplanation_23: 7340926214145634667
+      BONUSExplanation_24: 646439814652342554
+      BONUSExplanation_3: -377996019383404122
+      BONUSExplanation_4: 6304515621933115380
+      BONUSExplanation_5: -1666657863848577636
+      BONUSExplanation_6: 1004072216502055460
+      BONUSExplanation_7: -7045459539221702388
+      BONUSExplanation_8: -8170478278128676647
+      BONUSExplanation_9: 6258751440173680062
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

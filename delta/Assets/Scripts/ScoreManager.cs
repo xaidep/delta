@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using TMPro; // TextMeshProを使うために追加
 using System.Collections.Generic;
@@ -8,10 +9,11 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
 
     [Header("UI Settings")]
-    public TextMeshProUGUI scoreText; // Legacy TextではなくTextMeshProに変更
+    [FormerlySerializedAs("scoreText")] public TextMeshProUGUI スコア表示テキスト; // Legacy TextではなくTextMeshProに変更
+    public GameObject bonusAnimationPrefab; // ボーナス演出用のプレハブ
 
     [Header("Game State")]
-    public int currentScore = 0;
+    [FormerlySerializedAs("currentScore")] public int 現在のスコア = 0;
 
     // 敵IDと点数の対応表
     private Dictionary<string, int> enemyScores = new Dictionary<string, int>();
@@ -91,19 +93,65 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    // 直接数値を足す場合（ボーナスなど）
+    // 直接数値を足す場合
     public void AddScoreAmount(int amount)
     {
-        currentScore += amount;
+        現在のスコア += amount;
         UpdateScoreUI();
+        FlashScore(); // 点滅開始
+    }
+
+    // ボーナスとして加算する場合（演出あり）
+    public void AddBonusScore(int amount)
+    {
+        現在のスコア += amount;
+        UpdateScoreUI();
+        FlashScore();
+
+        if (bonusAnimationPrefab != null)
+        {
+            // Score表示テキストのCanvas空間で生成
+            GameObject bonusAnim = Instantiate(bonusAnimationPrefab, transform.parent);
+            
+            // ユーザー指定の座標 (X: -257, Y: 440) に設定
+            bonusAnim.transform.localPosition = new Vector3(-257f, 440f, 0);
+
+            BonusAnimation script = bonusAnim.GetComponent<BonusAnimation>();
+            if (script != null)
+            {
+                script.SetBonus(amount);
+            }
+        }
+    }
+
+    public void FlashScore()
+    {
+        if (スコア表示テキスト == null) return;
+        StopAllCoroutines(); // 前の点滅があれば止める
+        StartCoroutine(FlashRoutine());
+    }
+
+    private System.Collections.IEnumerator FlashRoutine()
+    {
+        Color originalColor = Color.white; // TMPの基本色
+        Color flashColor = Color.yellow;   // 点滅時の色
+
+        // 3回素早く点滅
+        for (int i = 0; i < 3; i++)
+        {
+            スコア表示テキスト.color = flashColor;
+            yield return new WaitForSeconds(0.05f);
+            スコア表示テキスト.color = originalColor;
+            yield return new WaitForSeconds(0.05f);
+        }
     }
 
     void UpdateScoreUI()
     {
-        if (scoreText != null)
+        if (スコア表示テキスト != null)
         {
             // 0埋め10桁で表示 (例: SCORE 0000000100)
-            scoreText.text = "SCORE " + currentScore.ToString("D10");
+            スコア表示テキスト.text = "<color=#FF007C>SCORE</color> " + 現在のスコア.ToString("D10");
         }
     }
 }

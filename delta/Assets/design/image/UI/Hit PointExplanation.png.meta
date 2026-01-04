@@ -1,0 +1,897 @@
+fileFormatVersion: 2
+guid: bf0cf51a83e42c84d902a13ff5790043
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1480777836653541421
+    second: Hit PointExplanation_0
+  - first:
+      213: 7191066760279821788
+    second: Hit PointExplanation_1
+  - first:
+      213: 8201378793234938536
+    second: Hit PointExplanation_2
+  - first:
+      213: -2291572994416887915
+    second: Hit PointExplanation_3
+  - first:
+      213: -2911421399881690189
+    second: Hit PointExplanation_4
+  - first:
+      213: -7931449867508743559
+    second: Hit PointExplanation_5
+  - first:
+      213: -5339668790372765166
+    second: Hit PointExplanation_6
+  - first:
+      213: 1681656259567618105
+    second: Hit PointExplanation_7
+  - first:
+      213: -5337187174006719943
+    second: Hit PointExplanation_8
+  - first:
+      213: -2169885132901669252
+    second: Hit PointExplanation_9
+  - first:
+      213: 6088897076282038684
+    second: Hit PointExplanation_10
+  - first:
+      213: -58312027579291616
+    second: Hit PointExplanation_11
+  - first:
+      213: 5868979988942560806
+    second: Hit PointExplanation_12
+  - first:
+      213: -3777265795274819675
+    second: Hit PointExplanation_13
+  - first:
+      213: -319513666019791278
+    second: Hit PointExplanation_14
+  - first:
+      213: -2173115032928404473
+    second: Hit PointExplanation_15
+  - first:
+      213: -4439990301656678776
+    second: Hit PointExplanation_16
+  - first:
+      213: -640708924893839350
+    second: Hit PointExplanation_17
+  - first:
+      213: -8432706418982663153
+    second: Hit PointExplanation_18
+  - first:
+      213: 9160652428472483586
+    second: Hit PointExplanation_19
+  - first:
+      213: 7538459282327372007
+    second: Hit PointExplanation_20
+  - first:
+      213: -4820504421392432929
+    second: Hit PointExplanation_21
+  - first:
+      213: -6491027020255953633
+    second: Hit PointExplanation_22
+  - first:
+      213: 2644255949325187607
+    second: Hit PointExplanation_23
+  - first:
+      213: 2661712491080932249
+    second: Hit PointExplanation_24
+  - first:
+      213: -3921548109451023845
+    second: Hit PointExplanation_25
+  - first:
+      213: -4276669042187768598
+    second: Hit PointExplanation_26
+  - first:
+      213: -2407947938248626879
+    second: Hit PointExplanation_27
+  - first:
+      213: 438919777779144802
+    second: Hit PointExplanation_28
+  - first:
+      213: -4851179890028289958
+    second: Hit PointExplanation_29
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Hit PointExplanation_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8
+        width: 122
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d78efe2768337be0800000000000000
+      internalID: -1480777836653541421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_1
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 8
+        width: 50
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdd099a5e1dcbc360800000000000000
+      internalID: 7191066760279821788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_2
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 8
+        width: 51
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8aab0374f8621d170800000000000000
+      internalID: 8201378793234938536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_3
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 8
+        width: 27
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59737eab082b230e0800000000000000
+      internalID: -2291572994416887915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_4
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 46
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b3d49489ad8897d0800000000000000
+      internalID: -2911421399881690189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_5
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 38
+        width: 22
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 972825d3e54dde190800000000000000
+      internalID: -7931449867508743559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_6
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 38
+        width: 15
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2127793a68fa5e5b0800000000000000
+      internalID: -5339668790372765166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_7
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 38
+        width: 23
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93807d15571765710800000000000000
+      internalID: 1681656259567618105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_8
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 38
+        width: 16
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93afe89fa808ee5b0800000000000000
+      internalID: -5337187174006719943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_9
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 38
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c76aef9d7f403e1e0800000000000000
+      internalID: -2169885132901669252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_10
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 38
+        width: 15
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9994b961ab108450800000000000000
+      internalID: 6088897076282038684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_11
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 38
+        width: 72
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 028e0061585d03ff0800000000000000
+      internalID: -58312027579291616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_12
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 38
+        width: 26
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62e1cca643ec27150800000000000000
+      internalID: 5868979988942560806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_13
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 46
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a73962a5c4749bc0800000000000000
+      internalID: -3777265795274819675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_14
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 38
+        width: 23
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25ee10c730cd09bf0800000000000000
+      internalID: -319513666019791278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_15
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 38
+        width: 25
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70cbd36246b87d1e0800000000000000
+      internalID: -2173115032928404473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_16
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 25
+        width: 238
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88ef29f385cf162c0800000000000000
+      internalID: -4439990301656678776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_17
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 8
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a00c74f90aebb17f0800000000000000
+      internalID: -640708924893839350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_18
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 15
+        width: 20
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0cc169b03209fa80800000000000000
+      internalID: -8432706418982663153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_19
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 15
+        width: 24
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20ffbe539dc212f70800000000000000
+      internalID: 9160652428472483586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_20
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 15
+        width: 15
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e08edcd6ccfd9860800000000000000
+      internalID: 7538459282327372007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_21
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 15
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd044b4d4c02a1db0800000000000000
+      internalID: -4820504421392432929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_22
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 15
+        width: 33
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1d7e26e05d3be5a0800000000000000
+      internalID: -6491027020255953633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_23
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 15
+        width: 29
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71abdbaa6c842b420800000000000000
+      internalID: 2644255949325187607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_24
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 15
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99b5915886d40f420800000000000000
+      internalID: 2661712491080932249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_25
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 15
+        width: 15
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1a219e85ccd399c0800000000000000
+      internalID: -3921548109451023845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_26
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 8
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aecec763a2836a4c0800000000000000
+      internalID: -4276669042187768598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14d6e07ab10459ed0800000000000000
+      internalID: -2407947938248626879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_28
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 0
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2685b6f563b571600800000000000000
+      internalID: 438919777779144802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit PointExplanation_29
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 0
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a506859b7952dacb0800000000000000
+      internalID: -4851179890028289958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Hit PointExplanation_0: -1480777836653541421
+      Hit PointExplanation_1: 7191066760279821788
+      Hit PointExplanation_10: 6088897076282038684
+      Hit PointExplanation_11: -58312027579291616
+      Hit PointExplanation_12: 5868979988942560806
+      Hit PointExplanation_13: -3777265795274819675
+      Hit PointExplanation_14: -319513666019791278
+      Hit PointExplanation_15: -2173115032928404473
+      Hit PointExplanation_16: -4439990301656678776
+      Hit PointExplanation_17: -640708924893839350
+      Hit PointExplanation_18: -8432706418982663153
+      Hit PointExplanation_19: 9160652428472483586
+      Hit PointExplanation_2: 8201378793234938536
+      Hit PointExplanation_20: 7538459282327372007
+      Hit PointExplanation_21: -4820504421392432929
+      Hit PointExplanation_22: -6491027020255953633
+      Hit PointExplanation_23: 2644255949325187607
+      Hit PointExplanation_24: 2661712491080932249
+      Hit PointExplanation_25: -3921548109451023845
+      Hit PointExplanation_26: -4276669042187768598
+      Hit PointExplanation_27: -2407947938248626879
+      Hit PointExplanation_28: 438919777779144802
+      Hit PointExplanation_29: -4851179890028289958
+      Hit PointExplanation_3: -2291572994416887915
+      Hit PointExplanation_4: -2911421399881690189
+      Hit PointExplanation_5: -7931449867508743559
+      Hit PointExplanation_6: -5339668790372765166
+      Hit PointExplanation_7: 1681656259567618105
+      Hit PointExplanation_8: -5337187174006719943
+      Hit PointExplanation_9: -2169885132901669252
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

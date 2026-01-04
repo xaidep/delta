@@ -1,17 +1,24 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
-using TMPro; // TextMeshProを使うために追加
+using TMPro;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameObject bulletPrefab;
-    public float fireInterval = 0.2f;
+    [FormerlySerializedAs("bulletPrefab")] public GameObject 弾のプレハブ;
+    [FormerlySerializedAs("fireInterval")] public float 発射間隔 = 0.2f;
+
+    [Header("Player Settings")]
+    public float 自機の大きさ倍率 = 1.5f;
+    public float 当たり判定の基本サイズ = 50.0f;
+    [Range(0.1f, 1.0f)] public float 当たり判定の縮小率 = 0.8f; // 見た目に対してどの程度の大きさにするか
 
     // --- アニメーション用画像 ---
     [Header("Animation Sprites")]
-    public Sprite imageCenter; // 正面
-    public Sprite imageLeft;   // 左
-    public Sprite imageRight;  // 右
+    [FormerlySerializedAs("imageCenter")] public Sprite 画像_中央; // 正面
+    [FormerlySerializedAs("imageLeft")] public Sprite 画像_左;   // 左
+    [FormerlySerializedAs("imageRight")] public Sprite 画像_右;  // 右
 
     private float timeSinceLastFire = 0f;
     private RectTransform rectTransform;
@@ -22,6 +29,17 @@ public class PlayerController : MonoBehaviour
     private Vector3 lastPosition;
 
     private Camera mainCamera;
+
+    // キャッシュ用
+    private RectTransform parentRect;
+    private Canvas rootCanvas;
+
+    [Header("HP表示設定 (Hierarchy上のオブジェクトを使用)")]
+    public GameObject HP表示オブジェクト;
+    public Image HPゲージ画像;
+    public int 最大HP = 10;
+    private int 現在のHP;
+    private Image hpFillImage;
 
     void Start()
     {
@@ -39,12 +57,32 @@ public class PlayerController : MonoBehaviour
 
         rectTransform = GetComponent<RectTransform>();
         
+        // UI移動用のキャッシュ
+        if (rectTransform != null)
+        {
+            if (transform.parent != null)
+                parentRect = transform.parent.GetComponent<RectTransform>();
+            
+            rootCanvas = GetComponentInParent<Canvas>();
+        }
+        
+        // 自機の大きさを適用
+        transform.localScale = Vector3.one * 自機の大きさ倍率;
+
         // 当たり判定がない場合は追加 (UIモード用にサイズ調整)
         if (GetComponent<Collider2D>() == null)
         {
             BoxCollider2D col = gameObject.AddComponent<BoxCollider2D>();
             col.isTrigger = true;
-            if (rectTransform != null) col.size = new Vector2(50f, 50f);
+            float finalSize = 当たり判定の基本サイズ * 自機の大きさ倍率 * 当たり判定の縮小率;
+            if (rectTransform != null) col.size = new Vector2(finalSize, finalSize);
+        }
+        else if (GetComponent<BoxCollider2D>() != null)
+        {
+            // すでにColliderがある場合もサイズを更新
+            BoxCollider2D col = GetComponent<BoxCollider2D>();
+            float finalSize = 当たり判定の基本サイズ * 自機の大きさ倍率 * 当たり判定の縮小率;
+            if (rectTransform != null) col.size = new Vector2(finalSize, finalSize);
         }
 
         // Trigger判定にはRigidbodyが必要
@@ -60,13 +98,73 @@ public class PlayerController : MonoBehaviour
             uiImage = GetComponent<Image>();
         else
             spriteRenderer = GetComponent<SpriteRenderer>();
-
+            
         lastPosition = transform.position;
 
         CreateShadow(); // 影を作成
+        CreateHPBar();  // HPバーの作成
         UpdateStats();  // 初期状態の反映（ファンネルを隠すなど）
     }
 
+    void CreateHPBar()
+    {
+        現在のHP = 最大HP;
+
+        // 1. 直接指定されているか確認
+        if (HP表示オブジェクト == null)
+        {
+            // 2. なければ名前で探す
+            HP表示オブジェクト = GameObject.Find("PlayerHPBar");
+        }
+
+        if (HP表示オブジェクト != null)
+        {
+            // 非表示になっていたら表示する
+            HP表示オブジェクト.SetActive(true);
+
+            // ゲージ用Imageの特定
+            if (HPゲージ画像 != null)
+            {
+                hpFillImage = HPゲージ画像;
+            }
+            else
+            {
+                // なければ子要素から探す
+                Image[] images = HP表示オブジェクト.GetComponentsInChildren<Image>();
+                foreach (var img in images)
+                {
+                    if (img.type == Image.Type.Filled)
+                    {
+                        hpFillImage = img;
+                        break;
+                    }
+                }
+            }
+        }
+        else
+        {
+            Debug.LogWarning("PlayerHP: Hierarchy上に 'PlayerHPBar' が見つかりません。");
+        }
+
+        UpdateHPBarUI();
+    }
+
+    void OnDestroy()
+    {
+        // ヒエラルキー上の共有物なので、ここでは何もしない（削除しない）
+        if (shadowObject != null)
+        {
+            Destroy(shadowObject);
+        }
+    }
+
+    void UpdateHPBarUI()
+    {
+        if (hpFillImage != null)
+        {
+            hpFillImage.fillAmount = (float)現在のHP / 最大HP;
+        }
+    }
 
     void Update()
     {
@@ -75,21 +173,104 @@ public class PlayerController : MonoBehaviour
         UpdateShadow(); // 影の位置更新
     }
 
+    // Simulator (Touch) 環境でマウスホバーを取るための裏技
+    // Input.mousePositionはタッチ時以外更新されないため、EditorのGUIイベントから座標を盗む
+    private Vector2 lastGuiMousePos;
+
+    void OnGUI()
+    {
+        // レイアウトイベント以外ならマウス位置が更新されている可能性が高い
+        if (Event.current != null)
+        {
+            lastGuiMousePos = Event.current.mousePosition;
+        }
+    }
+
     void MovePlayer()
     {
         Vector3 currentPos = transform.position;
 
         // 画面外に出ないようにマウス座標を制限 (Clamp)
         float padding = 30f; // 画面端からの余白
-        Vector3 clampedMousePos = Input.mousePosition;
+        
+        // --- 座標取得ロジック (Simulator対応版) ---
+        // 優先順位:
+        // 1. OnGUI Mouse Position (SimulatorでHoverを取る唯一の確実な方法)
+        // 2. Clicked Input (Input.mousePosition)
+        
+        Vector3 rawMousePos = Vector3.zero;
+        
+        // OnGUI coordinate is Top-Left origin. Convert to Bottom-Left.
+        Vector3 guiPos = new Vector3(lastGuiMousePos.x, Screen.height - lastGuiMousePos.y, 0f);
+        
+        // もしOnGUI座標が画面内にあるなら、それを採用 (Simulatorの枠外などの変な値を除外)
+        // ただしSimulatorではScreen.widthがスマホ解像度になるため、OnGUI座標(Window座標)と一致しない場合がある
+        // そのため、比率計算などで補正するのが理想だが、ここでは「クリックされているか」で判断を変える
+        
+        // シンプルかつ強力なアプローチ:
+        // Input.mousePosition (タッチ/クリック中) が有効ならそれを使う (一番正確)
+        // そうでなければ OnGUI座標 を使う (ホバー用)
+        
+        bool isTouching = false;
+        try { isTouching = Input.GetMouseButton(0) || Input.touchCount > 0; } catch {}
+        
+        if (isTouching)
+        {
+             try { rawMousePos = Input.mousePosition; } catch { rawMousePos = guiPos; }
+        }
+        else
+        {
+             // ホバー中: OnGUI座標を使うが、座標系変換が必要なケースがある
+             // Simulatorの場合、GUI座標は「Window上のピクセル」、Screenは「スマホのピクセル」
+             // これがズレると「右端で止まる」現象になる。
+             // 幸い、OnGUIとInput.mousePositionの座標系は通常一致する(GameViewなら)。
+             rawMousePos = guiPos;
+        }
+
+        Vector3 clampedMousePos = rawMousePos;
         
         clampedMousePos.x = Mathf.Clamp(clampedMousePos.x, padding, Screen.width - padding);
         clampedMousePos.y = Mathf.Clamp(clampedMousePos.y, padding, Screen.height - padding);
 
         // UIモード (Canvas内) かどうかで処理を分ける
-        if (rectTransform != null)
+        if (rectTransform != null && parentRect != null && rootCanvas != null)
         {
-            // --- UIモード (Canvas Overlay) ---
+            // --- UIモード (Canvas Overlay / Camera 対応) ---
+            Vector2 localPoint;
+            Camera cam = (rootCanvas.renderMode == RenderMode.ScreenSpaceOverlay) ? null : mainCamera;
+            
+            bool result = RectTransformUtility.ScreenPointToLocalPointInRectangle(parentRect, clampedMousePos, cam, out localPoint);
+            
+            // Debug Log to diagnose movement issue
+            // Debug.Log($"Input: {clampedMousePos}, Result: {result}, Local: {localPoint}, Cam: {cam}");
+
+            if (result)
+            {
+                rectTransform.anchoredPosition = localPoint;
+            }
+            else
+            {
+                 // 変換に失敗した場合のフォールバック
+                 // Debug.Log($"RectTransformUtility Failed. CanvasMode: {rootCanvas.renderMode}");
+
+                 if (rootCanvas.renderMode == RenderMode.ScreenSpaceOverlay)
+                 {
+                     transform.position = clampedMousePos;
+                 }
+                 else
+                 {
+                     Vector3 worldPoint = cam.ScreenToWorldPoint(new Vector3(clampedMousePos.x, clampedMousePos.y, 10f));
+                     transform.position = worldPoint;
+                 }
+            }
+        }
+        else if (rectTransform != null)
+        {
+            // fallback (parentRectがない場合など)
+            // デバッグ用ログ: なぜ上のifに入らなかったか
+            if (parentRect == null) Debug.Log("MovePlayer: ParentRect is null");
+            if (rootCanvas == null) Debug.Log("MovePlayer: RootCanvas is null");
+            
             transform.position = clampedMousePos;
         }
         else
@@ -107,7 +288,7 @@ public class PlayerController : MonoBehaviour
         
         currentPos = transform.position; // 移動後の位置
 
-        // --- 移動方向による画像の切り替え ---
+        // 移動方向による画像の切り替え
         float deltaX = currentPos.x - lastPosition.x;
         float deltaY = currentPos.y - lastPosition.y; // Y方向の移動量
         
@@ -121,13 +302,13 @@ public class PlayerController : MonoBehaviour
         if (deltaX < -threshold)
         {
             // 左移動
-            ChangeSprite(imageLeft);
+            ChangeSprite(画像_左);
             stationaryTimer = 0f;
         }
         else if (deltaX > threshold)
         {
             // 右移動
-            ChangeSprite(imageRight);
+            ChangeSprite(画像_右);
             stationaryTimer = 0f;
         }
         else
@@ -136,7 +317,7 @@ public class PlayerController : MonoBehaviour
             stationaryTimer += Time.deltaTime;
             if (stationaryTimer > 0.1f)
             {
-                ChangeSprite(imageCenter);
+                ChangeSprite(画像_中央);
             }
         }
 
@@ -146,8 +327,8 @@ public class PlayerController : MonoBehaviour
     // エンジンエフェクトの表示切り替え
     void ControlEngineEffects(bool isActive)
     {
-        if (engineEffects == null) return;
-        foreach (var effect in engineEffects)
+        if (エンジンエフェクト == null) return;
+        foreach (var effect in エンジンエフェクト)
         {
             if (effect != null)
             {
@@ -186,7 +367,7 @@ public class PlayerController : MonoBehaviour
     void AutoFire()
     {
         timeSinceLastFire += Time.deltaTime;
-        if (timeSinceLastFire >= fireInterval)
+        if (timeSinceLastFire >= 発射間隔)
         {
             Shoot();
             timeSinceLastFire = 0f;
@@ -194,13 +375,13 @@ public class PlayerController : MonoBehaviour
     }
 
     // 弾の発射位置を左右にずらす幅（UIならピクセル単位、WorldならUnity単位）
-    public float bulletOffset = 30f;
+    [FormerlySerializedAs("bulletOffset")] public float 弾の発射位置オフセット = 30f;
 
     // --- 影の設定 ---
     [Header("Shadow Settings")]
-    public Vector3 shadowOffset = new Vector3(10f, -10f, 0f); // 影の位置ズレ
-    public Vector3 shadowScale = new Vector3(1f, 1f, 1f);     // 影のサイズ倍率
-    public Color shadowColor = new Color(0f, 0f, 0f, 0.5f);   // 影の色（半透明の黒）
+    [FormerlySerializedAs("shadowOffset")] public Vector3 影の位置オフセット = new Vector3(10f, -10f, 0f); // 影の位置ズレ
+    [FormerlySerializedAs("shadowScale")] public Vector3 影の拡大率 = new Vector3(1f, 1f, 1f);     // 影のサイズ倍率
+    [FormerlySerializedAs("shadowColor")] public Color 影の色 = new Color(0f, 0f, 0f, 0.5f);   // 影の色（半透明の黒）
 
     // 影の管理用
     private GameObject shadowObject;
@@ -209,19 +390,19 @@ public class PlayerController : MonoBehaviour
 
     // --- パワーアップ設定 ---
     [Header("Power Up Settings")]
-    public int powerLevel = 0; // 0〜3 (計4段階)
-    public GameObject[] funnels; // ファンネル（Inspectorで割り当て）
-    public GameObject powerUpUIPrefab; // パワーアップ時の演出プレハブ
+    [FormerlySerializedAs("powerLevel")] public int 現在のパワーレベル = 0; // 0〜3 (計4段階)
+    [FormerlySerializedAs("funnels")] public GameObject[] ファンネルリスト; // ファンネル（Inspectorで割り当て）
+    [FormerlySerializedAs("powerUpUIPrefab")] public GameObject パワーアップ演出プレハブ; // パワーアップ時の演出プレハブ
 
     [Header("Engine Effects")]
-    public GameObject[] engineEffects; // プレイヤーとファンネルのSpeedEffectを登録
-    public GameObject muzzleFlashPrefab; // 発射時の火花エフェクト
-    public Vector3 muzzleFlashOffset = new Vector3(0, 30, 0); // 火花の位置調整（自機）
-    public Vector3 funnelMuzzleFlashOffset = new Vector3(0, 30, 0); // 火花の位置調整（ファンネル）
+    [FormerlySerializedAs("engineEffects")] public GameObject[] エンジンエフェクト; // プレイヤーとファンネルのSpeedEffectを登録
+    [FormerlySerializedAs("muzzleFlashPrefab")] public GameObject 発射エフェクトプレハブ; // 発射時の火花エフェクト
+    [FormerlySerializedAs("muzzleFlashOffset")] public Vector3 発射エフェクト位置オフセット = new Vector3(0, 30, 0); // 火花の位置調整（自機）
+    [FormerlySerializedAs("funnelMuzzleFlashOffset")] public Vector3 ファンネル発射エフェクト位置オフセット = new Vector3(0, 30, 0); // 火花の位置調整（ファンネル）
 
     void Shoot()
     {
-        if (bulletPrefab == null) return;
+        if (弾のプレハブ == null) return;
 
         // レベルに応じた発射パターン
         // Lv0: 1発 (中央)
@@ -230,31 +411,31 @@ public class PlayerController : MonoBehaviour
         // Lv3: 7発 (左右 + ファンネル4 + 中央)
 
         // 基本の左右発射 (Lv1以上)
-        if (powerLevel >= 1)
+        if (現在のパワーレベル >= 1)
         {
-            CreateBullet(-bulletOffset);
-            CreateBullet(bulletOffset);
+            CreateBullet(-弾の発射位置オフセット);
+            CreateBullet(弾の発射位置オフセット);
         }
 
         // 中央発射 (Lv0 または Lv3)
-        if (powerLevel == 0 || powerLevel >= 3)
+        if (現在のパワーレベル == 0 || 現在のパワーレベル >= 3)
         {
              CreateBullet(0f);
         }
 
         // ファンネル発射 (Lv2以上)
-        if (powerLevel >= 2 && funnels != null)
+        if (現在のパワーレベル >= 2 && ファンネルリスト != null)
         {
             // ファンネルのリストから、有効なものだけ発射
             // Lv2なら2つ、Lv3なら全部(4つ)と想定
-            int activeCount = (powerLevel == 2) ? 2 : 4;
+            int activeCount = (現在のパワーレベル == 2) ? 2 : 4;
             
-            for (int i = 0; i < funnels.Length && i < activeCount; i++)
+            for (int i = 0; i < ファンネルリスト.Length && i < activeCount; i++)
             {
-                if (funnels[i] != null && funnels[i].activeSelf)
+                if (ファンネルリスト[i] != null && ファンネルリスト[i].activeSelf)
                 {
                     // ファンネル用のオフセットを使う
-                    CreateBulletFromPosition(funnels[i].transform.position, funnelMuzzleFlashOffset);
+                    CreateBulletFromPosition(ファンネルリスト[i].transform.position, ファンネル発射エフェクト位置オフセット);
                 }
             }
         }
@@ -265,11 +446,11 @@ public class PlayerController : MonoBehaviour
         // レベルアップ効果のフラッシュは削除 (ユーザー要望)
         // StartCoroutine(FlashWhite());
 
-        if (powerLevel < 3)
+        if (現在のパワーレベル < 3)
         {
-            powerLevel++;
+            現在のパワーレベル++;
             UpdateStats();
-            Debug.Log($"Level Up! Current Level: {powerLevel}");
+            Debug.Log($"Level Up! Current Level: {現在のパワーレベル}");
             
             // パワーアップ演出 (UI) を表示 (コルーチンで停止処理を含む)
             StartCoroutine(ShowPowerUpSequence());
@@ -278,10 +459,10 @@ public class PlayerController : MonoBehaviour
 
     System.Collections.IEnumerator ShowPowerUpSequence()
     {
-        if (powerUpUIPrefab != null && rectTransform != null)
+        if (パワーアップ演出プレハブ != null && rectTransform != null)
         {
             // Canvas内に生成
-            GameObject uiObj = Instantiate(powerUpUIPrefab, transform.parent);
+            GameObject uiObj = Instantiate(パワーアップ演出プレハブ, transform.parent);
             
             // 画面中央に配置
             RectTransform rt = uiObj.GetComponent<RectTransform>();
@@ -292,7 +473,7 @@ public class PlayerController : MonoBehaviour
             TextMeshProUGUI tmp = uiObj.GetComponentInChildren<TextMeshProUGUI>();
             if (tmp != null)
             {
-                tmp.text = (powerLevel + 1).ToString("D2");
+                tmp.text = (現在のパワーレベル + 1).ToString("D2");
             }
 
             // --- ゲーム停止処理 ---
@@ -320,7 +501,7 @@ public class PlayerController : MonoBehaviour
 
     // --- ダメージ処理 ---
     [Header("Damage Settings")]
-    public GameObject explosionPrefab; // プレイヤーの爆発エフェクト
+    [FormerlySerializedAs("explosionPrefab")] public GameObject 爆発エフェクト; // プレイヤーの爆発エフェクト
 
     // 敵または敵の弾に当たった時
     void OnCollisionEnter2D(Collision2D collision)
@@ -344,22 +525,33 @@ public class PlayerController : MonoBehaviour
             // 敵も倒す（相打ち）
             Destroy(other);
         }
+        // 敵の弾に当たった場合
+        else if (other.GetComponent<EnemyBulletController>() != null)
+        {
+            ApplyDamage();
+            Destroy(other); // 弾を消す
+        }
     }
 
     void ApplyDamage()
     {
         StartCoroutine(FlashWhite()); // 画面フラッシュ
 
-        if (powerLevel > 0)
-        {
-            powerLevel--;
-            UpdateStats();
-            Debug.Log($"Damage! Level Down to: {powerLevel}");
-        }
-        else
+        現在のHP--;
+        UpdateHPBarUI();
+        Debug.Log($"Damage! HP: {現在のHP}/{最大HP}");
+
+        if (現在のHP <= 0)
         {
             Debug.Log("Player Destroyed!");
             Die();
+        }
+        else if (現在のパワーレベル > 0)
+        {
+            // パワーダウンのロジックは残しておくが現行要件ではHP優先
+            現在のパワーレベル--;
+            UpdateStats();
+            Debug.Log($"Level Down to: {現在のパワーレベル}");
         }
     }
     
@@ -398,11 +590,14 @@ public class PlayerController : MonoBehaviour
         Destroy(flashObj);
     }
 
+    [Header("Game Over Settings")]
+    public GameObject ゲームオーバー演出プレハブ;
+
     void Die()
     {
-        if (explosionPrefab != null)
+        if (爆発エフェクト != null)
         {
-            GameObject exp = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            GameObject exp = Instantiate(爆発エフェクト, transform.position, Quaternion.identity);
             if (rectTransform != null)
             {
                 exp.transform.SetParent(transform.parent);
@@ -410,22 +605,30 @@ public class PlayerController : MonoBehaviour
             }
         }
         
+        // ゲームオーバー演出の生成
+        if (ゲームオーバー演出プレハブ != null && rectTransform != null)
+        {
+            // Canvas内に生成
+            GameObject go = Instantiate(ゲームオーバー演出プレハブ, transform.parent);
+            go.transform.SetAsLastSibling(); // 最前面に
+        }
+
         Destroy(gameObject);
     }
 
     void UpdateStats()
     {
         // レベルに合わせてファンネルを表示など
-        if (funnels == null) return;
+        if (ファンネルリスト == null) return;
         
         int activeCount = 0;
-        if (powerLevel == 2) activeCount = 2;
-        else if (powerLevel >= 3) activeCount = 4;
+        if (現在のパワーレベル == 2) activeCount = 2;
+        else if (現在のパワーレベル >= 3) activeCount = 4;
 
-        for (int i = 0; i < funnels.Length; i++)
+        for (int i = 0; i < ファンネルリスト.Length; i++)
         {
-            if (funnels[i] != null)
-                funnels[i].SetActive(i < activeCount);
+            if (ファンネルリスト[i] != null)
+                ファンネルリスト[i].SetActive(i < activeCount);
         }
     }
 
@@ -435,22 +638,22 @@ public class PlayerController : MonoBehaviour
         Vector3 spawnPos = transform.position;
         spawnPos.x += offsetX;
         // プレイヤー用のオフセットを使う
-        CreateBulletFromPosition(spawnPos, muzzleFlashOffset);
+        CreateBulletFromPosition(spawnPos, 発射エフェクト位置オフセット);
     }
     
     // 指定されたワールド座標から生成（ファンネル用など）
     void CreateBulletFromPosition(Vector3 position, Vector3 flashOffset)
     {
-        GameObject bullet = Instantiate(bulletPrefab, position, Quaternion.identity);
+        GameObject bullet = Instantiate(弾のプレハブ, position, Quaternion.identity);
 
         // マズルフラッシュ生成
-        if (muzzleFlashPrefab != null)
+        if (発射エフェクトプレハブ != null)
         {
             // Debug.Log("Spawning MuzzleFlash"); // デバッグ用
             // 位置調整 (Offset) を加える
             Vector3 flashPos = position + flashOffset;
             
-            GameObject flash = Instantiate(muzzleFlashPrefab, flashPos, Quaternion.identity);
+            GameObject flash = Instantiate(発射エフェクトプレハブ, flashPos, Quaternion.identity);
             if (rectTransform != null)
             {
                 // プレイヤーの動きに追従させるため、親をPlayer(自分自身)にする
@@ -477,7 +680,7 @@ public class PlayerController : MonoBehaviour
         shadowObject.transform.SetParent(transform.parent);
         
         // スケール初期設定（UpdateShadowでも更新するが、初期化時にも適用）
-        shadowObject.transform.localScale = Vector3.Scale(transform.localScale, shadowScale);
+        shadowObject.transform.localScale = Vector3.Scale(transform.localScale, 影の拡大率);
         shadowObject.transform.rotation = transform.rotation;
 
         // UIモードかどうかでコンポーネントを追加
@@ -489,7 +692,7 @@ public class PlayerController : MonoBehaviour
             
             shadowImage = shadowObject.AddComponent<Image>();
             shadowImage.sprite = uiImage.sprite;
-            shadowImage.color = shadowColor;
+            shadowImage.color = 影の色;
             
             // プレイヤーより後ろに表示（兄弟インデックスをプレイヤーより小さくする）
             shadowObject.transform.SetSiblingIndex(transform.GetSiblingIndex());
@@ -498,7 +701,7 @@ public class PlayerController : MonoBehaviour
         {
             shadowRenderer = shadowObject.AddComponent<SpriteRenderer>();
             shadowRenderer.sprite = spriteRenderer.sprite;
-            shadowRenderer.color = shadowColor;
+            shadowRenderer.color = 影の色;
             
             // ソーティングレイヤーなどはプレイヤーに合わせるか、背景寄り設定が必要
             // ここではOrderInLayerをプレイヤーより1つ下げる
@@ -512,10 +715,10 @@ public class PlayerController : MonoBehaviour
         if (shadowObject == null) return;
 
         // 位置を追従
-        shadowObject.transform.position = transform.position + shadowOffset;
+        shadowObject.transform.position = transform.position + 影の位置オフセット;
         
-        // スケールを追従（Playerのスケール * shadowScale）
+        // スケールを追従（Playerのスケール * 影の拡大率）
         // ランタイムで調整できるようにここで毎フレーム更新
-        shadowObject.transform.localScale = Vector3.Scale(transform.localScale, shadowScale);
+        shadowObject.transform.localScale = Vector3.Scale(transform.localScale, 影の拡大率);
     }
 }

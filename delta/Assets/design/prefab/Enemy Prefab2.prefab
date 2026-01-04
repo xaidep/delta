@@ -135,18 +135,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24447364b33d30348a6e38e46c5a3f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 300
-  enableRotation: 1
-  rotateSpeed: 360
-  animationFrames:
+  "\u79FB\u52D5\u901F\u5EA6": 300
+  "\u56DE\u8EE2\u3092\u6709\u52B9\u306B\u3059\u308B": 1
+  "\u56DE\u8EE2\u901F\u5EA6": 360
+  "\u30A2\u30CB\u30E1\u30FC\u30B7\u30E7\u30F3\u753B\u50CF\u30EA\u30B9\u30C8":
   - {fileID: 74018538521489001, guid: ad9cfe97641e57f489adfff9feb3d1ed, type: 3}
   - {fileID: 7642342690303671133, guid: ad9cfe97641e57f489adfff9feb3d1ed, type: 3}
   - {fileID: -2728710618111993377, guid: ad9cfe97641e57f489adfff9feb3d1ed, type: 3}
-  framesPerSecond: 10
-  explosionPrefab: {fileID: 5939684090872286257, guid: 42fffb0747186ee4eb61f0384c779153, type: 3}
-  enemyBulletPrefab: {fileID: 1421933388556222136, guid: 3059003e60886e9479ff242bcc632deb, type: 3}
-  minBullets: 1
-  maxBullets: 4
-  startShootDelay: 0.5
-  intervalBetweenShots: 0.2
-  enemyID: Enemy2
+  "\u30A2\u30CB\u30E1\u30FC\u30B7\u30E7\u30F3\u901F\u5EA6FPS": 10
+  "\u7206\u767A\u30A8\u30D5\u30A7\u30AF\u30C8": {fileID: 5939684090872286257, guid: 42fffb0747186ee4eb61f0384c779153, type: 3}
+  "\u6575\u306E\u5927\u304D\u3055\u500D\u7387": 1.3
+  "\u6700\u5927HP": 3
+  "HP\u306E\u30D7\u30EC\u30CF\u30D6": {fileID: 8471606271546233661, guid: bd940af625e68ca46834b18ce9de2445, type: 3}
+  "HP\u30D0\u30FC\u306E\u4F4D\u7F6E\u30AA\u30D5\u30BB\u30C3\u30C8": {x: 0, y: -60, z: 0}
+  "\u5F3E\u306E\u30D7\u30EC\u30CF\u30D6": {fileID: 1421933388556222136, guid: 3059003e60886e9479ff242bcc632deb, type: 3}
+  "\u767A\u5C04\u9593\u9694": 2
+  "\u5F3E\u306E\u5927\u304D\u3055\u500D\u7387": 0.3
+  "\u6575ID": Enemy2

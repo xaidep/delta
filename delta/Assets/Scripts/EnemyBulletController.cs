@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class EnemyBulletController : MonoBehaviour
 {
-    public float speed = 10f;
+    [FormerlySerializedAs("speed")] public float 弾の速度 = 10f;
     private Vector3 direction; // 移動方向
 
     public void Initialize(Vector3 dir)
@@ -17,10 +18,16 @@ public class EnemyBulletController : MonoBehaviour
     void Start()
     {
         // もしUIモードの場合、速度を補正
-        if (GetComponent<RectTransform>() != null && speed == 10f)
+        // UI座標系(Canvas)だと、1単位が1ピクセルなので、弾の速度=10は超遅い(10px/sec)
+        // RectTransformがある、または親がCanvasの可能性があるなら補正
+        bool isUI = GetComponent<RectTransform>() != null;
+        
+        if (isUI && 弾の速度 < 100f)
         {
-            speed = 800f; // UI用速度
+            弾の速度 = 500f; // UI用速度として強制上書き
         }
+        
+        // Debug.Log($"Bullet Start. Speed: {弾の速度}, Direction: {direction}");
 
         // Colliderの自動設定 (PlayerController同様)
         if (GetComponent<Collider2D>() == null)
@@ -50,8 +57,16 @@ public class EnemyBulletController : MonoBehaviour
     void Update()
     {
         // 設定された方向へ移動
-        // Translateはローカル座標基準で動くため、回転させているなら Vector3.up でも良いが、
-        // ここではワールド座標で方向を指定して移動させる
-        transform.position += direction * speed * Time.deltaTime;
+        // TranslateはデフォルトでローカルSpace.Selfなので、回転させている場合はそのまま直進(Vector3.up)でよいが、
+        // ここでは direction (World Space) を使っているので、Space.Worldを指定する
+        if (direction != Vector3.zero)
+        {
+            transform.Translate(direction * 弾の速度 * Time.deltaTime, Space.World);
+        }
+        else
+        {
+            // もし初期化失敗などでdirectionがゼロなら、とりあえず上に飛ばす（止まっているよりマシ）
+            // transform.Translate(Vector3.up * 弾の速度 * Time.deltaTime);
+        }
     }
 }

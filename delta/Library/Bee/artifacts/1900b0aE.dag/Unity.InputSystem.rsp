@@ -383,6 +383,7 @@
 -r:"C:/Program Files/Unity/Hub/Editor/6000.0.57f1/Editor/Data/NetStandard/Extensions/2.0.0/System.Runtime.InteropServices.WindowsRuntime.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/6000.0.57f1/Editor/Data/NetStandard/ref/2.1.0/netstandard.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/6000.0.57f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll"
+-r:"Library/PackageCache/com.coffee.ui-particle@04c1ca72cde8/Runtime/Coffee.UIParticle.R.dll"
 -r:"Library/PackageCache/com.unity.collab-proxy@3351acaba9c9/Lib/Editor/log4netPlastic.dll"
 -r:"Library/PackageCache/com.unity.collab-proxy@3351acaba9c9/Lib/Editor/Unity.Plastic.Antlr3.Runtime.dll"
 -r:"Library/PackageCache/com.unity.collab-proxy@3351acaba9c9/Lib/Editor/Unity.Plastic.Newtonsoft.Json.dll"

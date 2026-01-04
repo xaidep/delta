@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -17,149 +18,280 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    [Header("Enemy Prefabs")]
-    // 複数の敵を登録できるように変更
-    public GameObject[] enemyPrefabs; 
-
-    [Header("Spawn Settings")]
-    public float intervalMin = 0.5f;
-    public float intervalMax = 2.0f;
-    
-    [Header("Motion Paths")]
-    // リストで自由にルートを増やせるように変更
-    public System.Collections.Generic.List<BezierPath> paths = new System.Collections.Generic.List<BezierPath>();
-
-    [Header("Wave Settings")]
-    public int enemiesPerWave = 5; // 1回に出る敵の数
-    public float timeBetweenEnemies = 0.3f; // 敵同士の間隔（ポンポンポンと出る速さ）
-    public float timeBetweenWaves = 3.0f;   // 次の5匹が来るまでの待ち時間
-           
-    private int currentWaveIndex = 0; // 現在のウェーブ数（必要なら難易度調整などに使用）
-
-    // 後方互換性＆初期設定のため、Inspectorでリセットされたときなどにデフォルト値を入れる
-    void Reset()
-    {
-        SetupDefaultPaths();
+    public enum OriginType { 
+        Center,     // (0,0) is middle of screen
+        BottomLeft  // (0,0) is bottom-left of screen
     }
 
-    void SetupDefaultPaths()
+    [Header("Coordinate Mapping")]
+    [Tooltip("The reference resolution these paths were designed for.")]
+    public Vector2 designResolution = new Vector2(1080, 1920);
+    [Tooltip("Where is (0,0) in your coordinate data?")]
+    public OriginType coordinateOrigin = OriginType.BottomLeft;
+
+    [Header("Enemy Prefabs")]
+    public GameObject[] enemyPrefabs;
+    public GameObject bonusPrefab; // ボーナスアイコンのプレハブ
+
+    [Header("Spawn Settings")]
+    public int 一回に出る敵の数 = 5;
+    public float 敵と敵の間隔 = 0.3f;
+    public float 次のウェーブまでの待ち時間 = 3.0f;
+
+    [Header("Motion Paths")]
+    public List<BezierPath> paths = new List<BezierPath>();
+
+    private RectTransform rectTransform;
+    private bool keepSpawning = true;
+    private int activeEnemiesInWave = 0; // 現在のウェーブで生き残っている敵の数
+    private bool spawningInProgress = false; // 出現中フラグ
+    private int waveCount = 0; // ウェーブ数カウント
+
+
+    // --- Helper for the user to quickly setup the spawner ---
+    [ContextMenu("Fit to Parent (Full Screen)")]
+    void FitToParent()
     {
-        if (paths == null) paths = new System.Collections.Generic.List<BezierPath>();
-        
-        if (paths.Count == 0)
-        {
-            // 旧 Path 1 (Red) - User's Custom Values
-            paths.Add(new BezierPath(new Vector3(431.2f, 2000f, 0), new Vector3(390f, 640f, 0), new Vector3(-160f, 280f, 0), Color.red) { note = "Original Red" });
-            // 旧 Path 2 (Green) - User's Custom Values
-            paths.Add(new BezierPath(new Vector3(680f, 2000f, 0), new Vector3(697.2f, 570.1f, 0), new Vector3(1271f, 273.7f, 0), Color.green) { note = "Original Green" });
-            // 新しいバリエーション (Wide) - Generic default (User can adjust)
-            paths.Add(new BezierPath(new Vector3(-500f, 2000f, 0), new Vector3(100f, 1000f, 0), new Vector3(500f, 0f, 0), Color.yellow) { note = "Wide Curve" });
-        }
+        RectTransform rt = GetComponent<RectTransform>();
+        if (rt == null) return;
+        rt.anchorMin = Vector2.zero;
+        rt.anchorMax = Vector2.one;
+        rt.offsetMin = Vector2.zero;
+        rt.offsetMax = Vector2.zero;
+        rt.pivot = new Vector2(0.5f, 0.5f);
+    }
+
+    void Awake()
+    {
+        rectTransform = GetComponent<RectTransform>();
     }
 
     void Start()
     {
-        // もしInspectorで空っぽになっていたらデフォルトを入れる
-        if (paths == null || paths.Count == 0) SetupDefaultPaths();
+        if (paths.Count == 0) SetupDefaultPaths();
+        
+        // Ensure Boss Entry path exists (Fix for existing saves)
+        if (!paths.Exists(p => p.note.Contains("Boss Entry")))
+        {
+            paths.Add(new BezierPath(new Vector3(540f, 2200f, 0), new Vector3(540f, 1800f, 0), new Vector3(540f, 1100f, 0), Color.cyan) { note = "Boss Entry" });
+            Debug.Log("Added missing Boss Entry path.");
+        }
 
-        // 最初のウェーブ開始
         StartCoroutine(SpawnWave());
     }
-
-    private bool keepSpawning = true;
 
     public void StopSpawning()
     {
         keepSpawning = false;
-        StopAllCoroutines(); // 手っ取り早く止める場合
+        StopAllCoroutines();
     }
 
-    // Coroutineを使ってタイミング制御を簡単にします
     System.Collections.IEnumerator SpawnWave()
     {
         while (keepSpawning)
         {
-            // --- 5匹セットの出現開始 ---
-            // 今回のウェーブで使用するパスをランダムに決定
-            BezierPath currentPath = GetRandomPath();
+            // ウェーブサイクル (0-3: Mob, 4: Boss)
+            bool isBossWave = (waveCount % 5 == 4);
 
-            // 今回のウェーブで使用する敵をランダムに決定（ウェーブ内では統一）
-            GameObject currentPrefab = GetRandomEnemyPrefab();
+            GameObject prefab = null;
+            BezierPath path = null;
+            int count = 一回に出る敵の数;
 
-            for (int i = 0; i < enemiesPerWave; i++)
+            if (isBossWave)
             {
-                if (!keepSpawning) yield break;
+                // Boss Wave
+                prefab = GetBossEnemyPrefab();
+                path = GetBossPath();
+                count = 1;
+                
+                if (prefab == null) Debug.LogError("BOSS WAVE FAILED: 'Enemy Prefab3' not found in Spawner list!");
+                if (path == null) Debug.LogError("BOSS WAVE FAILED: 'Boss Entry' path not found!");
 
-                SpawnEnemy(currentPath, currentPrefab);
-                // 次の敵が出るまでの短い休憩
-                yield return new WaitForSeconds(timeBetweenEnemies);
+                Debug.Log($"Wave {waveCount + 1}: BOSS WAVE! (Prefab: {prefab?.name}, Path: {path?.note})");
+            }
+            else
+            {
+                // Mob Wave
+                prefab = GetRandomMobPrefab();
+                path = GetRandomMobPath();
+                // Debug.Log($"Wave {waveCount + 1}: Normal Wave");
             }
 
-            // --- 次のセットまでの長い休憩 ---
-            yield return new WaitForSeconds(timeBetweenWaves);
+            // --- ウェーブ開始前のクリーンアップ確認 ---
+            // ボスの前後だけでなく、基本的には常に「前の敵が全部消えてから」次を出すと安全
+            if (activeEnemiesInWave > 0)
+            {
+                while (activeEnemiesInWave > 0)
+                {
+                    yield return new WaitForSeconds(0.5f);
+                }
+                // 敵が全滅してから少し間を置く
+                yield return new WaitForSeconds(1.0f);
+            }
+
+            if (path != null && prefab != null)
+            {
+                spawningInProgress = true;
+                activeEnemiesInWave = 0; // ここでリセット（SpawnEnemyで加算される）
+
+                for (int i = 0; i < count; i++)
+                {
+                    if (!keepSpawning) yield break;
+                    SpawnEnemy(path, prefab);
+                    yield return new WaitForSeconds(敵と敵の間隔);
+                }
+                
+                spawningInProgress = false;
+            }
             
-            currentWaveIndex++;
+            waveCount++;
+            yield return new WaitForSeconds(次のウェーブまでの待ち時間);
         }
     }
 
-    BezierPath GetRandomPath()
+    // --- Helper Methods for Wave Logic ---
+    GameObject GetBossEnemyPrefab()
     {
-        if (paths == null || paths.Count == 0) return null;
-        return paths[Random.Range(0, paths.Count)];
+        foreach (var p in enemyPrefabs)
+        {
+            if (p != null && p.name.Contains("Prefab3")) return p;
+        }
+        return null;
     }
 
-    GameObject GetRandomEnemyPrefab()
+    GameObject GetRandomMobPrefab()
     {
-        if (enemyPrefabs == null || enemyPrefabs.Length == 0) return null;
-        return enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
+        // "Prefab3" 以外からランダムに選ぶ
+        List<GameObject> mobs = new List<GameObject>();
+        foreach (var p in enemyPrefabs)
+        {
+            if (p != null && !p.name.Contains("Prefab3")) mobs.Add(p);
+        }
+        return mobs.Count > 0 ? mobs[Random.Range(0, mobs.Count)] : null;
     }
 
-    void SpawnEnemy(BezierPath path, GameObject prefabToSpawn)
+    BezierPath GetBossPath()
     {
-        if (prefabToSpawn == null) return;
-        if (path == null) return;
+        return paths.Find(p => p.note.Contains("Boss Entry"));
+    }
 
-        GameObject enemy = Instantiate(prefabToSpawn, path.start, Quaternion.identity);
-        enemy.transform.SetParent(transform); 
+    BezierPath GetRandomMobPath()
+    {
+        // "Boss Entry" 以外からランダムに選ぶ
+        List<BezierPath> mobPaths = paths.FindAll(p => !p.note.Contains("Boss Entry"));
+        return mobPaths.Count > 0 ? mobPaths[Random.Range(0, mobPaths.Count)] : null;
+    }
+
+    public void OnEnemyRemoved(Vector3 lastLocalPos, bool wasDefeated)
+    {
+        activeEnemiesInWave--;
+
+        // すべての敵が消え、かつ出現処理が終わっている場合
+        if (activeEnemiesInWave <= 0 && !spawningInProgress)
+        {
+            // 最後の敵が「撃破」された場合のみボーナスを出す
+            if (wasDefeated && bonusPrefab != null)
+            {
+                SpawnBonus(lastLocalPos);
+            }
+        }
+    }
+
+    void SpawnBonus(Vector3 localPos)
+    {
+        GameObject bonus = Instantiate(bonusPrefab, transform);
+        bonus.transform.localPosition = localPos;
+        bonus.transform.localScale = Vector3.one;
         
+        // BonusIconスクリプトが付いていることを期待
+        // (次の手順で作成)
+    }
+
+    void SpawnEnemy(BezierPath path, GameObject prefab)
+    {
+        // Convert design pixels to current Spawner's local rect space
+        Vector3 localStart = MapDesignToLocal(path.start);
+        Vector3 localControl = MapDesignToLocal(path.control);
+        Vector3 localEnd = MapDesignToLocal(path.end);
+
+        GameObject enemy = Instantiate(prefab, transform);
+        enemy.transform.localPosition = localStart;
+        enemy.transform.localRotation = Quaternion.identity;
+        enemy.transform.localScale = Vector3.one;
+
         EnemyController controller = enemy.GetComponent<EnemyController>();
         if (controller != null)
         {
-            controller.Initialize(path.start, path.control, path.end);
+            controller.Initialize(localStart, localControl, localEnd, this);
+            activeEnemiesInWave++; // カウントアップ
         }
     }
-    
-    // ギズモ表示
+
+    // Maps Design Pixels (e.g. 1080x1920) directly to the Spawner's Rect bounds.
+    // This is the MOST reliable way for UI systems.
+    Vector3 MapDesignToLocal(Vector3 designPos)
+    {
+        if (rectTransform == null) rectTransform = GetComponent<RectTransform>();
+        
+        // 1. Normalize based on origin
+        float nx, ny;
+        if (coordinateOrigin == OriginType.Center)
+        {
+            nx = (designPos.x / designResolution.x) + 0.5f;
+            ny = (designPos.y / designResolution.y) + 0.5f;
+        }
+        else
+        {
+            nx = designPos.x / designResolution.x;
+            ny = designPos.y / designResolution.y;
+        }
+
+        // 2. Map normalized (0-1) to actual Spawner Rect (handles all pivot/size)
+        float localX = Mathf.Lerp(rectTransform.rect.xMin, rectTransform.rect.xMax, nx);
+        float localY = Mathf.Lerp(rectTransform.rect.yMin, rectTransform.rect.yMax, ny);
+
+        return new Vector3(localX, localY, designPos.z);
+    }
+
+    BezierPath GetRandomPath() => paths.Count > 0 ? paths[Random.Range(0, paths.Count)] : null;
+    GameObject GetRandomEnemyPrefab() => enemyPrefabs.Length > 0 ? enemyPrefabs[Random.Range(0, enemyPrefabs.Length)] : null;
+
+    void SetupDefaultPaths()
+    {
+        paths.Add(new BezierPath(new Vector3(431.2f, 2000f, 0), new Vector3(390f, 640f, 0), new Vector3(-160f, 280f, 0), Color.red) { note = "Original Red" });
+        paths.Add(new BezierPath(new Vector3(680f, 2000f, 0), new Vector3(697.2f, 570.1f, 0), new Vector3(1271f, 273.7f, 0), Color.green) { note = "Original Green" });
+        paths.Add(new BezierPath(new Vector3(-500f, 2000f, 0), new Vector3(100f, 1000f, 0), new Vector3(500f, 0f, 0), Color.yellow) { note = "Wide Curve" });
+        
+        // Enemy 3 (Boss) Entry: 上から出現して、画面中央寄り(Y=1100付近)へ
+        paths.Add(new BezierPath(new Vector3(540f, 2200f, 0), new Vector3(540f, 1800f, 0), new Vector3(540f, 1100f, 0), Color.cyan) { note = "Boss Entry" });
+    }
+
     void OnDrawGizmos()
     {
-        if (paths == null) return;
+        if (paths == null || paths.Count == 0) return;
+        if (rectTransform == null) rectTransform = GetComponent<RectTransform>();
 
         foreach (var p in paths)
         {
-            if (p == null) continue;
             Gizmos.color = p.gizmoColor;
             
-            // 点を描画して見やすくする
-            Gizmos.DrawSphere(p.start, 50f);   // 始点
-            Gizmos.DrawSphere(p.end, 50f);     // 終点
-            Gizmos.DrawWireSphere(p.control, 30f); // 制御点
+            // Gizmos are in World Space, so we multiply Local -> World
+            Vector3 worldStart = transform.TransformPoint(MapDesignToLocal(p.start));
+            Vector3 worldControl = transform.TransformPoint(MapDesignToLocal(p.control));
+            Vector3 worldEnd = transform.TransformPoint(MapDesignToLocal(p.end));
 
-            DrawBezier(p.start, p.control, p.end);
-        }
-    }
+            Gizmos.DrawSphere(worldStart, 15f);
+            Gizmos.DrawSphere(worldEnd, 15f);
+            Gizmos.DrawWireSphere(worldControl, 10f);
 
-    void DrawBezier(Vector3 p0, Vector3 p1, Vector3 p2)
-    {
-        Vector3 prev = p0;
-        for (float t = 0; t <= 1; t += 0.05f) // 少し滑らかに (0.1 -> 0.05)
-        {
-            float u = 1 - t;
-            float tt = t * t;
-            float uu = u * u;
-            Vector3 p = uu * p0 + 2 * u * t * p1 + tt * p2;
-            Gizmos.DrawLine(prev, p);
-            prev = p;
+            Vector3 prev = worldStart;
+            for (float t = 0.05f; t <= 1.01f; t += 0.05f)
+            {
+                float u = 1 - t;
+                Vector3 pos = (u * u) * worldStart + (2 * u * t) * worldControl + (t * t) * worldEnd;
+                Gizmos.DrawLine(prev, pos);
+                prev = pos;
+            }
         }
-        Gizmos.DrawLine(prev, p2);
     }
 }

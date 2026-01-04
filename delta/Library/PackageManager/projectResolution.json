@@ -9,6 +9,26 @@
     "C:\\Program Files\\Unity\\Hub\\Editor\\6000.0.57f1\\Editor\\Data\\Resources\\PackageManager\\BuiltInPackages\\BuiltInPackagesCombined.sha1"
   ],
   "outputs": {
+    "com.coffee.ui-particle@https://github.com/mob-sakai/ParticleEffectForUGUI.git": {
+      "name": "com.coffee.ui-particle",
+      "displayName": "UI Particle",
+      "resolvedPath": "C:\\Users\\xaide\\Desktop\\delta\\git_delta\\delta\\Library\\PackageCache\\com.coffee.ui-particle@04c1ca72cde8",
+      "fingerprint": "04c1ca72cde82318e11eb1281dc4c3d314a2e68c",
+      "editorCompatibility": "2018.2.0a1",
+      "version": "4.11.4",
+      "source": "git",
+      "testable": false
+    },
+    "com.unity.2d.sprite@1.0.0": {
+      "name": "com.unity.2d.sprite",
+      "displayName": "2D Sprite",
+      "resolvedPath": "C:\\Users\\xaide\\Desktop\\delta\\git_delta\\delta\\Library\\PackageCache\\com.unity.2d.sprite@897b7eecf04e",
+      "fingerprint": "897b7eecf04ec94126f19c6ce2cba3404cc15178",
+      "editorCompatibility": "2019.2.0a1",
+      "version": "1.0.0",
+      "source": "builtin",
+      "testable": false
+    },
     "com.unity.collab-proxy@2.10.2": {
       "name": "com.unity.collab-proxy",
       "displayName": "Unity Version Control",
@@ -17,15 +37,6 @@
       "editorCompatibility": "2021.3.0f1",
       "version": "2.10.2",
       "source": "registry",
-      "testable": false
-    },
-    "com.unity.feature.2d@2.0.1": {
-      "name": "com.unity.feature.2d",
-      "displayName": "2D",
-      "resolvedPath": "C:\\Users\\xaide\\Desktop\\delta\\git_delta\\delta\\Library\\PackageCache\\com.unity.feature.2d@dd1ea8910f12",
-      "fingerprint": "dd1ea8910f12f021c166e8d0d78de44f1390ff6b",
-      "version": "2.0.1",
-      "source": "builtin",
       "testable": false
     },
     "com.unity.ide.rider@3.0.36": {
@@ -460,86 +471,6 @@
       "source": "registry",
       "testable": false
     },
-    "com.unity.2d.animation@10.2.1": {
-      "name": "com.unity.2d.animation",
-      "displayName": "2D Animation",
-      "resolvedPath": "C:\\Users\\xaide\\Desktop\\delta\\git_delta\\delta\\Library\\PackageCache\\com.unity.2d.animation@81ad133dbdf1",
-      "fingerprint": "81ad133dbdf13da9a686af329d3a20b84565fd89",
-      "editorCompatibility": "6000.0.0a1",
-      "version": "10.2.1",
-      "source": "registry",
-      "testable": false
-    },
-    "com.unity.2d.pixel-perfect@5.0.3": {
-      "name": "com.unity.2d.pixel-perfect",
-      "displayName": "2D Pixel Perfect",
-      "resolvedPath": "C:\\Users\\xaide\\Desktop\\delta\\git_delta\\delta\\Library\\PackageCache\\com.unity.2d.pixel-perfect@e3ae982b672d",
-      "fingerprint": "e3ae982b672dc7cca42a6303bdf53b84c69991da",
-      "editorCompatibility": "2021.1.0a1",
-      "version": "5.0.3",
-      "source": "registry",
-      "testable": false
-    },
-    "com.unity.2d.psdimporter@9.1.0": {
-      "name": "com.unity.2d.psdimporter",
-      "displayName": "2D PSD Importer",
-      "resolvedPath": "C:\\Users\\xaide\\Desktop\\delta\\git_delta\\delta\\Library\\PackageCache\\com.unity.2d.psdimporter@e0ffc26deb40",
-      "fingerprint": "e0ffc26deb4024d7b96fd4903fd4a89dbce4059c",
-      "editorCompatibility": "6000.0.0a1",
-      "version": "9.1.0",
-      "source": "registry",
-      "testable": false
-    },
-    "com.unity.2d.sprite@1.0.0": {
-      "name": "com.unity.2d.sprite",
-      "displayName": "2D Sprite",
-      "resolvedPath": "C:\\Users\\xaide\\Desktop\\delta\\git_delta\\delta\\Library\\PackageCache\\com.unity.2d.sprite@897b7eecf04e",
-      "fingerprint": "897b7eecf04ec94126f19c6ce2cba3404cc15178",
-      "editorCompatibility": "2019.2.0a1",
-      "version": "1.0.0",
-      "source": "builtin",
-      "testable": false
-    },
-    "com.unity.2d.spriteshape@10.0.7": {
-      "name": "com.unity.2d.spriteshape",
-      "displayName": "2D SpriteShape",
-      "resolvedPath": "C:\\Users\\xaide\\Desktop\\delta\\git_delta\\delta\\Library\\PackageCache\\com.unity.2d.spriteshape@9e35352ae135",
-      "fingerprint": "9e35352ae135f602746220e7edc09eb95bbec530",
-      "editorCompatibility": "2023.1.0a1",
-      "version": "10.0.7",
-      "source": "registry",
-      "testable": false
-    },
-    "com.unity.2d.tilemap@1.0.0": {
-      "name": "com.unity.2d.tilemap",
-      "displayName": "2D Tilemap Editor",
-      "resolvedPath": "C:\\Users\\xaide\\Desktop\\delta\\git_delta\\delta\\Library\\PackageCache\\com.unity.2d.tilemap@43091c84adcf",
-      "fingerprint": "43091c84adcfda243cb780bb38208f1df066ce9b",
-      "editorCompatibility": "2019.2.0a1",
-      "version": "1.0.0",
-      "source": "builtin",
-      "testable": false
-    },
-    "com.unity.2d.tilemap.extras@4.1.0": {
-      "name": "com.unity.2d.tilemap.extras",
-      "displayName": "2D Tilemap Extras",
-      "resolvedPath": "C:\\Users\\xaide\\Desktop\\delta\\git_delta\\delta\\Library\\PackageCache\\com.unity.2d.tilemap.extras@13634da7dbe0",
-      "fingerprint": "13634da7dbe06c39bac6bbe2d1a166cf91f58ad7",
-      "editorCompatibility": "6000.0.0a1",
-      "version": "4.1.0",
-      "source": "registry",
-      "testable": false
-    },
-    "com.unity.2d.aseprite@1.1.10": {
-      "name": "com.unity.2d.aseprite",
-      "displayName": "2D Aseprite Importer",
-      "resolvedPath": "C:\\Users\\xaide\\Desktop\\delta\\git_delta\\delta\\Library\\PackageCache\\com.unity.2d.aseprite@dba7c65ef731",
-      "fingerprint": "dba7c65ef731c2cd2715a1be4eb9353b39eb570c",
-      "editorCompatibility": "2021.3.15f1",
-      "version": "1.1.10",
-      "source": "registry",
-      "testable": false
-    },
     "com.unity.searcher@4.9.3": {
       "name": "com.unity.searcher",
       "displayName": "Searcher",
@@ -597,16 +528,6 @@
       "fingerprint": "92d1d09a72ed696fa23fd76c675b29d211664b50",
       "editorCompatibility": "2020.3.0a1",
       "version": "3.1.0",
-      "source": "registry",
-      "testable": false
-    },
-    "com.unity.2d.common@9.1.1": {
-      "name": "com.unity.2d.common",
-      "displayName": "2D Common",
-      "resolvedPath": "C:\\Users\\xaide\\Desktop\\delta\\git_delta\\delta\\Library\\PackageCache\\com.unity.2d.common@bc041c6e0d0d",
-      "fingerprint": "bc041c6e0d0d69f1195446076eff5ef3189d3e92",
-      "editorCompatibility": "6000.0.0a1",
-      "version": "9.1.1",
       "source": "registry",
       "testable": false
     }

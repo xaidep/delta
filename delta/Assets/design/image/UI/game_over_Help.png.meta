@@ -1,0 +1,1105 @@
+fileFormatVersion: 2
+guid: fd55d0d4ed258ab4eab55daa402ec157
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3289348796024372285
+    second: game_over_Help_0
+  - first:
+      213: 8000453217349362005
+    second: game_over_Help_1
+  - first:
+      213: 6541239782547444768
+    second: game_over_Help_2
+  - first:
+      213: 627138113346783447
+    second: game_over_Help_3
+  - first:
+      213: -6368076204771443282
+    second: game_over_Help_4
+  - first:
+      213: 5612661524438651633
+    second: game_over_Help_5
+  - first:
+      213: -4526380841308054781
+    second: game_over_Help_6
+  - first:
+      213: 5364364504224120208
+    second: game_over_Help_7
+  - first:
+      213: -4068770981266483288
+    second: game_over_Help_8
+  - first:
+      213: 8134059372460177797
+    second: game_over_Help_9
+  - first:
+      213: -2647120069742943535
+    second: game_over_Help_10
+  - first:
+      213: -4609154194521201149
+    second: game_over_Help_11
+  - first:
+      213: -4453250258301820353
+    second: game_over_Help_12
+  - first:
+      213: -8857123966532236347
+    second: game_over_Help_13
+  - first:
+      213: 3037850434810860055
+    second: game_over_Help_14
+  - first:
+      213: -5898605816928506026
+    second: game_over_Help_15
+  - first:
+      213: -8310181883072353575
+    second: game_over_Help_16
+  - first:
+      213: -25630373270994947
+    second: game_over_Help_17
+  - first:
+      213: -5284614654360886349
+    second: game_over_Help_18
+  - first:
+      213: 2784876202542888984
+    second: game_over_Help_19
+  - first:
+      213: -7508271154153684817
+    second: game_over_Help_20
+  - first:
+      213: -458602148214992943
+    second: game_over_Help_21
+  - first:
+      213: 1395479292347090838
+    second: game_over_Help_22
+  - first:
+      213: 3597770096713595881
+    second: game_over_Help_23
+  - first:
+      213: -1512081266701137653
+    second: game_over_Help_24
+  - first:
+      213: 2615769237558177110
+    second: game_over_Help_25
+  - first:
+      213: 5075450479723947983
+    second: game_over_Help_26
+  - first:
+      213: -8730526800257275950
+    second: game_over_Help_27
+  - first:
+      213: 4243127270978155509
+    second: game_over_Help_28
+  - first:
+      213: -7037441138529136397
+    second: game_over_Help_29
+  - first:
+      213: -4206401032524444207
+    second: game_over_Help_30
+  - first:
+      213: 6110825058378251020
+    second: game_over_Help_31
+  - first:
+      213: -1539575608911131901
+    second: game_over_Help_32
+  - first:
+      213: 8405193477073039719
+    second: game_over_Help_33
+  - first:
+      213: -4044776035306849243
+    second: game_over_Help_34
+  - first:
+      213: -6604335560128485564
+    second: game_over_Help_35
+  - first:
+      213: -1017408190378610079
+    second: game_over_Help_36
+  - first:
+      213: -3166632335318991571
+    second: game_over_Help_37
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: game_over_Help_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 204
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3c34616d4d16ad20800000000000000
+      internalID: 3289348796024372285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_1
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 204
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5516d3e10d1570f60800000000000000
+      internalID: 8000453217349362005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_2
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 182
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 024d46ddce627ca50800000000000000
+      internalID: 6541239782547444768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_3
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 182
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d8c4279aca04b800800000000000000
+      internalID: 627138113346783447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_4
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 182
+        width: 36
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eadfaf76e6c00a7a0800000000000000
+      internalID: -6368076204771443282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_5
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 182
+        width: 24
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f21ba85bed24ed40800000000000000
+      internalID: 5612661524438651633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_6
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 182
+        width: 26
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30b13bb4b901f21c0800000000000000
+      internalID: -4526380841308054781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_7
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 182
+        width: 24
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09d3eff481d027a40800000000000000
+      internalID: 5364364504224120208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_8
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 182
+        width: 17
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a7913d8952d887c0800000000000000
+      internalID: -4068770981266483288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_9
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 182
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 589fc6537ebf1e070800000000000000
+      internalID: 8134059372460177797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_10
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 182
+        width: 24
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d22a25525a834bd0800000000000000
+      internalID: -2647120069742943535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_11
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 182
+        width: 35
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 306ef803eaef800c0800000000000000
+      internalID: -4609154194521201149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_12
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 153
+        width: 69
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f32e0020c70e232c0800000000000000
+      internalID: -4453250258301820353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_13
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 153
+        width: 28
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cb4f33fdac251580800000000000000
+      internalID: -8857123966532236347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_14
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 153
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 712daaf00ec982a20800000000000000
+      internalID: 3037850434810860055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_15
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 153
+        width: 58
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65f6cebf241f32ea0800000000000000
+      internalID: -5898605816928506026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_16
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 153
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9dae5984b9d4cac80800000000000000
+      internalID: -8310181883072353575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_17
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 153
+        width: 24
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dffb8b1bf41f4aff0800000000000000
+      internalID: -25630373270994947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_18
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 153
+        width: 34
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b3eeff88f649a6b0800000000000000
+      internalID: -5284614654360886349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_19
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 153
+        width: 28
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 818f10cb62ed5a620800000000000000
+      internalID: 2784876202542888984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_20
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 111
+        width: 283
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa08b537a234dc790800000000000000
+      internalID: -7508271154153684817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_21
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 85
+        width: 47
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1df0a66a6c7b2a9f0800000000000000
+      internalID: -458602148214992943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_22
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 85
+        width: 21
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69703c7d50dbd5310800000000000000
+      internalID: 1395479292347090838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_23
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 85
+        width: 23
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ebf22657d8dde130800000000000000
+      internalID: 3597770096713595881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_24
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 85
+        width: 28
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0981ca6912040be0800000000000000
+      internalID: -1512081266701137653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_25
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 85
+        width: 32
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65dac0b33441d4420800000000000000
+      internalID: 2615769237558177110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_26
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 88
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc72807025f9f6640800000000000000
+      internalID: 5075450479723947983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_27
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 56
+        width: 65
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d723a8a120f6d680800000000000000
+      internalID: -8730526800257275950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_28
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 56
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f3fc6b95cd92ea30800000000000000
+      internalID: 4243127270978155509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_29
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 56
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f0104a029cf55e90800000000000000
+      internalID: -7037441138529136397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_30
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 56
+        width: 68
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1dd4b812c8cdf95c0800000000000000
+      internalID: -4206401032524444207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_31
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 56
+        width: 32
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0bf03993030ec450800000000000000
+      internalID: 6110825058378251020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_32
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 56
+        width: 54
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30b0ff5042452aae0800000000000000
+      internalID: -1539575608911131901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_33
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 27
+        width: 27
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7617e5d4fee35a470800000000000000
+      internalID: 8405193477073039719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_34
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 27
+        width: 25
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52cb58340a11ed7c0800000000000000
+      internalID: -4044776035306849243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_35
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 27
+        width: 39
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 447af01accfa854a0800000000000000
+      internalID: -6604335560128485564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 162f8ec24a071e1f0800000000000000
+      internalID: -1017408190378610079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_over_Help_37
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 0
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2dbb072bacdd04d0800000000000000
+      internalID: -3166632335318991571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      game_over_Help_0: 3289348796024372285
+      game_over_Help_1: 8000453217349362005
+      game_over_Help_10: -2647120069742943535
+      game_over_Help_11: -4609154194521201149
+      game_over_Help_12: -4453250258301820353
+      game_over_Help_13: -8857123966532236347
+      game_over_Help_14: 3037850434810860055
+      game_over_Help_15: -5898605816928506026
+      game_over_Help_16: -8310181883072353575
+      game_over_Help_17: -25630373270994947
+      game_over_Help_18: -5284614654360886349
+      game_over_Help_19: 2784876202542888984
+      game_over_Help_2: 6541239782547444768
+      game_over_Help_20: -7508271154153684817
+      game_over_Help_21: -458602148214992943
+      game_over_Help_22: 1395479292347090838
+      game_over_Help_23: 3597770096713595881
+      game_over_Help_24: -1512081266701137653
+      game_over_Help_25: 2615769237558177110
+      game_over_Help_26: 5075450479723947983
+      game_over_Help_27: -8730526800257275950
+      game_over_Help_28: 4243127270978155509
+      game_over_Help_29: -7037441138529136397
+      game_over_Help_3: 627138113346783447
+      game_over_Help_30: -4206401032524444207
+      game_over_Help_31: 6110825058378251020
+      game_over_Help_32: -1539575608911131901
+      game_over_Help_33: 8405193477073039719
+      game_over_Help_34: -4044776035306849243
+      game_over_Help_35: -6604335560128485564
+      game_over_Help_36: -1017408190378610079
+      game_over_Help_37: -3166632335318991571
+      game_over_Help_4: -6368076204771443282
+      game_over_Help_5: 5612661524438651633
+      game_over_Help_6: -4526380841308054781
+      game_over_Help_7: 5364364504224120208
+      game_over_Help_8: -4068770981266483288
+      game_over_Help_9: 8134059372460177797
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

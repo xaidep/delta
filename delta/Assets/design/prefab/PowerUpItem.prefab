@@ -135,10 +135,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f26cf06b130f8064aa97e3bfb592b20b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 300
-  direction: {x: 0, y: -1, z: 0}
-  pulseSpeed: 5
-  pulseScaleRange: 0.2
-  glowColor: {r: 1, g: 0.106157586, b: 0, a: 1}
-  glowPulseSpeed: 4.91
-  glowScaleRatio: 1.1
+  "\u79FB\u52D5\u901F\u5EA6": 300
+  "\u79FB\u52D5\u65B9\u5411": {x: 0, y: -1, z: 0}
+  "\u70B9\u6EC5\u901F\u5EA6": 5
+  "\u70B9\u6EC5\u30B5\u30A4\u30BA\u7BC4\u56F2": 0.2
+  "\u767A\u5149\u8272": {r: 1, g: 0, b: 0.4862745, a: 1}
+  "\u767A\u5149\u70B9\u6EC5\u901F\u5EA6": 4.91
+  "\u767A\u5149\u30B5\u30A4\u30BA\u500D\u7387": 1.1

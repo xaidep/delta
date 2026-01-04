@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: 77867752508bbe0469c16be539020b9b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 201156030225770665
+    second: "powerUP\u2017BG_0"
+  - first:
+      213: 4888185458660600881
+    second: "powerUP\u2017BG_1"
+  - first:
+      213: 2338361629072840272
+    second: "powerUP\u2017BG_2"
+  - first:
+      213: 8916532921583993245
+    second: "powerUP\u2017BG_3"
+  - first:
+      213: -580012375270106073
+    second: "powerUP\u2017BG_4"
+  - first:
+      213: 8638781849802774122
+    second: "powerUP\u2017BG_5"
+  - first:
+      213: -1595409365370719387
+    second: "powerUP\u2017BG_6"
+  - first:
+      213: 6819889776593062613
+    second: "powerUP\u2017BG_7"
+  - first:
+      213: -4581285166969350926
+    second: "powerUP\u2017BG_8"
+  - first:
+      213: -3701285375997497237
+    second: "powerUP\u2017BG_9"
+  - first:
+      213: -7884528082069733855
+    second: "powerUP\u2017BG_10"
+  - first:
+      213: 4190056210104582206
+    second: "powerUP\u2017BG_11"
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "powerUP\u2017BG_0"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 482
+        width: 74
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a8e80ef756aac200800000000000000
+      internalID: 201156030225770665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "powerUP\u2017BG_1"
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 482
+        width: 118
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13ce1b3a6c256d340800000000000000
+      internalID: 4888185458660600881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "powerUP\u2017BG_2"
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 482
+        width: 75
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0565a413387837020800000000000000
+      internalID: 2338361629072840272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "powerUP\u2017BG_3"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 306
+        width: 74
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d91071b4373edbb70800000000000000
+      internalID: 8916532921583993245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "powerUP\u2017BG_4"
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 306
+        width: 118
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72cd1b651d163f7f0800000000000000
+      internalID: -580012375270106073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "powerUP\u2017BG_5"
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 306
+        width: 75
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a661699725e13e770800000000000000
+      internalID: 8638781849802774122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "powerUP\u2017BG_6"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 130
+        width: 74
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5633fb192a7fbd9e0800000000000000
+      internalID: -1595409365370719387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "powerUP\u2017BG_7"
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 130
+        width: 118
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5dac5255e9d15ae50800000000000000
+      internalID: 6819889776593062613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "powerUP\u2017BG_8"
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 130
+        width: 75
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f49600d9610c60c0800000000000000
+      internalID: -4581285166969350926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "powerUP\u2017BG_9"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 74
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b60325f8f8462acc0800000000000000
+      internalID: -3701285375997497237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "powerUP\u2017BG_10"
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 0
+        width: 118
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12e34aebb77849290800000000000000
+      internalID: -7884528082069733855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "powerUP\u2017BG_11"
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 0
+        width: 75
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3004385ce1162a30800000000000000
+      internalID: 4190056210104582206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      "powerUP\u2017BG_0": 201156030225770665
+      "powerUP\u2017BG_1": 4888185458660600881
+      "powerUP\u2017BG_10": -7884528082069733855
+      "powerUP\u2017BG_11": 4190056210104582206
+      "powerUP\u2017BG_2": 2338361629072840272
+      "powerUP\u2017BG_3": 8916532921583993245
+      "powerUP\u2017BG_4": -580012375270106073
+      "powerUP\u2017BG_5": 8638781849802774122
+      "powerUP\u2017BG_6": -1595409365370719387
+      "powerUP\u2017BG_7": 6819889776593062613
+      "powerUP\u2017BG_8": -4581285166969350926
+      "powerUP\u2017BG_9": -3701285375997497237
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

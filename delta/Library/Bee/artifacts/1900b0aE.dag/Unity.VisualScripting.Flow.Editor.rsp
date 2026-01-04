@@ -376,6 +376,7 @@
 -r:"C:/Program Files/Unity/Hub/Editor/6000.0.57f1/Editor/Data/UnityReferenceAssemblies/unity-4.8-api/System.Transactions.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/6000.0.57f1/Editor/Data/UnityReferenceAssemblies/unity-4.8-api/System.Xml.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/6000.0.57f1/Editor/Data/UnityReferenceAssemblies/unity-4.8-api/System.Xml.Linq.dll"
+-r:"Library/PackageCache/com.coffee.ui-particle@04c1ca72cde8/Runtime/Coffee.UIParticle.R.dll"
 -r:"Library/PackageCache/com.unity.collab-proxy@3351acaba9c9/Lib/Editor/log4netPlastic.dll"
 -r:"Library/PackageCache/com.unity.collab-proxy@3351acaba9c9/Lib/Editor/Unity.Plastic.Antlr3.Runtime.dll"
 -r:"Library/PackageCache/com.unity.collab-proxy@3351acaba9c9/Lib/Editor/Unity.Plastic.Newtonsoft.Json.dll"
