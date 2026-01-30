@@ -1,114 +1,122 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class ItemSpawner : MonoBehaviour
 {
-    [FormerlySerializedAs("powerUpPrefab")] public GameObject パワーアップアイテムプレハブ;
+    // --- 1. 定数・設定 ---
+    [Header("Item Spawner Settings")]
+    public GameObject パワーアップアイテムプレハブ;
+    public int アイテム出現に必要な撃破数 = 5;
 
-    [Header("Spawn Settings")]
-    [FormerlySerializedAs("intervalMin")] public float 出現間隔_最小 = 3f; // テスト用に短く修正
-    [FormerlySerializedAs("intervalMax")] public float 出現間隔_最大 = 8f;
-    
-    [Header("Spawn Positions (Canvas Space)")]
-    // 画面の左上と右上を想定（UI座標なので調整が必要かもしれません）
-    [FormerlySerializedAs("leftSpawnPos")] public Vector3 左側の出現位置 = new Vector3(-350, 600, 0);
-    [FormerlySerializedAs("rightSpawnPos")] public Vector3 右側の出現位置 = new Vector3(350, 600, 0);
-    
-    // 目的地（画面の下の方）
-    [FormerlySerializedAs("leftTargetPos")] public Vector3 左側の移動目標 = new Vector3(-350, -600, 0); 
-    [FormerlySerializedAs("rightTargetPos")] public Vector3 右側の移動目標 = new Vector3(350, -600, 0);
-
-    public static ItemSpawner instance;
+    [Header("Spawn Margin (Relative to Screen Size)")]
+    [Range(0, 0.5f)] public float 横の余白率 = 0.4f;
+    [Range(0, 1.0f)] public float 出現高度率 = 0.6f;
+    [Range(0, 1.0f)] public float 到着高度率 = 0.6f;
 
     private int defeatedCount = 0;
-    [FormerlySerializedAs("killsToSpawn")] public int アイテム出現に必要な撃破数 = 5; // 何匹倒したら出るか
+    private RectTransform rectTransform;
+
+    public static ItemSpawner instance;
 
     void Awake()
     {
         if (instance == null) instance = this;
+        rectTransform = GetComponent<RectTransform>();
     }
 
-
-
-    // 敵が倒されたときに呼ばれる
     public void OnEnemyDefeated()
     {
         defeatedCount++;
-        Debug.Log($"Enemy Defeated! Count: {defeatedCount}/{アイテム出現に必要な撃破数}");
-
         if (defeatedCount >= アイテム出現に必要な撃破数)
         {
-            // プレイヤーのレベルを確認
-#if UNITY_2023_1_OR_NEWER
-            PlayerController player = Object.FindFirstObjectByType<PlayerController>();
-#else
-            PlayerController player = Object.FindObjectOfType<PlayerController>();
-#endif
-
-            if (player != null && player.現在のパワーレベル >= 3)
-            {
-                Debug.Log("Max Level Reached. No Item Spawn.");
-                defeatedCount = 0;
-                return;
-            }
-
             SpawnItem();
-            defeatedCount = 0; // カウントリセット
+            defeatedCount = 0;
         }
-    }
-
-    // 時間での生成は廃止（必要なら復活可能）
-    void Update()
-    {
-        // NO OP
-    }
-
-    void SetNextInterval()
-    {
-        // NO OP
     }
 
     void SpawnItem()
     {
-        if (パワーアップアイテムプレハブ == null)
+        if (パワーアップアイテムプレハブ == null) return;
+
+        // --- レベルキャップの判定 ---
+        // プレイヤーのレベルが最大（Lv7以上、内部値 6 以上）ならドロップしない
+        if (PlayerController.instance != null && PlayerController.instance.現在のパワーレベル >= 6)
         {
-            Debug.LogError("ItemSpawner: Power Up Prefab is NOT assigned!");
+            Debug.Log("ItemSpawner: Player is at max power. Skipping item drop.");
             return;
         }
 
-        Debug.Log("ItemSpawner: Spawning Item...");
+        // 画面全体（Canvas）を取得
+        Canvas parentCanvas = GetComponentInParent<Canvas>();
+        if (parentCanvas == null) return;
+        RectTransform canvasRT = parentCanvas.GetComponent<RectTransform>();
 
-        // 50%の確率で左か右かを決める
-        bool isLeftNode = Random.value > 0.5f;
+        // 画面のサイズから出現・目標座標を計算
+        float halfW = canvasRT.rect.width * 0.5f;
+        float halfH = canvasRT.rect.height * 0.5f;
+
+        float posX = halfW * 0.9f;
+        float spawnY = halfH * 1.1f;
+        float targetY = -halfH * 1.1f;
+
+        bool isLeft = Random.value > 0.5f;
+        Vector3 spawnPos = new Vector3(isLeft ? -posX : posX, spawnY, 0);
+        Vector3 targetPos = new Vector3(isLeft ? posX : -posX, targetY, 0);
+
+        // Canvasの直下に生成することで、座標計算を確実に同期させる
+        GameObject item = Instantiate(パワーアップアイテムプレハブ, canvasRT);
+        RectTransform itemRect = item.GetComponent<RectTransform>();
         
-        Vector3 spawnPos = isLeftNode ? 左側の出現位置 : 右側の出現位置;
-        // 左から出るなら右下へ、右から出るなら左下へ（クロス）
-        Vector3 targetPos = isLeftNode ? 右側の移動目標 : 左側の移動目標; 
-
-        GameObject item = Instantiate(パワーアップアイテムプレハブ, spawnPos, Quaternion.identity);
-        
-        // Canvas内に正しく表示されるように親をセット
-        // trueにすることで、生成した「見た目の位置」をキープしたまま親を変更します
-        item.transform.SetParent(transform, true);
-        item.transform.localScale = Vector3.one; // スケールだけは1にリセット
-
-        // 方向を設定
-        PowerUpItem script = item.GetComponent<PowerUpItem>();
-        if (script != null)
+        if (itemRect != null)
         {
-            Vector3 dir = targetPos - spawnPos;
-            script.Initialize(dir);
+            itemRect.anchoredPosition = spawnPos;
+            itemRect.localScale = Vector3.one;
+            
+            // Z座標を0に固定し、最前面に表示されるようにする
+            Vector3 pos = itemRect.localPosition;
+            pos.z = 0;
+            itemRect.localPosition = pos;
+            itemRect.SetAsLastSibling();
+
+            PowerUpItem script = item.GetComponent<PowerUpItem>();
+            if (script != null)
+            {
+                script.Initialize(targetPos - spawnPos);
+            }
         }
     }
 
+    // デバッグ用：エディタ上で出現位置と目的地を可視化する
     void OnDrawGizmos()
     {
+        Canvas targetCanvas = GetComponentInParent<Canvas>();
+        if (targetCanvas == null) targetCanvas = FindFirstObjectByType<Canvas>();
+        if (targetCanvas == null) return;
+        
+        RectTransform canvasRT = targetCanvas.GetComponent<RectTransform>();
+
+        // ギズモの行列をキャンバスのローカル行列に合わせることで、計算を簡略化
+        Matrix4x4 oldGizmosMatrix = Gizmos.matrix;
+        Gizmos.matrix = canvasRT.localToWorldMatrix;
+
+        float halfW = canvasRT.rect.width * 0.5f;
+        float halfH = canvasRT.rect.height * 0.5f;
+        float posX = halfW * 0.9f;
+        float spawnY = halfH * 1.1f;
+        float targetY = -halfH * 1.1f;
+
+        // 出現座標の球を表示
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(左側の出現位置, 20f);
-        Gizmos.DrawLine(左側の出現位置, 右側の移動目標);
+        Vector3 leftS = new Vector3(-posX, spawnY, 0);
+        Vector3 rightT = new Vector3(posX, targetY, 0);
+        Gizmos.DrawSphere(leftS, 30f); // WireSphereより視認性の高いSphereに変更
+        Gizmos.DrawLine(leftS, rightT);
 
         Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(右側の出現位置, 20f);
-        Gizmos.DrawLine(右側の出現位置, 左側の移動目標);
+        Vector3 rightS = new Vector3(posX, spawnY, 0);
+        Vector3 leftT = new Vector3(-posX, targetY, 0);
+        Gizmos.DrawSphere(rightS, 30f);
+        Gizmos.DrawLine(rightS, leftT);
+
+        Gizmos.matrix = oldGizmosMatrix;
     }
 }

@@ -27,7 +27,7 @@ RectTransform:
   m_GameObject: {fileID: 1120573657304564081}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.1655815, y: 2.1655815, z: 2.1655815}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7965982352646420283}
@@ -177,7 +177,7 @@ RectTransform:
   m_GameObject: {fileID: 4820320630218112748}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1.7324653, y: 1.7324653, z: 1.7324653}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2004078029020765751}
@@ -185,7 +185,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -3.1327, y: -0.00054932}
   m_SizeDelta: {x: 200, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &116502797882752044
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.4862745, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -330,7 +330,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 9.4308}
+  m_AnchoredPosition: {x: 0, y: -122.2}
   m_SizeDelta: {x: 200, y: 71.2341}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &4963741217794574523
@@ -363,8 +363,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 01
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 942b7c5b2a035f545a8768a175202805, type: 2}
-  m_sharedMaterial: {fileID: -2125132920811473954, guid: 942b7c5b2a035f545a8768a175202805, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a0183fa83a983d149be317d9aa022d76, type: 2}
+  m_sharedMaterial: {fileID: -5264636180738110551, guid: a0183fa83a983d149be317d9aa022d76, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

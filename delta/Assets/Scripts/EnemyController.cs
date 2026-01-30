@@ -6,7 +6,7 @@ public class EnemyController : MonoBehaviour
 {
     [Header("Movement Settings")]
     [FormerlySerializedAs("speed")] public float 移動速度 = 5f;
-    [FormerlySerializedAs("enableRotation")] public bool 回転を有効にする = true; // 回転を無効化できるようにする
+    [FormerlySerializedAs("enableRotation")] public bool 回転を有効にする = false; // 回転を無効化できるようにする
     [FormerlySerializedAs("rotateSpeed")] public float 回転速度 = 360f; // 1秒あたりの回転角度
 
     [Header("Animation Settings")]
@@ -17,7 +17,9 @@ public class EnemyController : MonoBehaviour
     [FormerlySerializedAs("explosionPrefab")] public GameObject 爆発エフェクト;
 
     [Header("Size Settings")]
-    public float 敵の大きさ倍率 = 1.0f;
+    public float 敵の大きさ倍率 = 1.0f; // ★これはScaleに使用
+    public float 表示サイズX = 64f;    // ★これはRectTransformの幅に使用
+    public float 表示サイズY = 64f;    // ★これはRectTransformの高さに使用
 
     [Header("Boss Settings")]
     [FormerlySerializedAs("isBoss")] public bool ボス設定 = false; // ボスフラグ
@@ -29,13 +31,16 @@ public class EnemyController : MonoBehaviour
     private Vector3 bossBasePos; // 左右移動の基準点
     private float spiralAngle = 0f; // 螺旋弾用角度
     private float bossTimer = 0f; // ボス動作用タイマー
+    private bool shouldFlip = false; // 左から登場する場合に反転
+    private bool isDying = false; // 撃破演出中フラグ
 
 
     private bool isInitialized = false;
     private bool wasDefeated = false; // プレイヤーに倒されたか
     private EnemySpawner spawner; // 生みの親
     private float t = 0f; // ベジェ曲線用のパラメータ (0.0 ～ 1.0)
-    private Image targetImage; // アニメーションさせる対象
+    private Image targetImage; // アニメーションさせる対象 (UI用)
+    private SpriteRenderer targetSpriteRenderer; // アニメーションさせる対象 (Sprite用)
     private float animationTimer = 0f;
     private int currentFrameIndex = 0;
     
@@ -54,9 +59,10 @@ public class EnemyController : MonoBehaviour
     void Awake()
     {
         targetImage = GetComponent<Image>();
+        targetSpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public void Initialize(Vector3 start, Vector3 control, Vector3 end, EnemySpawner owner)
+    public void Initialize(Vector3 start, Vector3 control, Vector3 end, EnemySpawner owner, bool flip)
     {
         p0 = start;
         p1 = control;
@@ -66,8 +72,9 @@ public class EnemyController : MonoBehaviour
         transform.localPosition = p0;
         isInitialized = true;
         t = 0f;
+        shouldFlip = flip; // Spawnerから渡された反転フラグをセット
         
-        Debug.Log($"Enemy Spawned at: {transform.position} (Check if this matches Bullet coordinates!)");
+        Debug.Log($"Enemy Spawned at X: {p0.x}, Flipping: {shouldFlip}");
     }
 
     [Header("Attack Settings")]
@@ -79,6 +86,13 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
+        // サイズを強制設定 (インスペクターで指定した値)
+        RectTransform rt = GetComponent<RectTransform>();
+        if (rt != null)
+        {
+            rt.sizeDelta = new Vector2(表示サイズX, 表示サイズY);
+        }
+
         // プレイヤーを探しておく（負荷軽減のためStartで）
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
@@ -103,8 +117,18 @@ public class EnemyController : MonoBehaviour
         // 最初の発射までの時間をランダムに少しずらす
         fireTimer = Random.Range(0.5f, 発射間隔);
 
-        // 大きさを適用
-        transform.localScale = Vector3.one * 敵の大きさ倍率;
+        // 登場位置に応じた反転と倍率を適用
+        float flip = shouldFlip ? -1f : 1f;
+        transform.localScale = new Vector3(flip * 敵の大きさ倍率, 敵の大きさ倍率, 1.0f);
+
+        // アニメーションの最初のコマを即座に反映してチラつきを防止（Prefabに古い画像が設定されている場合対策）
+        if (アニメーション画像リスト != null && アニメーション画像リスト.Length > 0)
+        {
+            currentFrameIndex = 0;
+            Sprite firstSprite = アニメーション画像リスト[currentFrameIndex];
+            if (targetImage != null) targetImage.sprite = firstSprite;
+            if (targetSpriteRenderer != null) targetSpriteRenderer.sprite = firstSprite;
+        }
 
         CreateHPBar();
     }
@@ -113,7 +137,7 @@ public class EnemyController : MonoBehaviour
     {
         if (HPのプレハブ == null) return;
 
-        現在のHP = 最大HP;
+        if (現在のHP <= 0) 現在のHP = 最大HP;
         
         // HPバーを生成（親は敵と同じにする）
         hpBarObject = Instantiate(HPのプレハブ, transform.parent);
@@ -149,7 +173,7 @@ public class EnemyController : MonoBehaviour
         // Spawnerに通知
         if (spawner != null)
         {
-            spawner.OnEnemyRemoved(transform.localPosition, wasDefeated);
+            spawner.OnEnemyRemoved(transform.localPosition, wasDefeated, 現在のHP, ボス設定);
         }
 
         // 自分が消える時（撃破または画面外消滅）、HPバーも一緒に消す
@@ -197,23 +221,31 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        // 回転アニメーション（有効な場合のみ）
+        /* 回転アニメーションを完全に無効化
         if (回転を有効にする)
         {
             transform.Rotate(0, 0, 回転速度 * Time.deltaTime);
         }
+        */
 
         UpdateHPBarPosition(); // HPバーの追従
 
         // 連番画像アニメーション処理
-        if (アニメーション画像リスト != null && アニメーション画像リスト.Length > 0 && targetImage != null)
+        if (アニメーション画像リスト != null && アニメーション画像リスト.Length > 0)
         {
             animationTimer += Time.deltaTime;
             if (animationTimer >= 1f / アニメーション速度FPS)
             {
                 animationTimer = 0f;
                 currentFrameIndex = (currentFrameIndex + 1) % アニメーション画像リスト.Length;
-                targetImage.sprite = アニメーション画像リスト[currentFrameIndex];
+                
+                Sprite nextSprite = アニメーション画像リスト[currentFrameIndex];
+                if (targetImage != null)
+                {
+                    targetImage.sprite = nextSprite;
+                    // targetImage.SetNativeSize(); // ← 巨大化の原因になるため削除
+                }
+                if (targetSpriteRenderer != null) targetSpriteRenderer.sprite = nextSprite;
             }
         }
 
@@ -222,6 +254,8 @@ public class EnemyController : MonoBehaviour
         // --- ボスアクティブ中の挙動 (Bezier計算より優先) ---
         if (isBossActive)
         {
+            if (isDying) return; // 撃破演出中は移動停止
+
             // 退場モード
             if (isExiting)
             {
@@ -247,6 +281,7 @@ public class EnemyController : MonoBehaviour
 
         // --- ベジェ曲線移動 (Quadratic Bezier) ---
         // B(t) = (1-t)^2 * P0 + 2(1-t)t * P1 + t^2 * P2
+        if (isDying) return; // 撃破演出中は移動停止
         t += Time.deltaTime * 移動速度 / Vector3.Distance(p0, p2); // 近似的な速度調整
 
         if (t >= 1f)
@@ -289,10 +324,10 @@ public class EnemyController : MonoBehaviour
         for (int i = 0; i < maxWaves; i++)
         {
             // 螺旋弾発射
-            yield return StartCoroutine(FireSpiralWave());
+            if (現在のHP > 0) yield return StartCoroutine(FireSpiralWave());
             
             // 次の攻撃までの待機
-            yield return new WaitForSeconds(2.0f);
+            if (現在のHP > 0) yield return new WaitForSeconds(2.0f);
         }
 
         // 終了後、退場フラグを立てる
@@ -308,6 +343,7 @@ public class EnemyController : MonoBehaviour
         for (int i = 0; i < bulletCount; i++)
         {
             // 撃つ
+            if (現在のHP <= 0) yield break;
             if (弾のプレハブ != null)
             {
                 spiralAngle += anglePerShot;
@@ -384,6 +420,27 @@ public class EnemyController : MonoBehaviour
         if (bulletScript != null)
         {
             bulletScript.Initialize(direction);
+            
+            // --- 七色弾の判定 ---
+            // 自分（Enemy）の名前がPrefab4（ラスボス）を含んでいれば、弾を七色にする
+            if (gameObject.name.Contains("Prefab4"))
+            {
+                bulletScript.isRainbow = true;
+            }
+        }
+    }
+
+    // 画面上の全ての敵の弾を消去する
+    void ClearAllEnemyBullets()
+    {
+#if UNITY_2023_1_OR_NEWER
+        var bullets = Object.FindObjectsByType<EnemyBulletController>(FindObjectsSortMode.None);
+#else
+        var bullets = Object.FindObjectsOfType<EnemyBulletController>();
+#endif
+        foreach (var bullet in bullets)
+        {
+            Destroy(bullet.gameObject);
         }
     }
 
@@ -413,9 +470,19 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    void ApplyDamage(GameObject bullet)
+    void ApplyDamage(GameObject bulletObj)
     {
-        現在のHP--;
+        int damage = 1;
+        BulletController bulletScript = bulletObj.GetComponent<BulletController>();
+        if (bulletScript == null) 
+            bulletScript = bulletObj.GetComponentInParent<BulletController>();
+            
+        if (bulletScript != null)
+        {
+            damage = bulletScript.damage;
+        }
+
+        現在のHP -= damage;
         UpdateHPBarUI();
 
         // 赤く点滅
@@ -431,7 +498,7 @@ public class EnemyController : MonoBehaviour
             Die();
         }
 
-        Destroy(bullet);
+        Destroy(bulletObj);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -461,20 +528,91 @@ public class EnemyController : MonoBehaviour
         {
             ItemSpawner.instance.OnEnemyDefeated();
         }
+
+        // SE再生
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.PlayCommonEnemyDie();
+        }
         else
         {
             Debug.LogWarning("ItemSpawner instance not found! Did you create the Empty Object and attach the script?");
         }
 
-        if (爆発エフェクト != null)
+        if (ボス設定)
         {
-            GameObject exp = Instantiate(爆発エフェクト, transform.position, Quaternion.identity);
+            // ボス専用の派手な爆破演出
+            StartCoroutine(BossExplosionRoutine());
+        }
+        else
+        {
+            // 通常の敵の爆破
+            if (爆発エフェクト != null)
+            {
+                SpawnExplosion(transform.localPosition, 2f);
+            }
+            Destroy(gameObject);
+        }
+    }
+
+    // ボスの連続爆発ルーチン
+    System.Collections.IEnumerator BossExplosionRoutine()
+    {
+        isDying = true; // 移動を停止させる
+
+        // ヒット判定を消し、攻撃を止める
+        if (TryGetComponent<Collider2D>(out var col)) col.enabled = false;
+        if (hpBarObject != null) hpBarObject.SetActive(false);
+        
+        // 既存の弾を消去
+        ClearAllEnemyBullets();
+
+        // 数秒間、ボスの姿を残したままあちこちで爆発を起こす
+        int explosionCount = 12;
+        for (int i = 0; i < explosionCount; i++)
+        {
+            // ボスの矩形範囲内でランダムに位置をずらす
+            Vector3 offset = new Vector3(
+                Random.Range(-表示サイズX * 0.5f, 表示サイズX * 0.5f),
+                Random.Range(-表示サイズY * 0.5f, 表示サイズY * 0.5f),
+                0
+            );
+
+            SpawnExplosion(transform.localPosition + offset, Random.Range(2.5f, 5.0f));
             
-            // UIモードの場合、親キャンバス内にいないと表示されないため、親を敵と同じにする
-            exp.transform.SetParent(transform.parent);
-            exp.transform.localScale = Vector3.one * 2f; // 少し大きく表示（好みで調整可能）
+            yield return new WaitForSeconds(0.15f);
         }
 
+        // 最後に中央で大きな爆発を起こし、ボスの姿を消す
+        if (targetImage != null) targetImage.enabled = false;
+        if (targetSpriteRenderer != null) targetSpriteRenderer.enabled = false;
+        
+        // ボス撃破SE
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.PlayBossDie();
+        }
+
+        SpawnExplosion(transform.localPosition, 8.0f);
+        yield return new WaitForSeconds(0.5f);
+
         Destroy(gameObject);
+    }
+
+    // 爆発を1つ生成するヘルパー（親空間の座標を使用）
+    void SpawnExplosion(Vector3 localPos, float scale)
+    {
+        if (爆発エフェクト == null) return;
+
+        GameObject exp = Instantiate(爆発エフェクト, transform.parent);
+        exp.transform.localPosition = localPos;
+        exp.transform.localScale = Vector3.one * scale;
+    }
+
+    // HPを外部からセットする（再登場時用）
+    public void SetCurrentHP(int hp)
+    {
+        現在のHP = hp;
+        UpdateHPBarUI();
     }
 }

@@ -68,18 +68,20 @@ public class BackgroundScroller : MonoBehaviour
                 Debug.LogWarning("BackgroundScroller: UV Rect Height is close to 1. Scrolling will not be visible! Set H to 0.2 approx.");
             }
 
-            float maxY = Mathf.Max(0, 1.0f - currentRect.height);
+            // 表示されている範囲を考慮したスクロール可能距離
+            // height < 1 (マップ形式) の場合は 0〜(1-height)
+            // height > 1 (タイル形式) の場合は負の値になり、その分だけ逆方向に繰り返す
+            float scrollDistance = 1.0f - currentRect.height;
             
-            // 0 から maxY まで進む
-            // 倍率をかけて、その時間内に何倍の距離を進むか（結果的にループする）
-            y = Mathf.Repeat(Mathf.Lerp(0f, maxY, progress) * speedMultiplier, 1.0f);
+            // 0 から scrollDistance まで進む (speedMultiplier でさらに何倍回すか調整可能)
+            y = Mathf.Repeat(Mathf.Lerp(0f, scrollDistance, progress) * speedMultiplier, 1.0f);
             
-            // Debug.Log($"BG Scroll: Time={currentTime}, Progress={progress}, Y={y}, MaxY={maxY}");
+            // Debug.Log($"BG Scroll: Time={currentTime}, Progress={progress}, Y={y}, Dist={scrollDistance}");
         }
         else
         {
             // 通常のループスクロール
-            y = Mathf.Repeat(Time.time * scrollSpeed * speedMultiplier, 1);
+            y = Mathf.Repeat(Time.time * scrollSpeed * speedMultiplier, 1.0f);
         }
 
         // スクロール位置の適用

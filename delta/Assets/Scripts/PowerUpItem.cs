@@ -8,6 +8,9 @@ public class PowerUpItem : MonoBehaviour
     [FormerlySerializedAs("speed")] public float 移動速度 = 300f; // UIモードを想定して少し大きめ
     [FormerlySerializedAs("direction")] public Vector3 移動方向 = Vector3.down; // 基本は下方向だが、生成時に書き換える
 
+    [Header("Size Settings")]
+    public float アイテムの大きさ = 1.0f;
+
     [Header("Animation Settings")]
     [FormerlySerializedAs("pulseSpeed")] public float 点滅速度 = 5f;
     [FormerlySerializedAs("pulseScaleRange")] public float 点滅サイズ範囲 = 0.2f; // 元のサイズ ± この値
@@ -21,6 +24,8 @@ public class PowerUpItem : MonoBehaviour
 
     void Start()
     {
+        // 指定された大きさ倍率を適用
+        transform.localScale *= アイテムの大きさ;
         originalScale = transform.localScale;
         
         // 当たり判定用コライダー (Trigger)
@@ -44,16 +49,27 @@ public class PowerUpItem : MonoBehaviour
         
         Debug.Log($"PowerUpItem Initialized. Pos: {transform.position}, Collider Size: {col.size}");
         
-        // 5秒で自動消滅（画面外に出なくても消える保険）
-        Destroy(gameObject, 5f);
+        // 60秒で自動消滅（画面を横切るのに十分すぎる時間。途中で消えるのを防ぐ）
+        Destroy(gameObject, 60f);
 
         SetupGlow();
     }
 
     void Update()
     {
-        // 移動
-        transform.Translate(移動方向 * 移動速度 * Time.deltaTime);
+        // 直移動 (localPosition) でより安定した挙動に
+        transform.localPosition += 移動方向 * 移動速度 * Time.deltaTime;
+        
+        // Z座標を確実に0に固定
+        Vector3 fixedPos = transform.localPosition;
+        fixedPos.z = 0f;
+        transform.localPosition = fixedPos;
+
+        // 画面下端を大幅に超えたら消去 (解像度によらず安全に消す)
+        if (transform.localPosition.y < -2000f)
+        {
+            Destroy(gameObject);
+        }
 
         // 拡大縮小アニメーション (PingPong)
         float scale = 1f + Mathf.Sin(Time.time * 点滅速度) * 点滅サイズ範囲;
@@ -99,6 +115,12 @@ public class PowerUpItem : MonoBehaviour
             if (player != null)
             {
                 player.LevelUp();
+            }
+
+            // SE再生
+            if (AudioManager.instance != null)
+            {
+                AudioManager.instance.PlayItemGet();
             }
 
             // 自分は消える
@@ -160,5 +182,9 @@ public class PowerUpItem : MonoBehaviour
                 // 今回はImage優先で実装。SpriteRendererの場合は点滅しない（要修正だが、画像からImage確定なので簡易対応）
             }
         }
+    }
+    void OnDestroy()
+    {
+        Debug.Log($"PowerUpItem Destroyed at Pos: {transform.position}");
     }
 }

@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -7554190389938616290, guid: 61dc1899db42d23479bc144ef0255747, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2ef5e317c02c46e43adf18cf55e1cde8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -139,20 +139,19 @@ MonoBehaviour:
   "\u56DE\u8EE2\u3092\u6709\u52B9\u306B\u3059\u308B": 0
   "\u56DE\u8EE2\u901F\u5EA6": 360
   "\u30A2\u30CB\u30E1\u30FC\u30B7\u30E7\u30F3\u753B\u50CF\u30EA\u30B9\u30C8":
-  - {fileID: -7554190389938616290, guid: 61dc1899db42d23479bc144ef0255747, type: 3}
-  - {fileID: -6171601871332219869, guid: 61dc1899db42d23479bc144ef0255747, type: 3}
-  - {fileID: -6161751754961468864, guid: 61dc1899db42d23479bc144ef0255747, type: 3}
-  - {fileID: -9138065241244309253, guid: 61dc1899db42d23479bc144ef0255747, type: 3}
-  - {fileID: -903194827723753656, guid: 61dc1899db42d23479bc144ef0255747, type: 3}
-  - {fileID: 7096058071680937248, guid: 61dc1899db42d23479bc144ef0255747, type: 3}
+  - {fileID: 21300000, guid: 2ef5e317c02c46e43adf18cf55e1cde8, type: 3}
+  - {fileID: 21300000, guid: 81df4c54fbb80744a98038af718562a9, type: 3}
+  - {fileID: 21300000, guid: 260b127ac5f7aa545a2e2f4cda0683d1, type: 3}
   "\u30A2\u30CB\u30E1\u30FC\u30B7\u30E7\u30F3\u901F\u5EA6FPS": 12
   "\u7206\u767A\u30A8\u30D5\u30A7\u30AF\u30C8": {fileID: 5939684090872286257, guid: 42fffb0747186ee4eb61f0384c779153, type: 3}
-  "\u6575\u306E\u5927\u304D\u3055\u500D\u7387": 5
+  "\u6575\u306E\u5927\u304D\u3055\u500D\u7387": 8
+  "\u8868\u793A\u30B5\u30A4\u30BAX": 64
+  "\u8868\u793A\u30B5\u30A4\u30BAY": 64
   "\u30DC\u30B9\u8A2D\u5B9A": 1
   "\u30DC\u30B9\u6EDE\u5728\u6642\u9593": 20
   "\u30DC\u30B9\u5DE6\u53F3\u79FB\u52D5\u5E45": 200
   "\u30DC\u30B9\u79FB\u52D5\u901F\u5EA6": 2
-  "\u6700\u5927HP": 300
+  "\u6700\u5927HP": 100
   "HP\u306E\u30D7\u30EC\u30CF\u30D6": {fileID: 8471606271546233661, guid: bd940af625e68ca46834b18ce9de2445, type: 3}
   "HP\u30D0\u30FC\u306E\u4F4D\u7F6E\u30AA\u30D5\u30BB\u30C3\u30C8": {x: 0, y: -60, z: 0}
   "\u5F3E\u306E\u30D7\u30EC\u30CF\u30D6": {fileID: 1421933388556222136, guid: 3059003e60886e9479ff242bcc632deb, type: 3}

@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 24, y: -114}
-  m_SizeDelta: {x: 383.8977, y: 64.56738}
+  m_AnchoredPosition: {x: 24, y: -51.8}
+  m_SizeDelta: {x: 380.2232, y: 36.4673}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &5949038271775895158
 CanvasRenderer:
@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0000000000000
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 942b7c5b2a035f545a8768a175202805, type: 2}
-  m_sharedMaterial: {fileID: -2125132920811473954, guid: 942b7c5b2a035f545a8768a175202805, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a0183fa83a983d149be317d9aa022d76, type: 2}
+  m_sharedMaterial: {fileID: -5264636180738110551, guid: a0183fa83a983d149be317d9aa022d76, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -92,15 +92,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 38
+  m_fontSizeBase: 38
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -187,6 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   "\u30B9\u30B3\u30A2\u8868\u793A\u30C6\u30AD\u30B9\u30C8": {fileID: 1106514260255968328}
+  bonusAnimationPrefab: {fileID: 7239646123566541505, guid: b2d3824f14c888d4089268e691caeb01, type: 3}
   "\u73FE\u5728\u306E\u30B9\u30B3\u30A2": 0
 --- !u!1 &6479729012022305664
 GameObject:
@@ -220,11 +221,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 8676611579822967206}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -142, y: 560}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 22.900024, y: -46.600037}
   m_SizeDelta: {x: 1546.6, y: 239.4477}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!222 &601914970837016850
 CanvasRenderer:
   m_ObjectHideFlags: 0

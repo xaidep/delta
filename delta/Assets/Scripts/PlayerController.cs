@@ -7,7 +7,15 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [FormerlySerializedAs("bulletPrefab")] public GameObject 弾のプレハブ;
+    public GameObject 斜め弾_左プレハブ;
+    public GameObject 斜め弾_右プレハブ;
+    public GameObject 弾_Lv6プレハブ;
+    public GameObject 弾_Lv7プレハブ;
     [FormerlySerializedAs("fireInterval")] public float 発射間隔 = 0.2f;
+
+    [Header("Bullet Scale Settings")]
+    public float bulletScaleLv6 = 1.0f; // Level 6 (Bullet_3) の大きさ
+    public float bulletScaleLv7 = 1.0f; // Level 7 (Bullet_4) の大きさ
 
     [Header("Player Settings")]
     public float 自機の大きさ倍率 = 1.5f;
@@ -41,9 +49,16 @@ public class PlayerController : MonoBehaviour
     private int 現在のHP;
     private Image hpFillImage;
 
+    public static PlayerController instance;
+
+    void Awake()
+    {
+        if (instance == null) instance = this;
+    }
+
     void Start()
     {
-        // カメラの取得（タグ設定忘れ対策）
+        // カメラの取得
         mainCamera = Camera.main;
         if (mainCamera == null)
         {
@@ -52,7 +67,6 @@ public class PlayerController : MonoBehaviour
 #else
             mainCamera = Object.FindObjectOfType<Camera>();
 #endif
-            if (mainCamera == null) Debug.LogError("PlayerController: No Camera found in scene!");
         }
 
         rectTransform = GetComponent<RectTransform>();
@@ -66,44 +80,44 @@ public class PlayerController : MonoBehaviour
             rootCanvas = GetComponentInParent<Canvas>();
         }
         
+        // マウス位置の初期化（中央）
+        lastValidMousePos = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
+
         // 自機の大きさを適用
         transform.localScale = Vector3.one * 自機の大きさ倍率;
 
-        // 当たり判定がない場合は追加 (UIモード用にサイズ調整)
-        if (GetComponent<Collider2D>() == null)
-        {
-            BoxCollider2D col = gameObject.AddComponent<BoxCollider2D>();
-            col.isTrigger = true;
-            float finalSize = 当たり判定の基本サイズ * 自機の大きさ倍率 * 当たり判定の縮小率;
-            if (rectTransform != null) col.size = new Vector2(finalSize, finalSize);
-        }
-        else if (GetComponent<BoxCollider2D>() != null)
-        {
-            // すでにColliderがある場合もサイズを更新
-            BoxCollider2D col = GetComponent<BoxCollider2D>();
-            float finalSize = 当たり判定の基本サイズ * 自機の大きさ倍率 * 当たり判定の縮小率;
-            if (rectTransform != null) col.size = new Vector2(finalSize, finalSize);
-        }
+        // 当たり判定の設定
+        UpdateColliderSize();
 
         // Trigger判定にはRigidbodyが必要
         if (GetComponent<Rigidbody2D>() == null)
         {
             var rb = gameObject.AddComponent<Rigidbody2D>();
-            rb.bodyType = RigidbodyType2D.Kinematic; // 物理挙動はさせない
+            rb.bodyType = RigidbodyType2D.Kinematic;
             rb.gravityScale = 0f;
         }
         
-        // 画像コンポーネントを取得しておく
-        if (rectTransform != null)
-            uiImage = GetComponent<Image>();
-        else
-            spriteRenderer = GetComponent<SpriteRenderer>();
+        // 画像コンポーネントを取得
+        if (rectTransform != null) uiImage = GetComponent<Image>();
+        else spriteRenderer = GetComponent<SpriteRenderer>();
             
         lastPosition = transform.position;
 
         CreateShadow(); // 影を作成
         CreateHPBar();  // HPバーの作成
-        UpdateStats();  // 初期状態の反映（ファンネルを隠すなど）
+        UpdateStats();  // 初期状態の反映
+    }
+
+    private void UpdateColliderSize()
+    {
+        BoxCollider2D col = GetComponent<BoxCollider2D>();
+        if (col == null) 
+        {
+            col = gameObject.AddComponent<BoxCollider2D>();
+            col.isTrigger = true;
+        }
+        float finalSize = 当たり判定の基本サイズ * 自機の大きさ倍率 * 当たり判定の縮小率;
+        if (rectTransform != null) col.size = new Vector2(finalSize, finalSize);
     }
 
     void CreateHPBar()
@@ -151,20 +165,19 @@ public class PlayerController : MonoBehaviour
 
     void OnDestroy()
     {
-        // ヒエラルキー上の共有物なので、ここでは何もしない（削除しない）
-        if (shadowObject != null)
-        {
-            Destroy(shadowObject);
-        }
+        if (shadowObject != null) Destroy(shadowObject);
     }
 
     void UpdateHPBarUI()
     {
         if (hpFillImage != null)
         {
-            hpFillImage.fillAmount = (float)現在のHP / 最大HP;
+            hpFillImage.fillAmount = Mathf.Clamp01((float)現在のHP / 最大HP);
         }
     }
+
+    // --- 移動制御用の変数 ---
+    private Vector2 lastValidMousePos; // 最後に確認された正常なマウス座標
 
     void Update()
     {
@@ -173,155 +186,118 @@ public class PlayerController : MonoBehaviour
         UpdateShadow(); // 影の位置更新
     }
 
-    // Simulator (Touch) 環境でマウスホバーを取るための裏技
-    // Input.mousePositionはタッチ時以外更新されないため、EditorのGUIイベントから座標を盗む
-    private Vector2 lastGuiMousePos;
+    // マウス位置の最終追従座標（スクリーン空間）
+    private Vector2 currentTrackingPos;
 
     void OnGUI()
     {
-        // レイアウトイベント以外ならマウス位置が更新されている可能性が高い
+        // OnGUIはクリックに関わらずマウス位置イベントを受信できるため、最優先で使用
         if (Event.current != null)
         {
-            lastGuiMousePos = Event.current.mousePosition;
+            Vector2 guiPos = Event.current.mousePosition;
+            // OnGUI座標(左上が0) → スクリーン座標(左下が0)へ変換
+            currentTrackingPos = new Vector2(guiPos.x, Screen.height - guiPos.y);
         }
     }
 
     void MovePlayer()
     {
-        Vector3 currentPos = transform.position;
-
-        // 画面外に出ないようにマウス座標を制限 (Clamp)
-        float padding = 30f; // 画面端からの余白
-        
-        // --- 座標取得ロジック (Simulator対応版) ---
-        // 優先順位:
-        // 1. OnGUI Mouse Position (SimulatorでHoverを取る唯一の確実な方法)
-        // 2. Clicked Input (Input.mousePosition)
-        
-        Vector3 rawMousePos = Vector3.zero;
-        
-        // OnGUI coordinate is Top-Left origin. Convert to Bottom-Left.
-        Vector3 guiPos = new Vector3(lastGuiMousePos.x, Screen.height - lastGuiMousePos.y, 0f);
-        
-        // もしOnGUI座標が画面内にあるなら、それを採用 (Simulatorの枠外などの変な値を除外)
-        // ただしSimulatorではScreen.widthがスマホ解像度になるため、OnGUI座標(Window座標)と一致しない場合がある
-        // そのため、比率計算などで補正するのが理想だが、ここでは「クリックされているか」で判断を変える
-        
-        // シンプルかつ強力なアプローチ:
-        // Input.mousePosition (タッチ/クリック中) が有効ならそれを使う (一番正確)
-        // そうでなければ OnGUI座標 を使う (ホバー用)
-        
-        bool isTouching = false;
-        try { isTouching = Input.GetMouseButton(0) || Input.touchCount > 0; } catch {}
-        
-        if (isTouching)
+        // --- 1. マウス/タッチ座標の取得と徹底的なクランプ (複数のソースから取得) ---
+        // 基本ソース1: New Input System (最も堅牢でクリックに強い)
+        Vector3 rawPos = currentTrackingPos;
+        if (Mouse.current != null)
         {
-             try { rawMousePos = Input.mousePosition; } catch { rawMousePos = guiPos; }
+            rawPos = Mouse.current.position.ReadValue();
         }
         else
         {
-             // ホバー中: OnGUI座標を使うが、座標系変換が必要なケースがある
-             // Simulatorの場合、GUI座標は「Window上のピクセル」、Screenは「スマホのピクセル」
-             // これがズレると「右端で止まる」現象になる。
-             // 幸い、OnGUIとInput.mousePositionの座標系は通常一致する(GameViewなら)。
-             rawMousePos = guiPos;
+            // 基本ソース2: Legacy Input (Input Systemがない環境用)
+            Vector3 legacyPos = Input.mousePosition;
+            // 画面外でも追従するように、値が取得できるなら採用
+            if (legacyPos != Vector3.zero || rawPos == Vector3.zero) 
+            {
+                rawPos = legacyPos;
+            }
         }
 
-        Vector3 clampedMousePos = rawMousePos;
-        
-        clampedMousePos.x = Mathf.Clamp(clampedMousePos.x, padding, Screen.width - padding);
-        clampedMousePos.y = Mathf.Clamp(clampedMousePos.y, padding, Screen.height - padding);
+        // 基本ソース3: OnGUI (SimulatorやEditor特有の挙動向けの最終バックアップ)
+        // もしソース1,2が止まっていて、OnGUIが動いているならそちらを採用
+        if (currentTrackingPos != Vector2.zero && (rawPos == Vector3.zero))
+        {
+            rawPos = currentTrackingPos;
+        }
 
-        // UIモード (Canvas内) かどうかで処理を分ける
+        // 徹底的なクランプ (境界ガードの核)
+        // マウスが画面外へ出ても、値を 0〜Screenサイズ に固定することで「淵に吸い付く」挙動を実現します
+        float clampedX = Mathf.Clamp(rawPos.x, 0f, Screen.width);
+        float clampedY = Mathf.Clamp(rawPos.y, 0f, Screen.height);
+        Vector3 targetScreenPos = new Vector3(clampedX, clampedY, 0f);
+
+        // --- 2. 座標変換と物理的な移動 ---
         if (rectTransform != null && parentRect != null && rootCanvas != null)
         {
-            // --- UIモード (Canvas Overlay / Camera 対応) ---
+            // UIモード (Canvas内)
             Vector2 localPoint;
             Camera cam = (rootCanvas.renderMode == RenderMode.ScreenSpaceOverlay) ? null : mainCamera;
             
-            bool result = RectTransformUtility.ScreenPointToLocalPointInRectangle(parentRect, clampedMousePos, cam, out localPoint);
-            
-            // Debug Log to diagnose movement issue
-            // Debug.Log($"Input: {clampedMousePos}, Result: {result}, Local: {localPoint}, Cam: {cam}");
-
-            if (result)
+            if (RectTransformUtility.ScreenPointToLocalPointInRectangle(parentRect, targetScreenPos, cam, out localPoint))
             {
+                // NaNチェック
+                if (float.IsNaN(localPoint.x) || float.IsNaN(localPoint.y)) return;
+
+                // 境界ガード：見た目ギリギリまで行けるように自機の「半径」分だけマージンを設ける
+                // 0.5f（ちょうど半分）にすることで、機体の端が画面端にピタッと止まります
+                float hW = (rectTransform.rect.width * 自機の大きさ倍率) * 0.5f;
+                float hH = (rectTransform.rect.height * 自機の大きさ倍率) * 0.5f;
+
+                float minX = parentRect.rect.xMin + hW;
+                float maxX = parentRect.rect.xMax - hW;
+                float minY = parentRect.rect.yMin + hH;
+                float maxY = parentRect.rect.yMax - hH;
+
+                localPoint.x = Mathf.Clamp(localPoint.x, minX, maxX);
+                localPoint.y = Mathf.Clamp(localPoint.y, minY, maxY);
+
                 rectTransform.anchoredPosition = localPoint;
             }
-            else
-            {
-                 // 変換に失敗した場合のフォールバック
-                 // Debug.Log($"RectTransformUtility Failed. CanvasMode: {rootCanvas.renderMode}");
-
-                 if (rootCanvas.renderMode == RenderMode.ScreenSpaceOverlay)
-                 {
-                     transform.position = clampedMousePos;
-                 }
-                 else
-                 {
-                     Vector3 worldPoint = cam.ScreenToWorldPoint(new Vector3(clampedMousePos.x, clampedMousePos.y, 10f));
-                     transform.position = worldPoint;
-                 }
-            }
         }
-        else if (rectTransform != null)
+        else if (rectTransform == null && mainCamera != null)
         {
-            // fallback (parentRectがない場合など)
-            // デバッグ用ログ: なぜ上のifに入らなかったか
-            if (parentRect == null) Debug.Log("MovePlayer: ParentRect is null");
-            if (rootCanvas == null) Debug.Log("MovePlayer: RootCanvas is null");
+            // 2D Sprite モード (World Space)
+            Vector3 worldPos = mainCamera.ScreenToWorldPoint(new Vector3(targetScreenPos.x, targetScreenPos.y, 10f));
+            worldPos.z = 0f;
+
+            // Viewport範囲 (0〜1) でクランプして絶対端を維持
+            Vector3 viewportPos = mainCamera.WorldToViewportPoint(worldPos);
+            viewportPos.x = Mathf.Clamp01(viewportPos.x);
+            viewportPos.y = Mathf.Clamp01(viewportPos.y);
             
-            transform.position = clampedMousePos;
+            transform.position = mainCamera.ViewportToWorldPoint(viewportPos);
         }
-        else
-        {
-            // --- 2D Sprite モード (World Space) ---
-            if (mainCamera != null)
-            {
-                Vector3 mousePos = clampedMousePos;
-                mousePos.z = 10f; 
-                Vector3 worldPos = mainCamera.ScreenToWorldPoint(mousePos);
-                worldPos.z = 0f;
-                transform.position = worldPos;
-            }
-        }
-        
-        currentPos = transform.position; // 移動後の位置
 
-        // 移動方向による画像の切り替え
+        // --- 3. アニメーション制御 ---
+        Vector3 currentPos = transform.position;
         float deltaX = currentPos.x - lastPosition.x;
-        float deltaY = currentPos.y - lastPosition.y; // Y方向の移動量
+        float deltaY = currentPos.y - lastPosition.y; 
         
-        // 感度調整
         float threshold = 0.01f; 
+        ControlEngineEffectState(deltaY > threshold);
 
-        // 前進（上移動）している時だけエフェクトを表示
-        bool isMovingForward = deltaY > threshold;
-        ControlEngineEffects(isMovingForward);
-
-        if (deltaX < -threshold)
-        {
-            // 左移動
-            ChangeSprite(画像_左);
-            stationaryTimer = 0f;
-        }
-        else if (deltaX > threshold)
-        {
-            // 右移動
-            ChangeSprite(画像_右);
-            stationaryTimer = 0f;
-        }
+        if (deltaX < -threshold) { ChangeSprite(画像_左); stationaryTimer = 0f; }
+        else if (deltaX > threshold) { ChangeSprite(画像_右); stationaryTimer = 0f; }
         else
         {
-            // ほぼ静止している場合
             stationaryTimer += Time.deltaTime;
-            if (stationaryTimer > 0.1f)
-            {
-                ChangeSprite(画像_中央);
-            }
+            if (stationaryTimer > 0.1f) ChangeSprite(画像_中央);
         }
 
         lastPosition = currentPos;
+    }
+
+    // メソッド名の重複を避けるための微調整
+    void ControlEngineEffectState(bool isActive)
+    {
+        ControlEngineEffects(isActive);
     }
 
     // エンジンエフェクトの表示切り替え
@@ -402,43 +378,213 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
-        if (弾のプレハブ == null) return;
+        if (rectTransform == null) return;
 
-        // レベルに応じた発射パターン
-        // Lv0: 1発 (中央)
-        // Lv1: 2発 (左右)
-        // Lv2: 4発 (左右 + ファンネル2)
-        // Lv3: 7発 (左右 + ファンネル4 + 中央)
+        // SE再生
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.PlayPlayerShoot();
+        }
+
+        // レベルに応じた攻撃力 (Lv6: 2倍, Lv7: 3倍)
+        int currentDamage = 1;
+        if (現在のパワーレベル >= 6) currentDamage = 3;
+        else if (現在のパワーレベル >= 5) currentDamage = 2;
+
+        // レベルに応じてメインの弾プレハブを選択
+        GameObject prefabToUse = 弾のプレハブ;
+        if (現在のパワーレベル >= 6 && 弾_Lv7プレハブ != null) prefabToUse = 弾_Lv7プレハブ;
+        else if (現在のパワーレベル >= 5 && 弾_Lv6プレハブ != null) prefabToUse = 弾_Lv6プレハブ;
+
+        if (prefabToUse == null) 
+        {
+            Debug.LogError("[PlayerController] No Main Bullet Prefab assigned!");
+            return;
+        }
+
+        // --- レベル7 特別パターン (添付画像に基づく扇形) ---
+        if (現在のパワーレベル >= 6)
+        {
+            Vector3 centerPos = rectTransform.localPosition;
+            float shootY = centerPos.y + 弾の発射位置オフセット;
+
+            // 1. 中央: 大リング (Bullet_4)
+            CreateBulletUniversal(弾_Lv7プレハブ, new Vector3(centerPos.x, shootY, 0f), true, 発射エフェクト位置オフセット, currentDamage, bulletScaleLv7);
+
+            // 2. 内側斜め: 三日月弾 (Bullet_2)
+            if (斜め弾_左プレハブ != null && 斜め弾_右プレハブ != null)
+            {
+                CreateDiagonalBullet(transform.TransformPoint(new Vector3(-弾の発射位置オフセット * 1.5f, 弾の発射位置オフセット, 0f)), 斜め弾_左プレハブ, 20f, currentDamage);
+                CreateDiagonalBullet(transform.TransformPoint(new Vector3(弾の発射位置オフセット * 1.5f, 弾の発射位置オフセット, 0f)), 斜め弾_右プレハブ, -20f, currentDamage);
+            }
+
+            // 3. 外側斜め: 小リング (Bullet_3)
+            if (弾_Lv6プレハブ != null)
+            {
+                CreateDiagonalBullet(transform.TransformPoint(new Vector3(-弾の発射位置オフセット * 3f, 弾の発射位置オフセット, 0f)), 弾_Lv6プレハブ, 40f, currentDamage, bulletScaleLv6);
+                CreateDiagonalBullet(transform.TransformPoint(new Vector3(弾の発射位置オフセット * 3f, 弾の発射位置オフセット, 0f)), 弾_Lv6プレハブ, -40f, currentDamage, bulletScaleLv6);
+            }
+
+            // 4. ファンネルからも発射 (Lv7なら全4機)
+            if (ファンネルリスト != null)
+            {
+                for (int i = 0; i < ファンネルリスト.Length && i < 4; i++)
+                {
+                    if (ファンネルリスト[i] != null && ファンネルリスト[i].activeSelf)
+                    {
+                        CreateBulletUniversal(弾_Lv7プレハブ, ファンネルリスト[i].transform.position, false, ファンネル発射エフェクト位置オフセット, currentDamage, bulletScaleLv7);
+                    }
+                }
+            }
+            return; // Lv7パターン完了
+        }
+
+        // --- 通常のレベルアップパターン (Lv0-6) ---
+        float currentScale = 1.0f;
+        if (現在のパワーレベル == 5) currentScale = bulletScaleLv6;
 
         // 基本の左右発射 (Lv1以上)
         if (現在のパワーレベル >= 1)
         {
-            CreateBullet(-弾の発射位置オフセット);
-            CreateBullet(弾の発射位置オフセット);
+            Vector3 centerPos = rectTransform.localPosition;
+            CreateBulletUniversal(prefabToUse, centerPos + new Vector3(-弾の発射位置オフセット, 弾の発射位置オフセット, 0f), true, 発射エフェクト位置オフセット, currentDamage, currentScale);
+            CreateBulletUniversal(prefabToUse, centerPos + new Vector3(弾の発射位置オフセット, 弾の発射位置オフセット, 0f), true, 発射エフェクト位置オフセット, currentDamage, currentScale);
         }
 
-        // 中央発射 (Lv0 または Lv3)
+        // 中央発射 (Lv0 または Lv3以上)
         if (現在のパワーレベル == 0 || 現在のパワーレベル >= 3)
         {
-             CreateBullet(0f);
+             CreateBulletUniversal(prefabToUse, rectTransform.localPosition + new Vector3(0f, 弾の発射位置オフセット, 0f), true, 発射エフェクト位置オフセット, currentDamage, currentScale);
         }
 
         // ファンネル発射 (Lv2以上)
         if (現在のパワーレベル >= 2 && ファンネルリスト != null)
         {
-            // ファンネルのリストから、有効なものだけ発射
-            // Lv2なら2つ、Lv3なら全部(4つ)と想定
             int activeCount = (現在のパワーレベル == 2) ? 2 : 4;
             
             for (int i = 0; i < ファンネルリスト.Length && i < activeCount; i++)
             {
                 if (ファンネルリスト[i] != null && ファンネルリスト[i].activeSelf)
                 {
-                    // ファンネル用のオフセットを使う
-                    CreateBulletFromPosition(ファンネルリスト[i].transform.position, ファンネル発射エフェクト位置オフセット);
+                    CreateBulletUniversal(prefabToUse, ファンネルリスト[i].transform.position, false, ファンネル発射エフェクト位置オフセット, currentDamage, currentScale);
                 }
             }
         }
+
+        // 斜め弾のロジック (レベル5, 6)
+        if ((現在のパワーレベル == 4 || 現在のパワーレベル == 5) && 斜め弾_左プレハブ != null && 斜め弾_右プレハブ != null)
+        {
+            if (ファンネルリスト != null && ファンネルリスト.Length >= 4 && 
+                ファンネルリスト[3] != null && ファンネルリスト[3].activeSelf &&
+                ファンネルリスト[2] != null && ファンネルリスト[2].activeSelf)
+            {
+                CreateDiagonalBullet(ファンネルリスト[3].transform.position, 斜め弾_左プレハブ, 45f, currentDamage);
+                CreateDiagonalBullet(ファンネルリスト[2].transform.position, 斜め弾_右プレハブ, -45f, currentDamage);
+            }
+        }
+    }
+
+    // 汎用的な弾生成ヘルパー
+    void CreateBulletUniversal(GameObject prefab, Vector3 positionOrLocal, bool isLocal, Vector3 flashOffset = default, int damage = 1, float scaleOverride = 1.0f)
+    {
+        if (prefab == null) return;
+        
+        GameObject bullet;
+        if (isLocal)
+        {
+            bullet = Instantiate(prefab, transform.parent);
+            bullet.transform.localPosition = positionOrLocal;
+        }
+        else
+        {
+            bullet = Instantiate(prefab, positionOrLocal, Quaternion.identity);
+            bullet.transform.SetParent(transform.parent);
+        }
+
+        // プレハブの元のスケールを尊重しつつ、倍率を適用する
+        bullet.transform.localScale = prefab.transform.localScale * scaleOverride;
+        bullet.transform.SetAsLastSibling();
+        
+        // Z座標を0に固定（UIモード用）
+        Vector3 pos = bullet.transform.localPosition;
+        pos.z = 0;
+        bullet.transform.localPosition = pos;
+
+        // マズルフラッシュ生成
+        if (発射エフェクトプレハブ != null)
+        {
+            // 弾のワールド位置に生成
+            GameObject flash = Instantiate(発射エフェクトプレハブ, bullet.transform.position, bullet.transform.rotation);
+            // プレイヤーに追従させる
+            flash.transform.SetParent(transform);
+            flash.transform.localScale = Vector3.one;
+            // 指定されたオフセットをローカル座標で適用
+            flash.transform.localPosition += flashOffset;
+            flash.transform.SetAsLastSibling();
+        }
+
+        // 弾のスクリプト (これがないと動かない)
+        BulletController bc = bullet.GetComponent<BulletController>();
+        if (bc == null)
+        {
+            bc = bullet.AddComponent<BulletController>();
+        }
+        bc.damage = damage;
+    }
+
+    // 斜め弾生成用のヘルパー
+    void CreateDiagonalBullet(Vector3 position, GameObject prefab, float angle, int damage = 1, float scaleOverride = 1.0f)
+    {
+        if (prefab == null) return;
+        
+        // Canvasの親を直接指定して生成
+        GameObject bullet = Instantiate(prefab, transform.parent);
+        bullet.name = "DiagonalBullet_" + prefab.name;
+
+        if (rectTransform != null)
+        {
+            // 位置をワールド座標で合わせる
+            bullet.transform.position = position;
+            
+            // UI表示のためのZ座標補正
+            Vector3 lPos = bullet.transform.localPosition;
+            lPos.z = 0;
+            bullet.transform.localPosition = lPos;
+            
+            // プレハブの元のスケールを尊重しつつ、倍率を適用する
+            bullet.transform.localScale = prefab.transform.localScale * scaleOverride;
+            
+            // レイヤーを合わせる
+            bullet.layer = gameObject.layer;
+
+            // 最前面へ
+            bullet.transform.SetAsLastSibling();
+
+            // マズルフラッシュ生成 (斜め弾用)
+            if (発射エフェクトプレハブ != null)
+            {
+                GameObject flash = Instantiate(発射エフェクトプレハブ, bullet.transform.position, bullet.transform.rotation);
+                flash.transform.SetParent(transform);
+                flash.transform.localScale = Vector3.one;
+                // ファンネル用のオフセットを適用
+                flash.transform.localPosition += ファンネル発射エフェクト位置オフセット;
+                flash.transform.SetAsLastSibling();
+            }
+        }
+        
+        // 角度を設定 (進行方向を向かせる)
+        bullet.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        // スクリプト付与
+        BulletController bc = bullet.GetComponent<BulletController>();
+        if (bc == null) bc = bullet.AddComponent<BulletController>();
+        
+        bc.damage = damage;
+        // 斜め弾は通常の弾(1200)より少し速く設定して爽快感を出す
+        bc.bulletSpeed = 1400f;
+
+        bullet.SetActive(true);
+        // Debug.Log($"[PlayerController] CreateDiagonalBullet Success: {prefab.name}, Damage: {damage}, Angle: {angle}");
     }
 
     public void LevelUp()
@@ -446,7 +592,7 @@ public class PlayerController : MonoBehaviour
         // レベルアップ効果のフラッシュは削除 (ユーザー要望)
         // StartCoroutine(FlashWhite());
 
-        if (現在のパワーレベル < 3)
+        if (現在のパワーレベル < 6)
         {
             現在のパワーレベル++;
             UpdateStats();
@@ -454,6 +600,12 @@ public class PlayerController : MonoBehaviour
             
             // パワーアップ演出 (UI) を表示 (コルーチンで停止処理を含む)
             StartCoroutine(ShowPowerUpSequence());
+
+            // SE再生
+            if (AudioManager.instance != null)
+            {
+                AudioManager.instance.PlayPlayerPowerUp();
+            }
         }
     }
 
@@ -625,10 +777,15 @@ public class PlayerController : MonoBehaviour
         if (現在のパワーレベル == 2) activeCount = 2;
         else if (現在のパワーレベル >= 3) activeCount = 4;
 
+        Debug.Log($"[PlayerController] UpdateStats called. Level: {現在のパワーレベル}, Active Funnels: {activeCount}");
+
         for (int i = 0; i < ファンネルリスト.Length; i++)
         {
             if (ファンネルリスト[i] != null)
+            {
                 ファンネルリスト[i].SetActive(i < activeCount);
+                // Debug.Log($"[PlayerController] Funnel[{i}] set to {i < activeCount}");
+            }
         }
     }
 
@@ -668,6 +825,12 @@ public class PlayerController : MonoBehaviour
             bullet.transform.SetParent(transform.parent);
             bullet.transform.localScale = Vector3.one;
             bullet.transform.SetAsLastSibling();
+        }
+
+        // 弾のスクリプトが付いていない場合は動的に追加する (Bullet_1などに対応)
+        if (bullet.GetComponent<BulletController>() == null)
+        {
+            bullet.AddComponent<BulletController>();
         }
     }
 

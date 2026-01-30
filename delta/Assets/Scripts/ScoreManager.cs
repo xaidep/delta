@@ -15,6 +15,13 @@ public class ScoreManager : MonoBehaviour
     [Header("Game State")]
     [FormerlySerializedAs("currentScore")] public int 現在のスコア = 0;
 
+    // --- ボーナス演出テンプレート用キャッシュ ---
+    private Vector2 templateAnchorMin = new Vector2(0, 1);
+    private Vector2 templateAnchorMax = new Vector2(0, 1);
+    private Vector2 templatePivot = new Vector2(0.5f, 0.5f);
+    private Vector2 templateAnchoredPos = new Vector2(66.6f, -147f);
+    private Vector3 templateScale = new Vector3(0.7f, 0.7f, 0.7f);
+
     // 敵IDと点数の対応表
     private Dictionary<string, int> enemyScores = new Dictionary<string, int>();
 
@@ -36,6 +43,33 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         UpdateScoreUI();
+        InitializeBonusTemplate();
+    }
+
+    // Hierarchy上の既存オブジェクトから配置設定を読み取る
+    void InitializeBonusTemplate()
+    {
+        GameObject templateObj = GameObject.Find("bonusAnimation");
+        if (templateObj != null)
+        {
+            RectTransform rt = templateObj.GetComponent<RectTransform>();
+            if (rt != null)
+            {
+                templateAnchorMin = rt.anchorMin;
+                templateAnchorMax = rt.anchorMax;
+                templatePivot = rt.pivot;
+                templateAnchoredPos = rt.anchoredPosition;
+                templateScale = templateObj.transform.localScale;
+                
+                // 本番中はテンプレート自体を非表示にする
+                templateObj.SetActive(false);
+                Debug.Log($"ScoreManager: Bonus Template initialized from Hierarchy at {templateAnchoredPos}");
+            }
+        }
+        else
+        {
+            Debug.Log("ScoreManager: 'bonusAnimation' not found in Hierarchy. Using fallback coordinates (66.6, -147).");
+        }
     }
 
     // CSVファイルを読み込んで辞書を作る
@@ -110,11 +144,24 @@ public class ScoreManager : MonoBehaviour
 
         if (bonusAnimationPrefab != null)
         {
-            // Score表示テキストのCanvas空間で生成
+            // Canvas(現在の親)の直下で生成
             GameObject bonusAnim = Instantiate(bonusAnimationPrefab, transform.parent);
-            
-            // ユーザー指定の座標 (X: -257, Y: 440) に設定
-            bonusAnim.transform.localPosition = new Vector3(-257f, 440f, 0);
+            RectTransform rt = bonusAnim.GetComponent<RectTransform>();
+
+            if (rt != null)
+            {
+                // テンプレートの設定を適用
+                rt.anchorMin = templateAnchorMin;
+                rt.anchorMax = templateAnchorMax;
+                rt.pivot = templatePivot;
+                rt.anchoredPosition = templateAnchoredPos;
+                bonusAnim.transform.localScale = templateScale;
+                
+                // Z座標の保険
+                Vector3 pos = rt.localPosition;
+                pos.z = 0;
+                rt.localPosition = pos;
+            }
 
             BonusAnimation script = bonusAnim.GetComponent<BonusAnimation>();
             if (script != null)

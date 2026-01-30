@@ -28,7 +28,7 @@ public class BonusAnimation : MonoBehaviour
 
         // Automatically destroy after animation
         // Note: Using a slightly longer delay as a fallback
-        Destroy(gameObject, 5.0f);
+        Destroy(gameObject, destroyDelay);
 
         // Start animation from the frame after the stop event (frame 1)
         Animator animator = GetComponent<Animator>();
